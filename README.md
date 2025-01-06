@@ -14,3 +14,15 @@ This project is structured same as any other 10up WordPress project that was sca
 4. Run `composer install` in the `wp-content/themes/10up-block-theme` directory.
 5. Run `composer install` in the `wp-content/mu-plugins/10up-plugin` directory.
 6. Run `npm run start` in the `wp-content` directory.
+7. Add the following to your `wp-config.php` file:
+
+```php
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_DISPLAY', false );
+define( 'SCRIPT_DEBUG', true );
+define( 'WP_DEVELOPMENT_MODE', 'all' );
+```
+
+8. Visit the WordPress admin and activate the `10up Block Theme` theme
+

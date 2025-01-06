@@ -19,7 +19,8 @@
     }
   ],
   "require": {
-    "php": ">=8.3"
+    "php": ">=8.3",
+    "wpackagist-plugin/create-block-theme": "^2.6"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
