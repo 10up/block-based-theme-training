@@ -1,0 +1,31 @@
+{
+  "name": "10up/tenup-theme",
+  "type": "wordpress-theme",
+  "authors": [
+    {
+      "name": "10up",
+      "email": "info@10up.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.3",
+    "haydenpierce/class-finder": "^0.4.3"
+  },
+  "require-dev": {
+    "10up/phpcs-composer": "dev-trunk"
+  },
+  "scripts": {
+    "lint": "phpcs .",
+    "lint-fix": "phpcbf ."
+  },
+  "autoload": {
+    "psr-4": {
+      "TenupBlockTheme\\": "includes/classes/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}

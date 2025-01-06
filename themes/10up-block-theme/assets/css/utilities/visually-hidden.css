@@ -1,0 +1,4 @@
+.visually-hidden {
+
+	@mixin visually-hidden;
+}

@@ -1,0 +1,24 @@
+{
+  "name": "10up/wp-plugin",
+  "description": "The starting point for all 10up WordPress plugins.",
+  "license": "MIT",
+  "type": "wordpress-plugin",
+  "authors": [
+    {
+      "name": "10up",
+      "email": "info@10up.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.3",
+    "haydenpierce/class-finder": "^0.5.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "TenUpPlugin\\": "includes/classes/"
+    },
+    "files": [
+      "includes/helpers/helpers.php"
+    ]
+  }
+}
