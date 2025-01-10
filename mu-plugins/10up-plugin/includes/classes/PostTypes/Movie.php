@@ -1,6 +1,6 @@
 <?php
 /**
- * Demo Post Type
+ * Movie Post Type
  *
  * @package TenUpPlugin
  */
@@ -8,9 +8,9 @@
 namespace TenUpPlugin\PostTypes;
 
 /**
- * Demo post type.
+ * Movie post type.
  */
-class Demo extends AbstractPostType {
+class Movie extends AbstractPostType {
 
 	/**
 	 * Get the post type name.
@@ -18,7 +18,7 @@ class Demo extends AbstractPostType {
 	 * @return string
 	 */
 	public function get_name() {
-		return 'tenup-demo';
+		return 'tenup-movie';
 	}
 
 	/**
@@ -27,7 +27,7 @@ class Demo extends AbstractPostType {
 	 * @return string
 	 */
 	public function get_singular_label() {
-		return esc_html__( 'Demo', 'tenup-plugin' );
+		return esc_html__( 'Movie', 'tenup-plugin' );
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Demo extends AbstractPostType {
 	 * @return string
 	 */
 	public function get_plural_label() {
-		return esc_html__( 'Demos', 'tenup-plugin' );
+		return esc_html__( 'Movies', 'tenup-plugin' );
 	}
 
 	/**
@@ -49,7 +49,7 @@ class Demo extends AbstractPostType {
 	 * @return string
 	 */
 	public function get_menu_icon() {
-		return 'dashicons-chart-pie';
+		return 'dashicons-video-alt';
 	}
 
 	/**
@@ -58,7 +58,7 @@ class Demo extends AbstractPostType {
 	 * @return bool
 	 */
 	public function can_register() {
-		return false;
+		return true;
 	}
 
 	/**
@@ -69,7 +69,9 @@ class Demo extends AbstractPostType {
 	 */
 	public function get_supported_taxonomies() {
 		return [
-			'tenup-tax-demo',
+			'tenup-genre',
+			'tenup-keyword',
+			'tenup-watch-provider',
 		];
 	}
 

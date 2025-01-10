@@ -1,6 +1,6 @@
 <?php
 /**
- * Demo Taxonomy
+ * Genre Taxonomy
  *
  * @package TenUpPlugin
  */
@@ -8,9 +8,9 @@
 namespace TenUpPlugin\Taxonomies;
 
 /**
- * Demo Taxonomy.
+ * Genre Taxonomy.
  */
-class Demo extends AbstractTaxonomy {
+class Genre extends AbstractTaxonomy {
 
 	/**
 	 * Get the taxonomy name.
@@ -18,7 +18,7 @@ class Demo extends AbstractTaxonomy {
 	 * @return string
 	 */
 	public function get_name() {
-		return 'tenup-tax-demo';
+		return 'tenup-genre';
 	}
 
 	/**
@@ -27,7 +27,7 @@ class Demo extends AbstractTaxonomy {
 	 * @return string
 	 */
 	public function get_singular_label() {
-		return esc_html__( 'Demo Term', 'tenup-plugin' );
+		return esc_html__( 'Genre', 'tenup-plugin' );
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Demo extends AbstractTaxonomy {
 	 * @return string
 	 */
 	public function get_plural_label() {
-		return esc_html__( 'Demo Terms', 'tenup-plugin' );
+		return esc_html__( 'Genres', 'tenup-plugin' );
 	}
 
 	/**
@@ -45,6 +45,6 @@ class Demo extends AbstractTaxonomy {
 	 * @return bool
 	 */
 	public function can_register() {
-		return false;
+		return true;
 	}
 }
