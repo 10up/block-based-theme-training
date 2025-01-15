@@ -31,6 +31,61 @@ class Movie extends AbstractPostType {
 	}
 
 	/**
+	 * Get the options for the post type.
+	 *
+	 * @return array{
+	 *      labels?: array<string, string>,
+	 *      description?: string,
+	 *      public?: bool,
+	 *      hierarchical?: bool,
+	 *      exclude_from_search?: bool,
+	 *      publicly_queryable?: bool,
+	 *      show_ui?: bool,
+	 *      show_in_menu?: bool,
+	 *      show_in_nav_menus?: bool,
+	 *      show_in_admin_bar?: bool,
+	 *      menu_position?: int,
+	 *      menu_icon?: string,
+	 *      capability_type?: string|array<int, string>,
+	 *      capabilities?: array<string, string>,
+	 *      map_meta_cap?: bool,
+	 *      supports?: array<string>|false,
+	 *      register_meta_box_cb?: callable,
+	 *      taxonomies?: array<string>,
+	 *      has_archive?: bool|string,
+	 *      rewrite?: bool|array{
+	 *          slug?: string,
+	 *          with_front?: bool,
+	 *          feeds?: bool,
+	 *          pages?: bool,
+	 *          ep_mask?: int,
+	 *      },
+	 *      query_var?: bool|string,
+	 *      can_export?: bool,
+	 *      delete_with_user?: bool,
+	 *      show_in_rest?: bool,
+	 *      rest_base?: string,
+	 *      rest_namespace?: string,
+	 *      rest_controller_class?: string,
+	 *      _builtin?: bool,
+	 *      template?: array<array<string, mixed>>,
+	 *      template_lock?: string|false,
+	 *  }
+	 */
+	public function get_options() {
+		$options = parent::get_options();
+
+		return array_merge(
+			$options,
+			[
+				'rewrite' => [
+					'slug' => 'movies',
+				],
+			]
+		);
+	}
+
+	/**
 	 * Get the plural post type label.
 	 *
 	 * @return string
