@@ -1,0 +1,25 @@
+.wp-block-post-featured-image {
+
+	&.is-style-single-movie-backdrop {
+		border-radius: 3px;
+		display: flex;
+		height: 100%;
+		isolation: isolate;
+		left: 50%;
+		max-width: 80vw;
+		object-fit: contain;
+		opacity: 0.4;
+		position: absolute;
+		top: -20%;
+		transform: translateX(-50%);
+		width: 100%;
+		z-index: -1;
+
+		& img,
+		& .components-placeholder {
+			background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+			filter: blur(150px);
+			mix-blend-mode: lighten;
+		}
+	}
+}
