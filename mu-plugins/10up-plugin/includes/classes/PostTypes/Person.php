@@ -78,5 +78,55 @@ class Person extends AbstractPostType {
 	 */
 	public function after_register() {
 		// Register any hooks/filters you need.
+
+		register_post_meta(
+			$this->get_name(),
+			'tenup-person-height',
+			[
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			]
+		);
+
+		register_post_meta(
+			$this->get_name(),
+			'tenup-person-birthdate',
+			[
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			]
+		);
+
+		register_post_meta(
+			$this->get_name(),
+			'tenup-person-birth-name',
+			[
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			]
+		);
+
+		register_post_meta(
+			$this->get_name(),
+			'tenup-person-nickname',
+			[
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			]
+		);
+
+		register_post_meta(
+			$this->get_name(),
+			'tenup-person-bio',
+			[
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			]
+		);
 	}
 }
