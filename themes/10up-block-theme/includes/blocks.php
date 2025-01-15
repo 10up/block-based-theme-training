@@ -7,6 +7,8 @@
 
 namespace TenupBlockTheme\Blocks;
 
+use WP_HTML_Tag_Processor;
+
 use function TenupBlockTheme\Utility\get_asset_info;
 
 /**
@@ -17,6 +19,8 @@ use function TenupBlockTheme\Utility\get_asset_info;
 function setup() {
 	add_action( 'init', 'TenupBlockTheme\Blocks\register_theme_blocks', 10, 0 );
 	add_action( 'init', 'TenupBlockTheme\Blocks\enqueue_theme_block_styles', 10, 0 );
+
+	add_filter( 'render_block_core/post-featured-image', 'TenupBlockTheme\Blocks\filter_featured_image_block', 10, 3 );
 }
 
 /**
@@ -82,4 +86,35 @@ function enqueue_theme_block_styles() {
 			);
 		}
 	}
+}
+
+/**
+ * Filter the post-featured-image block to add a view transition class based on the featured image ID.
+ *
+ * @param string   $block_content The block content.
+ * @param array    $block The block.
+ * @param WP_Block $parsed_block The parsed block.
+ * @return string
+ */
+function filter_featured_image_block( $block_content, $block, $parsed_block ) {
+
+	$featured_image_id = get_post_thumbnail_id( $parsed_block->context['postId'] );
+
+	$p = new WP_HTML_Tag_Processor( $block_content );
+	$p->next_tag();
+
+	if ( $p->has_class( 'is-style-single-movie-backdrop' ) ) {
+		return $block_content;
+	}
+
+	$style_attribute       = $p->get_attribute( 'style' );
+	$view_transition_style = "view-transition-name: post-featured-image-id-{$featured_image_id};";
+
+	if ( false === strpos( $style_attribute, $view_transition_style ) ) {
+		$style_attribute = $view_transition_style . $style_attribute;
+	}
+
+	$p->set_attribute( 'style', $style_attribute );
+
+	return $p->get_updated_html();
 }

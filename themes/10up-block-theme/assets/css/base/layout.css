@@ -1,5 +1,9 @@
 html {
 	scroll-behavior: smooth;
+
+	@view-transition {
+		navigation: auto;
+	}
 }
 
 .has-global-padding :where(.has-global-padding.is-layout-constrained) {
