@@ -82,5 +82,85 @@ class Movie extends AbstractPostType {
 	 */
 	public function after_register() {
 		// Register any hooks/filters you need.
+
+		register_post_meta(
+			$this->get_name(),
+			'tenup-movie-release-date',
+			[
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			]
+		);
+
+		register_post_meta(
+			$this->get_name(),
+			'tenup-movie-pg-rating',
+			[
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			]
+		);
+
+		register_post_meta(
+			$this->get_name(),
+			'tenup-movie-runtime',
+			[
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			]
+		);
+
+		register_post_meta(
+			$this->get_name(),
+			'tenup-movie-plot',
+			[
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			]
+		);
+
+		register_post_meta(
+			$this->get_name(),
+			'tenup-movie-summary',
+			[
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			]
+		);
+
+		register_post_meta(
+			$this->get_name(),
+			'tenup-movie-synopsis',
+			[
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			]
+		);
+
+		register_post_meta(
+			$this->get_name(),
+			'tenup-movie-tagline',
+			[
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			]
+		);
+
+		register_post_meta(
+			$this->get_name(),
+			'tenup-movie-trailer',
+			[
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			]
+		);
 	}
 }
