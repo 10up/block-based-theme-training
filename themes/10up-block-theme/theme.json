@@ -1,4 +1,18 @@
 {
+	"customTemplates": [
+		{
+			"name": "archive-tenup-movie",
+			"title": "Movie Archives",
+			"postTypes": []
+		},
+		{
+			"name": "single-tenup-movie",
+			"title": "Single Movie",
+			"postTypes": [
+				"tenup-movie"
+			]
+		}
+	],
 	"settings": {
 		"appearanceTools": true,
 		"color": {

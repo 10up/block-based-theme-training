@@ -23,6 +23,8 @@ function setup() {
 	add_action( 'wp_head', 'TenupBlockTheme\Core\scrollbar_detection', 0 );
 	add_action( 'wp_enqueue_scripts', 'TenupBlockTheme\Core\styles' );
 	add_action( 'enqueue_block_editor_assets', 'TenupBlockTheme\Core\editor_style_overrides' );
+
+	add_filter( 'default_template_types', 'TenupBlockTheme\Core\add_custom_template_types', 10, 1 );
 }
 
 /**
@@ -156,4 +158,24 @@ function js_detection() {
  */
 function scrollbar_detection() {
 	echo '<script>window.addEventListener("DOMContentLoaded",()=>{const t=()=>window.innerWidth-document.body.clientWidth;const e=()=>{document.documentElement.style.setProperty("--wp--custom--scrollbar-width",`${t()}px`)};e();});</script>' . "\n";
+}
+
+/**
+ * Add custom template types.
+ *
+ * @param array $templates The default template types.
+ *
+ * @return array The modified template types.
+ */
+function add_custom_template_types( $templates ) {
+	$templates['single-tenup-movie']  = [
+		'title'       => __( 'Single Movie', 'tenup' ),
+		'description' => __( 'Displays a single movie', 'tenup' ),
+	];
+	$templates['archive-tenup-movie'] = [
+		'title'       => __( 'Movie Archives', 'tenup' ),
+		'description' => __( 'Displays a movie archive.', 'tenup' ),
+	];
+
+	return $templates;
 }
