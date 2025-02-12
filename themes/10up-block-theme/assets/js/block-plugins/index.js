@@ -1,0 +1,1 @@
+import './movie-meta-fields';
