@@ -31,6 +31,13 @@ class MovieRating extends AbstractPostMeta {
 	}
 
 	/**
+	 * Default value.
+	 *
+	 * @var array|string|bool|int|null
+	 */
+	protected $default_value = 'Unrated';
+
+	/**
 	 * Whether the field has key value options.
 	 *
 	 * @var bool
