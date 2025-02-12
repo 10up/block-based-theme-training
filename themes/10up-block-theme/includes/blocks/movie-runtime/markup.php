@@ -18,7 +18,15 @@ $runtime   = get_post_meta( get_the_ID(), 'tenup_movie_runtime', true ) ?? '';
 <p <?php echo get_block_wrapper_attributes( [ 'class' => 'wp-block-tenup-movie-runtime' ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 <?php endif; ?>
 
-<?php echo esc_html( $runtime['hours'] ); ?>h <?php echo esc_html( $runtime['minutes'] ); ?>m
+
+	<?php
+	printf(
+		'<time datetime="%s">%sh %sm</time>',
+		esc_attr( 'PT' . $runtime['hours'] . 'H' . $runtime['minutes'] . 'M' ),
+		esc_html( $runtime['hours'] ),
+		esc_html( $runtime['minutes'] )
+	);
+	?>
 
 <?php if ( ! $is_editor ) : ?>
 </p>
