@@ -17,7 +17,7 @@ class Person extends AbstractPostType {
 	 *
 	 * @return string
 	 */
-	public function get_name() {
+	public static function get_name() {
 		return 'tenup-person';
 	}
 
@@ -127,6 +127,18 @@ class Person extends AbstractPostType {
 	}
 
 	/**
+	 * Default post type supported feature names.
+	 *
+	 * @return array
+	 */
+	public function get_editor_supports() {
+		$options  = parent::get_editor_supports();
+		$supports = array_merge( $options, [ 'custom-fields' ] );
+
+		return $supports;
+	}
+
+	/**
 	 * Run any code after the post type has been registered.
 	 *
 	 * @return void
@@ -134,54 +146,56 @@ class Person extends AbstractPostType {
 	public function after_register() {
 		// Register any hooks/filters you need.
 
-		register_post_meta(
-			$this->get_name(),
-			'tenup-person-height',
-			[
-				'show_in_rest' => true,
-				'single'       => true,
-				'type'         => 'string',
-			]
-		);
+		// @todo Move these to their own PostMeta classes.
 
-		register_post_meta(
-			$this->get_name(),
-			'tenup-person-birthdate',
-			[
-				'show_in_rest' => true,
-				'single'       => true,
-				'type'         => 'string',
-			]
-		);
+		// register_post_meta(
+		// 	$this->get_name(),
+		// 	'tenup-person-height',
+		// 	[
+		// 		'show_in_rest' => true,
+		// 		'single'       => true,
+		// 		'type'         => 'string',
+		// 	]
+		// );
 
-		register_post_meta(
-			$this->get_name(),
-			'tenup-person-birth-name',
-			[
-				'show_in_rest' => true,
-				'single'       => true,
-				'type'         => 'string',
-			]
-		);
+		// register_post_meta(
+		// 	$this->get_name(),
+		// 	'tenup-person-birthdate',
+		// 	[
+		// 		'show_in_rest' => true,
+		// 		'single'       => true,
+		// 		'type'         => 'string',
+		// 	]
+		// );
 
-		register_post_meta(
-			$this->get_name(),
-			'tenup-person-nickname',
-			[
-				'show_in_rest' => true,
-				'single'       => true,
-				'type'         => 'string',
-			]
-		);
+		// register_post_meta(
+		// 	$this->get_name(),
+		// 	'tenup-person-birth-name',
+		// 	[
+		// 		'show_in_rest' => true,
+		// 		'single'       => true,
+		// 		'type'         => 'string',
+		// 	]
+		// );
 
-		register_post_meta(
-			$this->get_name(),
-			'tenup-person-bio',
-			[
-				'show_in_rest' => true,
-				'single'       => true,
-				'type'         => 'string',
-			]
-		);
+		// register_post_meta(
+		// 	$this->get_name(),
+		// 	'tenup-person-nickname',
+		// 	[
+		// 		'show_in_rest' => true,
+		// 		'single'       => true,
+		// 		'type'         => 'string',
+		// 	]
+		// );
+
+		// register_post_meta(
+		// 	$this->get_name(),
+		// 	'tenup-person-bio',
+		// 	[
+		// 		'show_in_rest' => true,
+		// 		'single'       => true,
+		// 		'type'         => 'string',
+		// 	]
+		// );
 	}
 }

@@ -17,7 +17,7 @@ class Movie extends AbstractPostType {
 	 *
 	 * @return string
 	 */
-	public function get_name() {
+	public static function get_name() {
 		return 'tenup-movie';
 	}
 
@@ -28,6 +28,49 @@ class Movie extends AbstractPostType {
 	 */
 	public function get_singular_label() {
 		return esc_html__( 'Movie', 'tenup-plugin' );
+	}
+
+	/**
+	 * Get the plural post type label.
+	 *
+	 * @return string
+	 */
+	public function get_plural_label() {
+		return esc_html__( 'Movies', 'tenup-plugin' );
+	}
+
+	/**
+	 * Get the menu icon for the post type.
+	 *
+	 * This can be a base64 encoded SVG, a dashicons class or 'none' to leave it empty so it can be filled with CSS.
+	 *
+	 * @see https://developer.wordpress.org/resource/dashicons/
+	 *
+	 * @return string
+	 */
+	public function get_menu_icon() {
+		return 'dashicons-video-alt';
+	}
+
+	/**
+	 * Can the class be registered?
+	 *
+	 * @return bool
+	 */
+	public function can_register() {
+		return true;
+	}
+
+	/**
+	 * Default post type supported feature names.
+	 *
+	 * @return array
+	 */
+	public function get_editor_supports() {
+		$options  = parent::get_editor_supports();
+		$supports = array_merge( $options, [ 'custom-fields' ] );
+
+		return $supports;
 	}
 
 	/**
@@ -86,37 +129,6 @@ class Movie extends AbstractPostType {
 	}
 
 	/**
-	 * Get the plural post type label.
-	 *
-	 * @return string
-	 */
-	public function get_plural_label() {
-		return esc_html__( 'Movies', 'tenup-plugin' );
-	}
-
-	/**
-	 * Get the menu icon for the post type.
-	 *
-	 * This can be a base64 encoded SVG, a dashicons class or 'none' to leave it empty so it can be filled with CSS.
-	 *
-	 * @see https://developer.wordpress.org/resource/dashicons/
-	 *
-	 * @return string
-	 */
-	public function get_menu_icon() {
-		return 'dashicons-video-alt';
-	}
-
-	/**
-	 * Can the class be registered?
-	 *
-	 * @return bool
-	 */
-	public function can_register() {
-		return true;
-	}
-
-	/**
 	 * Returns the default supported taxonomies. The subclass should declare the
 	 * Taxonomies that it supports here if required.
 	 *
@@ -138,84 +150,86 @@ class Movie extends AbstractPostType {
 	public function after_register() {
 		// Register any hooks/filters you need.
 
-		register_post_meta(
-			$this->get_name(),
-			'tenup-movie-release-date',
-			[
-				'show_in_rest' => true,
-				'single'       => true,
-				'type'         => 'string',
-			]
-		);
+		// @todo Continue moving these to their own PostMeta classes.
 
-		register_post_meta(
-			$this->get_name(),
-			'tenup-movie-pg-rating',
-			[
-				'show_in_rest' => true,
-				'single'       => true,
-				'type'         => 'string',
-			]
-		);
+		// register_post_meta(
+		// 	$this->get_name(),
+		// 	'tenup-movie-release-date',
+		// 	[
+		// 		'show_in_rest' => true,
+		// 		'single'       => true,
+		// 		'type'         => 'string',
+		// 	]
+		// );
 
-		register_post_meta(
-			$this->get_name(),
-			'tenup-movie-runtime',
-			[
-				'show_in_rest' => true,
-				'single'       => true,
-				'type'         => 'string',
-			]
-		);
+		// register_post_meta(
+		// 	$this->get_name(),
+		// 	'tenup-movie-pg-rating',
+		// 	[
+		// 		'show_in_rest' => true,
+		// 		'single'       => true,
+		// 		'type'         => 'string',
+		// 	]
+		// );
 
-		register_post_meta(
-			$this->get_name(),
-			'tenup-movie-plot',
-			[
-				'show_in_rest' => true,
-				'single'       => true,
-				'type'         => 'string',
-			]
-		);
+		// register_post_meta(
+		// 	$this->get_name(),
+		// 	'tenup-movie-runtime',
+		// 	[
+		// 		'show_in_rest' => true,
+		// 		'single'       => true,
+		// 		'type'         => 'string',
+		// 	]
+		// );
 
-		register_post_meta(
-			$this->get_name(),
-			'tenup-movie-summary',
-			[
-				'show_in_rest' => true,
-				'single'       => true,
-				'type'         => 'string',
-			]
-		);
+		// register_post_meta(
+		// 	$this->get_name(),
+		// 	'tenup-movie-plot',
+		// 	[
+		// 		'show_in_rest' => true,
+		// 		'single'       => true,
+		// 		'type'         => 'string',
+		// 	]
+		// );
 
-		register_post_meta(
-			$this->get_name(),
-			'tenup-movie-synopsis',
-			[
-				'show_in_rest' => true,
-				'single'       => true,
-				'type'         => 'string',
-			]
-		);
+		// register_post_meta(
+		// 	$this->get_name(),
+		// 	'tenup-movie-summary',
+		// 	[
+		// 		'show_in_rest' => true,
+		// 		'single'       => true,
+		// 		'type'         => 'string',
+		// 	]
+		// );
 
-		register_post_meta(
-			$this->get_name(),
-			'tenup-movie-tagline',
-			[
-				'show_in_rest' => true,
-				'single'       => true,
-				'type'         => 'string',
-			]
-		);
+		// register_post_meta(
+		// 	$this->get_name(),
+		// 	'tenup-movie-synopsis',
+		// 	[
+		// 		'show_in_rest' => true,
+		// 		'single'       => true,
+		// 		'type'         => 'string',
+		// 	]
+		// );
 
-		register_post_meta(
-			$this->get_name(),
-			'tenup-movie-trailer',
-			[
-				'show_in_rest' => true,
-				'single'       => true,
-				'type'         => 'string',
-			]
-		);
+		// register_post_meta(
+		// 	$this->get_name(),
+		// 	'tenup-movie-tagline',
+		// 	[
+		// 		'show_in_rest' => true,
+		// 		'single'       => true,
+		// 		'type'         => 'string',
+		// 	]
+		// );
+
+		// register_post_meta(
+		// 	$this->get_name(),
+		// 	'tenup-movie-trailer',
+		// 	[
+		// 		'show_in_rest' => true,
+		// 		'single'       => true,
+		// 		'type'         => 'string',
+		// 	]
+		// );
 	}
 }

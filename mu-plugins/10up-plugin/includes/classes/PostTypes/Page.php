@@ -20,7 +20,7 @@ class Page extends AbstractCorePostType {
 	 *
 	 * @return string
 	 */
-	public function get_name() {
+	public static function get_name() {
 		return 'page';
 	}
 

@@ -44,7 +44,7 @@ abstract class AbstractPostType extends Module {
 	 *
 	 * @return string
 	 */
-	abstract public function get_name();
+	abstract public static function get_name();
 
 	/**
 	 * Get the singular post type label.
