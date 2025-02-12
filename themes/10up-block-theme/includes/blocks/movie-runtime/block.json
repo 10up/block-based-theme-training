@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tenup/movie-runtime",
+	"title": "Movie Runtime",
+	"category": "text",
+	"icon": "clock",
+	"description": "Displays the runtime for a Movie.",
+	"attributes": {
+		"isEditor": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "tenup",
+	"editorScript": "file:./index.js",
+	"render": "file:./markup.php"
+}
