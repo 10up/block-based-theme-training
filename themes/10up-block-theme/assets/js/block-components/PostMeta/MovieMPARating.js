@@ -1,8 +1,10 @@
+/* global TenupMovieMPARating */
+
 /**
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { TextareaControl } from '@wordpress/components';
+import { SelectControl } from '@wordpress/components';
 
 /**
  * External dependencies.
@@ -10,21 +12,28 @@ import { TextareaControl } from '@wordpress/components';
 import { PostMeta } from '@10up/block-components';
 
 /**
- * MoviePlot component.
+ * MovieMPARating component.
  *
  * @param {object} props               Component props.
  * @param {object} props.postMetaProps Props to use on the 10up PostMeta component.
  * @param {object} props.restProps     Rest of the props to pass to the control component.
  * @returns {Function}                 The rendered component.
  */
-const MoviePlot = ({ postMetaProps, ...restProps }) => {
+const MovieMPARating = ({ postMetaProps, ...restProps }) => {
+	const options = Object.entries(TenupMovieMPARating.options).map(([key, value]) => ({
+		label: value,
+		value: key,
+	}));
+
 	return (
-		<PostMeta metaKey="tenup_movie_plot" {...postMetaProps}>
+		<PostMeta metaKey="tenup_movie_mpa_rating" {...postMetaProps}>
 			{(meta, setMeta) => (
-				<TextareaControl
-					label={__('Plot', 'tenup')}
-					onChange={(value) => setMeta(value)}
+				<SelectControl
+					label={__('MPA Rating', 'tenup')}
 					value={meta}
+					options={options}
+					onChange={(value) => setMeta(value)}
+					__next40pxDefaultSize
 					{...restProps}
 				/>
 			)}
@@ -32,4 +41,4 @@ const MoviePlot = ({ postMetaProps, ...restProps }) => {
 	);
 };
 
-export default MoviePlot;
+export default MovieMPARating;

@@ -1,6 +1,6 @@
 <?php
 /**
- * MovieRuntime
+ * MovieRuntime post meta
  *
  * @package TenUpPlugin
  */
@@ -44,8 +44,8 @@ class MovieRuntime extends AbstractPostMeta {
 	 * @var array|string|bool|int|null
 	 */
 	protected $default_value = [
-		'hours'   => 0,
-		'minutes' => 0,
+		'hours'   => '0',
+		'minutes' => '0',
 	];
 
 	/**
@@ -58,11 +58,11 @@ class MovieRuntime extends AbstractPostMeta {
 
 		$schema['schema']['properties'] = [
 			'hours'   => [
-				'type'        => 'number',
+				'type'        => 'string',
 				'description' => __( 'Hours', 'tenup' ),
 			],
 			'minutes' => [
-				'type'        => 'number',
+				'type'        => 'string',
 				'description' => __( 'Minutes', 'tenup' ),
 			],
 		];

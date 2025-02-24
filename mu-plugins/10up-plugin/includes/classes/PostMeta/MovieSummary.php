@@ -1,6 +1,6 @@
 <?php
 /**
- * MoviePlot post meta
+ * MovieSummary post meta
  *
  * @package TenUpPlugin
  */
@@ -10,16 +10,16 @@ namespace TenUpPlugin\PostMeta;
 use TenUpPlugin\PostTypes\Movie;
 
 /**
- * MoviePlot meta field.
+ * MovieSummary meta field.
  */
-class MoviePlot extends AbstractPostMeta {
+class MovieSummary extends AbstractPostMeta {
 
 	/**
 	 * The meta_key name.
 	 *
 	 * @var string
 	 */
-	const META_KEY = 'tenup_movie_plot';
+	const META_KEY = 'tenup_movie_summary';
 
 	/**
 	 * Get the field description.
@@ -27,7 +27,7 @@ class MoviePlot extends AbstractPostMeta {
 	 * @return string
 	 */
 	public function get_description(): string {
-		return __( 'Movie Plot', 'tenup' );
+		return __( 'Movie Summary', 'tenup' );
 	}
 
 	/**

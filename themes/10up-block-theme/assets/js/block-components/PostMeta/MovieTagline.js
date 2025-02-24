@@ -10,20 +10,21 @@ import { TextareaControl } from '@wordpress/components';
 import { PostMeta } from '@10up/block-components';
 
 /**
- * MoviePlot component.
+ * MovieTagline component.
  *
  * @param {object} props               Component props.
  * @param {object} props.postMetaProps Props to use on the 10up PostMeta component.
  * @param {object} props.restProps     Rest of the props to pass to the control component.
  * @returns {Function}                 The rendered component.
  */
-const MoviePlot = ({ postMetaProps, ...restProps }) => {
+const MovieTagline = ({ postMetaProps, ...restProps }) => {
 	return (
-		<PostMeta metaKey="tenup_movie_plot" {...postMetaProps}>
+		<PostMeta metaKey="tenup_movie_tagline" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<TextareaControl
-					label={__('Plot', 'tenup')}
+					label={__('Tagline', 'tenup')}
 					onChange={(value) => setMeta(value)}
+					rows={2}
 					value={meta}
 					{...restProps}
 				/>
@@ -32,4 +33,4 @@ const MoviePlot = ({ postMetaProps, ...restProps }) => {
 	);
 };
 
-export default MoviePlot;
+export default MovieTagline;

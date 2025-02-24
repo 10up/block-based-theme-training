@@ -29,8 +29,8 @@ const MovieRuntime = ({ postMetaProps, ...restProps }) => {
 					<TimePicker.TimeInput
 						onChange={(value) => {
 							setMeta({
-								hours: value.hours,
-								minutes: value.minutes,
+								hours: String(value.hours),
+								minutes: String(value.minutes),
 							});
 						}}
 						value={meta}

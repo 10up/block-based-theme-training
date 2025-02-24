@@ -1,6 +1,6 @@
 <?php
 /**
- * MovieRating
+ * MovieMPARating post meta
  *
  * @package TenUpPlugin
  */
@@ -10,16 +10,16 @@ namespace TenUpPlugin\PostMeta;
 use TenUpPlugin\PostTypes\Movie;
 
 /**
- * MovieRating meta field.
+ * MovieMPARating meta field.
  */
-class MovieRating extends AbstractPostMeta {
+class MovieMPARating extends AbstractPostMeta {
 
 	/**
 	 * The meta_key name.
 	 *
 	 * @var string
 	 */
-	const META_KEY = 'tenup_movie_rating';
+	const META_KEY = 'tenup_movie_mpa_rating';
 
 	/**
 	 * Get the field description.
@@ -27,7 +27,7 @@ class MovieRating extends AbstractPostMeta {
 	 * @return string
 	 */
 	public function get_description(): string {
-		return __( 'Movie Rating', 'tenup' );
+		return __( 'Movie MPA Rating', 'tenup' );
 	}
 
 	/**
@@ -87,7 +87,7 @@ class MovieRating extends AbstractPostMeta {
 
 		wp_localize_script(
 			'tenup_plugin_admin',
-			'TenupMovieRating',
+			'TenupMovieMPARating',
 			array(
 				'options' => $this->allowed_values(),
 			)

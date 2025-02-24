@@ -15,9 +15,14 @@ import { usePost } from '@10up/block-components';
  * Internal dependencies.
  */
 import MoviePlot from '../block-components/PostMeta/MoviePlot';
-import MovieRating from '../block-components/PostMeta/MovieRating';
+import MovieMPARating from '../block-components/PostMeta/MovieMPARating';
 import MovieReleaseYear from '../block-components/PostMeta/MovieReleaseYear';
 import MovieRuntime from '../block-components/PostMeta/MovieRuntime';
+import MovieSummary from '../block-components/PostMeta/MovieSummary';
+import MovieSynopsis from '../block-components/PostMeta/MovieSynopsis';
+import MovieTagline from '../block-components/PostMeta/MovieTagline';
+import MovieViewerRating from '../block-components/PostMeta/MovieViewerRating';
+import MovieViewerRatingCount from '../block-components/PostMeta/MovieViewerRatingCount';
 
 /**
  * Adds a Movie meta field panel to the editor.
@@ -38,9 +43,14 @@ const MovieFields = () => {
 		>
 			<Flex direction="column">
 				<MovieReleaseYear />
-				<MovieRating />
+				<MovieMPARating />
 				<MovieRuntime />
+				<MovieViewerRating />
+				<MovieViewerRatingCount />
 				<MoviePlot />
+				<MovieSummary />
+				<MovieSynopsis />
+				<MovieTagline />
 			</Flex>
 		</PluginDocumentSettingPanel>
 	);

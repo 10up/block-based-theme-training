@@ -1,6 +1,6 @@
 <?php
 /**
- * AbstractPostMeta
+ * AbstractPostMeta post meta
  *
  * @package TenUpPlugin
  */

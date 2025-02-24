@@ -1,6 +1,6 @@
 <?php
 /**
- * MoviePlot post meta
+ * MovieViewerRating post meta
  *
  * @package TenUpPlugin
  */
@@ -10,16 +10,16 @@ namespace TenUpPlugin\PostMeta;
 use TenUpPlugin\PostTypes\Movie;
 
 /**
- * MoviePlot meta field.
+ * MovieViewerRating meta field.
  */
-class MoviePlot extends AbstractPostMeta {
+class MovieViewerRating extends AbstractPostMeta {
 
 	/**
 	 * The meta_key name.
 	 *
 	 * @var string
 	 */
-	const META_KEY = 'tenup_movie_plot';
+	const META_KEY = 'tenup_movie_viewer_rating';
 
 	/**
 	 * Get the field description.
@@ -27,8 +27,15 @@ class MoviePlot extends AbstractPostMeta {
 	 * @return string
 	 */
 	public function get_description(): string {
-		return __( 'Movie Plot', 'tenup' );
+		return __( 'Movie Viewer Rating', 'tenup' );
 	}
+
+	/**
+	 * Default value.
+	 *
+	 * @var array|string|bool|int|null
+	 */
+	protected $default_value = '0.0';
 
 	/**
 	 * Get the post types.
