@@ -49,21 +49,21 @@ abstract class AbstractTaxonomy extends Module {
 	 *
 	 * @return string
 	 */
-	abstract public function get_name();
+	abstract public static function get_name();
 
 	/**
 	 * Get the singular taxonomy label.
 	 *
 	 * @return string
 	 */
-	abstract public function get_singular_label();
+	abstract public static function get_singular_label();
 
 	/**
 	 * Get the plural taxonomy label.
 	 *
 	 * @return string
 	 */
-	abstract public function get_plural_label();
+	abstract public static function get_plural_label();
 
 	/**
 	 * Is the taxonomy hierarchical?

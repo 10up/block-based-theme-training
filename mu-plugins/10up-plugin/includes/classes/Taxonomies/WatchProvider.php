@@ -17,7 +17,7 @@ class WatchProvider extends AbstractTaxonomy {
 	 *
 	 * @return string
 	 */
-	public function get_name() {
+	public static function get_name() {
 		return 'tenup-watch-provider';
 	}
 
@@ -26,7 +26,7 @@ class WatchProvider extends AbstractTaxonomy {
 	 *
 	 * @return string
 	 */
-	public function get_singular_label() {
+	public static function get_singular_label() {
 		return esc_html__( 'Watch Provider', 'tenup-plugin' );
 	}
 
@@ -35,7 +35,7 @@ class WatchProvider extends AbstractTaxonomy {
 	 *
 	 * @return string
 	 */
-	public function get_plural_label() {
+	public static function get_plural_label() {
 		return esc_html__( 'Watch Providers', 'tenup-plugin' );
 	}
 
