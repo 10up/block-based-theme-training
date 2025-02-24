@@ -10,10 +10,27 @@
 
 		<!-- wp:buttons {"align":"wide"} -->
 		<div class="wp-block-buttons alignwide">
-
-			<!-- wp:button {"className":"is-style-secondary"} -->
+			<!-- wp:button {
+				"className": "is-style-secondary",
+				"metadata": {
+					"bindings": {
+						"url": {
+							"source": "tenup/archive-link",
+							"args": {
+								"key": "url"
+							}
+						},
+						"text": {
+							"source": "tenup/archive-link",
+							"args": {
+								"key": "text"
+							}
+						}
+					}
+				}
+			} -->
 			<div class="wp-block-button is-style-secondary">
-				<a class="wp-block-button__link wp-element-button" href="/movies">
+				<a class="wp-block-button__link wp-element-button" href="/movies/">
 					← Back
 				</a>
 			</div>
@@ -30,39 +47,11 @@
 
 				<!-- wp:post-title {"level":1} /-->
 
-				<!-- wp:group {"className":"has-separator","style":{"elements":{"link":{"color":{"text":"var:preset|color|text-secondary"}}}},"textColor":"text-secondary","layout":{"type":"flex","flexWrap":"nowrap"}} -->
-				<div class="wp-block-group has-separator has-text-secondary-color has-text-color has-link-color">
+				<!-- wp:group {"style":{"elements":{"link":{"color":{"text":"var:preset|color|text-secondary"}}},"spacing":{"blockGap":"var:preset|spacing|24"}},"textColor":"text-secondary","layout":{"type":"flex","flexWrap":"nowrap","orientation":"horizontal"},"hasSeparator":true} -->
+				<div class="wp-block-group has-text-secondary-color has-text-color has-link-color has-separator">
 
-					<!-- wp:paragraph {
-						"metadata":{
-							"bindings":{
-								"content":{
-									"source":"core/post-meta",
-									"args":{
-										"key":"tenup_movie_release_year"
-									}
-								}
-							}
-						}
-					} -->
-					<p>2024</p>
-					<!-- /wp:paragraph -->
-
-					<!-- wp:paragraph {
-						"metadata":{
-							"bindings":{
-								"content":{
-									"source":"core/post-meta",
-									"args":{
-										"key":"tenup_movie_rating"
-									}
-								}
-							}
-						}
-					} -->
-					<p>PG-13</p>
-					<!-- /wp:paragraph -->
-
+					<!-- wp:tenup/movie-release-year /-->
+					<!-- wp:tenup/movie-mpa-rating /-->
 					<!-- wp:tenup/movie-runtime /-->
 
 				</div>
@@ -73,6 +62,7 @@
 
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">
+
 				<!-- wp:button {"className":"is-style-secondary"} -->
 				<div class="wp-block-button is-style-secondary">
 					<a class="wp-block-button__link wp-element-button">
@@ -80,10 +70,29 @@
 					</a>
 				</div>
 				<!-- /wp:button -->
-				<!-- wp:button {"className":"is-style-secondary"} -->
+
+				<!-- wp:button {
+					"className": "is-style-secondary",
+					"metadata": {
+						"bindings": {
+							"url": {
+								"source": "tenup/movie-viewer-rating-label",
+								"args": {
+									"key": "url"
+								}
+							},
+							"text": {
+								"source": "tenup/movie-viewer-rating-label",
+								"args": {
+									"key": "text"
+								}
+							}
+						}
+					}
+				} -->
 				<div class="wp-block-button is-style-secondary">
-					<a class="wp-block-button__link wp-element-button">
-						<mark style="background-color:rgba(0, 0, 0, 0);color:#f5c518" class="has-inline-color">★</mark> 8.9/10 (200K)
+					<a class="wp-block-button__link wp-element-button" href="#">
+						<mark style="background-color:rgba(0, 0, 0, 0);color:#f5c518" class="has-inline-color">★</mark> 0.0/10 (0)
 					</a>
 				</div>
 				<!-- /wp:button -->
@@ -109,79 +118,13 @@
 		<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|24"}},"layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"top","justifyContent":"space-between"}} -->
 		<div class="wp-block-group alignwide">
 
-			<!-- wp:group {"metadata":{"name":"Movie Metadata"},"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|16"},"layout":{"selfStretch":"fill","flexSize":null}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch","flexWrap":"nowrap"}} -->
-			<div class="wp-block-group alignwide">
-
-				<!-- wp:group {"metadata":{"name":"Genre"},"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"left"}} -->
-				<div class="wp-block-group is-style-metadata-row">
-
-					<!-- wp:paragraph {"style":{"layout":{"selfStretch":"fixed","flexSize":"100px"},"elements":{"link":{"color":{"text":"var:preset|color|text-secondary"}}},"typography":{"fontStyle":"normal","fontWeight":"600"}},"textColor":"text-secondary"} -->
-					<p class="has-text-secondary-color has-text-color has-link-color" style="font-style:normal;font-weight:600">Genre</p>
-					<!-- /wp:paragraph -->
-
-					<!-- wp:post-terms {"term":"tenup-genre"} /-->
-
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"metadata":{"name":"Plot"},"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
-				<div class="wp-block-group is-style-metadata-row">
-
-					<!-- wp:paragraph {"style":{"layout":{"selfStretch":"fixed","flexSize":"100px"},"elements":{"link":{"color":{"text":"var:preset|color|text-secondary"}}},"typography":{"fontStyle":"normal","fontWeight":"600"}},"textColor":"text-secondary"} -->
-					<p class="has-text-secondary-color has-text-color has-link-color" style="font-style:normal;font-weight:600">Plot</p>
-					<!-- /wp:paragraph -->
-
-					<!-- wp:paragraph {"style":{"layout":{"selfStretch":"fit","flexSize":null}}} -->
-					<p>Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.</p>
-					<!-- /wp:paragraph -->
-
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"metadata":{"name":"Director"},"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-				<div class="wp-block-group is-style-metadata-row">
-
-					<!-- wp:paragraph {"style":{"layout":{"selfStretch":"fixed","flexSize":"100px"},"elements":{"link":{"color":{"text":"var:preset|color|text-secondary"}}},"typography":{"fontStyle":"normal","fontWeight":"600"}},"textColor":"text-secondary"} -->
-					<p class="has-text-secondary-color has-text-color has-link-color" style="font-style:normal;font-weight:600">Director</p>
-					<!-- /wp:paragraph -->
-
-					<!-- wp:paragraph -->
-					<p>Denis Villeneuve</p>
-					<!-- /wp:paragraph -->
-
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"metadata":{"name":"Writers"},"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-				<div class="wp-block-group is-style-metadata-row">
-
-					<!-- wp:paragraph {"style":{"layout":{"selfStretch":"fixed","flexSize":"100px"},"elements":{"link":{"color":{"text":"var:preset|color|text-secondary"}}},"typography":{"fontStyle":"normal","fontWeight":"600"}},"textColor":"text-secondary"} -->
-					<p class="has-text-secondary-color has-text-color has-link-color" style="font-style:normal;font-weight:600">Writers</p>
-					<!-- /wp:paragraph -->
-
-					<!-- wp:paragraph -->
-					<p>Denis Villeneuve, Jon Spaihts, Frank Herbert</p>
-					<!-- /wp:paragraph -->
-
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"metadata":{"name":"Stars"},"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-				<div class="wp-block-group is-style-metadata-row">
-
-					<!-- wp:paragraph {"style":{"layout":{"selfStretch":"fixed","flexSize":"100px"},"elements":{"link":{"color":{"text":"var:preset|color|text-secondary"}}},"typography":{"fontStyle":"normal","fontWeight":"600"}},"textColor":"text-secondary"} -->
-					<p class="has-text-secondary-color has-text-color has-link-color" style="font-style:normal;font-weight:600">Stars</p>
-					<!-- /wp:paragraph -->
-
-					<!-- wp:paragraph -->
-					<p>Timothée Chalamet, Zendaya, Rebecca Ferguson</p>
-					<!-- /wp:paragraph -->
-
-				</div>
-				<!-- /wp:group -->
-
-			</div>
-			<!-- /wp:group -->
+			<!-- wp:tenup/movie-metadata -->
+				<!-- wp:tenup/movie-metadata-genre /-->
+				<!-- wp:tenup/movie-metadata-plot /-->
+				<!-- wp:tenup/movie-metadata-director /-->
+				<!-- wp:tenup/movie-metadata-writers /-->
+				<!-- wp:tenup/movie-metadata-stars /-->
+			<!-- /wp:tenup/movie-metadata -->
 
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">
