@@ -1,11 +1,11 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tenup/movie-runtime",
-	"title": "Movie Runtime",
+	"name": "tenup/movie-release-year",
+	"title": "Movie Release Year",
 	"category": "text",
-	"icon": "backup",
-	"description": "A read only block to display the runtime post meta for a Movie.",
+	"icon": "calendar",
+	"description": "A read only block to display the release year post meta for a Movie.",
 	"attributes": {},
 	"supports": {
 		"html": false

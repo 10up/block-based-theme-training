@@ -1,11 +1,12 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tenup/movie-runtime",
-	"title": "Movie Runtime",
+	"name": "tenup/movie-metadata-genre",
+	"title": "Movie Metadata: Genre",
 	"category": "text",
-	"icon": "backup",
-	"description": "A read only block to display the runtime post meta for a Movie.",
+	"icon": "video-alt",
+	"description": "A read only block to display the Genre(s) for a Movie.",
+	"parent": ["tenup/movie-metadata"],
 	"attributes": {},
 	"supports": {
 		"html": false

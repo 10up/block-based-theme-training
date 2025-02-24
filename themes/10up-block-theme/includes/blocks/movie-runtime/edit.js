@@ -1,12 +1,55 @@
 import { useBlockProps } from '@wordpress/block-editor';
-import ServerSideRender from '@wordpress/server-side-render';
+import { useEntityProp } from '@wordpress/core-data';
+import { __ } from '@wordpress/i18n';
+import { usePost } from '@10up/block-components';
 
-export const BlockEdit = (props) => {
-	const { attributes, name } = props;
+export const BlockEdit = () => {
 	const blockProps = useBlockProps();
-	return (
-		<p {...blockProps}>
-			<ServerSideRender block={name} attributes={{ ...attributes, isEditor: true }} />
-		</p>
+	const { postType } = usePost();
+	const [meta] = useEntityProp('postType', 'tenup-movie', 'meta');
+
+	const { tenup_movie_runtime = { hours: '0', minutes: '0' } } = meta || {};
+
+	let HoursTag = null;
+	let MinutesTag = null;
+
+	if (tenup_movie_runtime?.hours) {
+		HoursTag = (
+			<span aria-label={`${tenup_movie_runtime?.hours} hours`}>
+				{`${tenup_movie_runtime?.hours}h`}
+			</span>
+		);
+	}
+
+	if (tenup_movie_runtime?.minutes) {
+		MinutesTag = (
+			<span aria-label={`${tenup_movie_runtime?.minutes} minutes`}>
+				{`${tenup_movie_runtime?.minutes}m`}
+			</span>
+		);
+	}
+
+	let RenderedUI = (
+		<div className="components-notice is-error">
+			{__('Movie Runtime post meta not found.', 'tenup')}
+		</div>
 	);
+
+	if (tenup_movie_runtime?.hours && tenup_movie_runtime?.minutes) {
+		RenderedUI = (
+			<p {...blockProps}>
+				<time dateTime={`PT${tenup_movie_runtime?.hours}H${tenup_movie_runtime?.minutes}M`}>
+					{tenup_movie_runtime?.hours !== '0' && <>{HoursTag} </>}
+					{MinutesTag}
+				</time>
+			</p>
+		);
+	}
+
+	// Fallback for template preview.
+	if (postType === 'wp_template') {
+		RenderedUI = <p {...blockProps}>2h 30m</p>;
+	}
+
+	return RenderedUI;
 };

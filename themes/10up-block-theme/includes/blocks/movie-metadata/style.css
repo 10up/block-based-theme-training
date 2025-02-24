@@ -1,0 +1,16 @@
+.wp-block-tenup-movie-metadata {
+	display: grid;
+	gap: var(--wp--preset--spacing--16);
+	grid-template-columns: 5.25rem 1fr;
+
+	& > dt {
+		color: var(--wp--preset--color--text-secondary);
+		font-weight: 600;
+		grid-column: 1 / 2;
+	}
+
+	& > dd {
+		grid-column: 2 / 3;
+		margin: 0;
+	}
+}

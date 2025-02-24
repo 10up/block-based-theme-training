@@ -9,25 +9,42 @@
  * @var WP_Block $block              Block instance.
  */
 
-$is_editor = $attributes['isEditor'] ?? false;
-$runtime   = get_post_meta( get_the_ID(), 'tenup_movie_runtime', true ) ?? '';
+$runtime = get_post_meta( get_the_ID(), 'tenup_movie_runtime', true ) ?? '';
+
+if ( '' === $runtime ) {
+	return;
+}
+
+$hours   = $runtime['hours'] ?? '0';
+$minutes = $runtime['minutes'] ?? '0';
+
+if ( '0' === $hours && '0' === $minutes ) {
+	return;
+}
+
+$hours_tag = sprintf(
+	'<span aria-label="%s">%s</span>',
+	esc_html( $hours ) . __( ' hours', 'tenup' ),
+	esc_html( $hours ) . 'h'
+);
+
+$minutes_tag = sprintf(
+	'<span aria-label="%s">%s</span>',
+	esc_html( $minutes ) . __( ' minutes', 'tenup' ),
+	esc_html( $minutes ) . 'm'
+);
 
 ?>
 
-<?php if ( ! $is_editor ) : ?>
-<p <?php echo get_block_wrapper_attributes( [ 'class' => 'wp-block-tenup-movie-runtime' ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-<?php endif; ?>
-
+<p <?php echo get_block_wrapper_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
 	<?php
 	printf(
-		'<time datetime="%s">%sh %sm</time>',
-		esc_attr( 'PT' . $runtime['hours'] . 'H' . $runtime['minutes'] . 'M' ),
-		esc_html( $runtime['hours'] ),
-		esc_html( $runtime['minutes'] )
+		'<time datetime="%s">%s%s</time>',
+		esc_attr( 'PT' . $hours . 'H' . $minutes . 'M' ),
+		'0' === $hours ? '' : wp_kses_post( $hours_tag ) . ' ',
+		wp_kses_post( $minutes_tag )
 	);
 	?>
 
-<?php if ( ! $is_editor ) : ?>
 </p>
-<?php endif; ?>
