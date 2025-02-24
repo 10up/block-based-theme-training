@@ -8,28 +8,21 @@
 			display: flex;
 		}
 
-		& > *:not(:last-child) {
+		& > *:not(:first-child) {
 
-			&::after {
+			&::before {
 				align-items: center;
 				background-color: currentcolor;
+				block-size: 4px;
 				border-radius: 999px;
 				content: "";
 				display: inline-flex;
-				height: 4px;
+				inline-size: 4px;
 				justify-content: center;
 				justify-self: center;
 				line-height: 1;
 				margin-inline: var(--wp--custom--spacing--8);
-				width: 4px;
 			}
-		}
-	}
-
-	&.is-style-metadata-row {
-
-		& > :first-child {
-			flex-shrink: 0;
 		}
 	}
 }
