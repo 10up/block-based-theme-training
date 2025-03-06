@@ -1,11 +1,11 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tenup/movie-metadata-plot",
-	"title": "Movie Metadata: Plot",
+	"name": "tenup/person-metadata-deathplace",
+	"title": "Person Metadata: Deathplace",
 	"category": "text",
-	"icon": "video-alt",
-	"description": "A read only block to display the plot post meta for a Movie.",
+	"icon": "admin-users",
+	"description": "A read only block to display the deathplace post meta for a Person.",
 	"parent": ["tenup/metadata"],
 	"attributes": {},
 	"supports": {

@@ -1,8 +1,8 @@
 <?php
 /**
- * Movie Metadata markup
+ * Metadata markup
  *
- * @package tenup\Blocks\MovieMetadata
+ * @package tenup\Blocks\Metadata
  *
  * @var array    $attributes         Block attributes.
  * @var string   $content            Block content.

@@ -3,9 +3,9 @@
 <!-- wp:group {"tagName":"main","metadata":{"name":"Site Main"},"className":"is-style-default","style":{"spacing":{"margin":{"top":"0"},"padding":{"top":"var:preset|spacing|16","bottom":"var:preset|spacing|16"}}}} -->
 <main class="wp-block-group is-style-default" style="margin-top:0;padding-top:var(--wp--preset--spacing--16);padding-bottom:var(--wp--preset--spacing--16)">
 
-	<!-- wp:post-featured-image {"aspectRatio":"2:3","metadata":{"name":"Blurry Poster Backdrop"},"className":"is-style-single-movie-backdrop"} /-->
+	<!-- wp:post-featured-image {"aspectRatio":"2:3","metadata":{"name":"Blurry Person Poster Backdrop"},"className":"is-style-single-movie-backdrop"} /-->
 
-	<!-- wp:group {"tagName":"article","metadata":{"name":"Movie Header"},"layout":{"type":"constrained"}} -->
+	<!-- wp:group {"tagName":"article","metadata":{"name":"Person Header"},"layout":{"type":"constrained"}} -->
 	<article class="wp-block-group">
 
 		<!-- wp:buttons {"align":"wide"} -->
@@ -30,7 +30,7 @@
 				}
 			} -->
 			<div class="wp-block-button is-style-secondary">
-				<a class="wp-block-button__link wp-element-button" href="/movies/">
+				<a class="wp-block-button__link wp-element-button" href="/people/">
 					← Back
 				</a>
 			</div>
@@ -60,45 +60,6 @@
 			</div>
 			<!-- /wp:group -->
 
-			<!-- wp:buttons -->
-			<div class="wp-block-buttons">
-
-				<!-- wp:button {"className":"is-style-secondary"} -->
-				<div class="wp-block-button is-style-secondary">
-					<a class="wp-block-button__link wp-element-button">
-						Rate
-					</a>
-				</div>
-				<!-- /wp:button -->
-
-				<!-- wp:button {
-					"className": "is-style-secondary",
-					"metadata": {
-						"bindings": {
-							"url": {
-								"source": "tenup/movie-viewer-rating-label",
-								"args": {
-									"key": "url"
-								}
-							},
-							"text": {
-								"source": "tenup/movie-viewer-rating-label",
-								"args": {
-									"key": "text"
-								}
-							}
-						}
-					}
-				} -->
-				<div class="wp-block-button is-style-secondary">
-					<a class="wp-block-button__link wp-element-button" href="#">
-						<mark style="background-color:rgba(0, 0, 0, 0);color:#f5c518" class="has-inline-color">★</mark> 0.0/10 (0)
-					</a>
-				</div>
-				<!-- /wp:button -->
-			</div>
-			<!-- /wp:buttons -->
-
 		</div>
 		<!-- /wp:group -->
 
@@ -106,11 +67,6 @@
 		<div class="wp-block-group alignwide">
 
 			<!-- wp:post-featured-image {"aspectRatio":"2:3","style":{"layout":{"selfStretch":"fixed","flexSize":"336px"},"border":{"radius":"3px"}}} /-->
-			<!-- wp:image {"sizeSlug":"full","linkDestination":"none"} -->
-			<figure class="wp-block-image size-full">
-				<img src="http://block-based-theme-training.test/wp-content/uploads/2025/01/e6308eeb0458fdff145211051474a4c3.png" alt=""/>
-			</figure>
-			<!-- /wp:image -->
 
 		</div>
 		<!-- /wp:group -->
@@ -119,18 +75,17 @@
 		<div class="wp-block-group alignwide">
 
 			<!-- wp:tenup/metadata -->
-				<!-- wp:tenup/movie-metadata-genre /-->
-				<!-- wp:tenup/movie-metadata-plot /-->
-				<!-- wp:tenup/movie-metadata-director /-->
-				<!-- wp:tenup/movie-metadata-writers /-->
-				<!-- wp:tenup/movie-metadata-stars /-->
+				<!-- wp:tenup/person-metadata-born /-->
+				<!-- wp:tenup/person-metadata-birthplace /-->
+				<!-- wp:tenup/person-metadata-died /-->
+				<!-- wp:tenup/person-metadata-deathplace /-->
 			<!-- /wp:tenup/metadata -->
 
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">
 				<!-- wp:button -->
 				<div class="wp-block-button">
-					<a class="wp-block-button__link wp-element-button">Add to Watchlist</a>
+					<a class="wp-block-button__link wp-element-button">Add to list</a>
 				</div>
 				<!-- /wp:button -->
 			</div>

@@ -9,6 +9,16 @@
 			"name": "single-tenup-movie",
 			"title": "Single Movie",
 			"postTypes": ["tenup-movie"]
+		},
+		{
+			"name": "archive-tenup-person",
+			"title": "Person Archives",
+			"postTypes": []
+		},
+		{
+			"name": "single-tenup-person",
+			"title": "Single Person",
+			"postTypes": ["tenup-person"]
 		}
 	],
 	"settings": {

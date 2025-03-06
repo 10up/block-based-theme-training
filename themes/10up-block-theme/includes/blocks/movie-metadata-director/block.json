@@ -6,7 +6,7 @@
 	"category": "text",
 	"icon": "video-alt",
 	"description": "A read only block to display the director(s) of a Movie.",
-	"parent": ["tenup/movie-metadata"],
+	"parent": ["tenup/metadata"],
 	"attributes": {},
 	"supports": {
 		"html": false
