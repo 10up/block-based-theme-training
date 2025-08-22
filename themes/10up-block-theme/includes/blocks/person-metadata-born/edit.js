@@ -8,24 +8,9 @@ export const BlockEdit = () => {
 
 	const { tenup_person_born = '' } = meta || {};
 
-	let RenderedUI = (
-		<div className="components-notice is-error">
-			{__('Person born post meta not found.', 'tenup')}
-		</div>
-	);
-
-	if (tenup_person_born !== '') {
-		RenderedUI = (
-			<>
-				<dt>{__('Born', 'tenup')}</dt>
-				<dd>{tenup_person_born}</dd>
-			</>
-		);
-	}
-
 	// Fallback for template preview.
 	if (postType === 'wp_template') {
-		RenderedUI = (
+		return (
 			<>
 				<dt>{__('Born', 'tenup')}</dt>
 				<dd>{__('January 1, 1950', 'tenup')}</dd>
@@ -33,5 +18,18 @@ export const BlockEdit = () => {
 		);
 	}
 
-	return RenderedUI;
+	if (tenup_person_born !== '') {
+		return (
+			<>
+				<dt>{__('Born', 'tenup')}</dt>
+				<dd>{tenup_person_born}</dd>
+			</>
+		);
+	}
+
+	return (
+		<div className="components-notice is-error">
+			{__('Person born post meta not found.', 'tenup')}
+		</div>
+	);
 };

@@ -8,24 +8,9 @@ export const BlockEdit = () => {
 
 	const { tenup_person_died = '' } = meta || {};
 
-	let RenderedUI = (
-		<div className="components-notice is-error">
-			{__('Person died post meta not found.', 'tenup')}
-		</div>
-	);
-
-	if (tenup_person_died !== '') {
-		RenderedUI = (
-			<>
-				<dt>{__('Died', 'tenup')}</dt>
-				<dd>{tenup_person_died}</dd>
-			</>
-		);
-	}
-
 	// Fallback for template preview.
 	if (postType === 'wp_template') {
-		RenderedUI = (
+		return (
 			<>
 				<dt>{__('Died', 'tenup')}</dt>
 				<dd>{__('January 1, 2025', 'tenup')}</dd>
@@ -33,5 +18,18 @@ export const BlockEdit = () => {
 		);
 	}
 
-	return RenderedUI;
+	if (tenup_person_died !== '') {
+		return (
+			<>
+				<dt>{__('Died', 'tenup')}</dt>
+				<dd>{tenup_person_died}</dd>
+			</>
+		);
+	}
+
+	return (
+		<div className="components-notice is-error">
+			{__('Person died post meta not found.', 'tenup')}
+		</div>
+	);
 };

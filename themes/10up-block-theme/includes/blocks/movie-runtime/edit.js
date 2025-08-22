@@ -29,14 +29,13 @@ export const BlockEdit = () => {
 		);
 	}
 
-	let RenderedUI = (
-		<div className="components-notice is-error">
-			{__('Movie Runtime post meta not found.', 'tenup')}
-		</div>
-	);
+	// Fallback for template preview.
+	if (postType === 'wp_template') {
+		return <p {...blockProps}>2h 30m</p>;
+	}
 
 	if (tenup_movie_runtime?.hours && tenup_movie_runtime?.minutes) {
-		RenderedUI = (
+		return (
 			<p {...blockProps}>
 				<time dateTime={`PT${tenup_movie_runtime?.hours}H${tenup_movie_runtime?.minutes}M`}>
 					{tenup_movie_runtime?.hours !== '0' && <>{HoursTag} </>}
@@ -46,10 +45,9 @@ export const BlockEdit = () => {
 		);
 	}
 
-	// Fallback for template preview.
-	if (postType === 'wp_template') {
-		RenderedUI = <p {...blockProps}>2h 30m</p>;
-	}
-
-	return RenderedUI;
+	return (
+		<div className="components-notice is-error">
+			{__('Movie Runtime post meta not found.', 'tenup')}
+		</div>
+	);
 };

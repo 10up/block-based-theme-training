@@ -10,20 +10,18 @@ export const BlockEdit = () => {
 
 	const { tenup_movie_release_year = '' } = meta || {};
 
-	let RenderedUI = (
+	// Fallback for template preview.
+	if (postType === 'wp_template') {
+		return <p {...blockProps}>{new Date().getFullYear()}</p>;
+	}
+
+	if (tenup_movie_release_year !== '') {
+		return <p {...blockProps}>{tenup_movie_release_year}</p>;
+	}
+
+	return (
 		<div className="components-notice is-error">
 			{__('Movie Release Year post meta not found.', 'tenup')}
 		</div>
 	);
-
-	if (tenup_movie_release_year !== '') {
-		RenderedUI = <p {...blockProps}>{tenup_movie_release_year}</p>;
-	}
-
-	// Fallback for template preview.
-	if (postType === 'wp_template') {
-		RenderedUI = <p {...blockProps}>{new Date().getFullYear()}</p>;
-	}
-
-	return RenderedUI;
 };

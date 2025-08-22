@@ -11,12 +11,23 @@ export const BlockEdit = () => {
 		return <Spinner />;
 	}
 
-	let RenderedUI = (
-		<div className="components-notice is-error">{__('No Genre found.', 'tenup')}</div>
-	);
+	// Fallback for template preview.
+	if (postType === 'wp_template') {
+		return (
+			<>
+				<dt>{__('Genre', 'tenup')}</dt>
+				<dd>
+					<div className="taxonomy-tenup-genre wp-block-post-terms">
+						<a rel="tag">{__('Action', 'tenup')}</a>
+						<a rel="tag">{__('Comedy', 'tenup')}</a>
+					</div>
+				</dd>
+			</>
+		);
+	}
 
 	if (genre.length > 0) {
-		RenderedUI = (
+		return (
 			<>
 				<dt>{__('Genre', 'tenup')}</dt>
 				<dd>
@@ -32,20 +43,5 @@ export const BlockEdit = () => {
 		);
 	}
 
-	// Fallback for template preview.
-	if (postType === 'wp_template') {
-		RenderedUI = (
-			<>
-				<dt>{__('Genre', 'tenup')}</dt>
-				<dd>
-					<div className="taxonomy-tenup-genre wp-block-post-terms">
-						<a rel="tag">{__('Action', 'tenup')}</a>
-						<a rel="tag">{__('Comedy', 'tenup')}</a>
-					</div>
-				</dd>
-			</>
-		);
-	}
-
-	return RenderedUI;
+	return <div className="components-notice is-error">{__('No Genre found.', 'tenup')}</div>;
 };

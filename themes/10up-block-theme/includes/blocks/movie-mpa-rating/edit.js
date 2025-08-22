@@ -10,20 +10,18 @@ export const BlockEdit = () => {
 
 	const { tenup_movie_mpa_rating = '' } = meta || {};
 
-	let RenderedUI = (
+	// Fallback for template preview.
+	if (postType === 'wp_template') {
+		return <p {...blockProps}>{__('PG-13', 'tenup')}</p>;
+	}
+
+	if (tenup_movie_mpa_rating !== '') {
+		return <p {...blockProps}>{tenup_movie_mpa_rating}</p>;
+	}
+
+	return (
 		<div className="components-notice is-error">
 			{__('Movie MPA Rating post meta not found.', 'tenup')}
 		</div>
 	);
-
-	if (tenup_movie_mpa_rating !== '') {
-		RenderedUI = <p {...blockProps}>{tenup_movie_mpa_rating}</p>;
-	}
-
-	// Fallback for template preview.
-	if (postType === 'wp_template') {
-		RenderedUI = <p {...blockProps}>{__('PG-13', 'tenup')}</p>;
-	}
-
-	return RenderedUI;
 };

@@ -13,22 +13,9 @@ export const BlockEdit = () => {
 
 	const { tenup_movie_plot = '' } = meta || {};
 
-	let RenderedUI = (
-		<div className="components-notice is-error">{__('Movie director not found.', 'tenup')}</div>
-	);
-
-	if (tenup_movie_plot !== '') {
-		RenderedUI = (
-			<>
-				<dt>{__('Director', 'tenup')}</dt>
-				<dd>{tenup_movie_plot}</dd>
-			</>
-		);
-	}
-
 	// Fallback for template preview.
 	if (postType === 'wp_template') {
-		RenderedUI = (
+		return (
 			<>
 				<dt>{__('Director', 'tenup')}</dt>
 				<dd>
@@ -38,5 +25,16 @@ export const BlockEdit = () => {
 		);
 	}
 
-	return RenderedUI;
+	if (tenup_movie_plot !== '') {
+		return (
+			<>
+				<dt>{__('Director', 'tenup')}</dt>
+				<dd>{tenup_movie_plot}</dd>
+			</>
+		);
+	}
+
+	return (
+		<div className="components-notice is-error">{__('Movie director not found.', 'tenup')}</div>
+	);
 };
