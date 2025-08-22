@@ -1,18 +1,18 @@
 html {
 	scroll-behavior: smooth;
 
-	@view-transition {
-		navigation: auto;
+	@view-transition { /* stylelint-disable-line at-rule-no-unknown */
+		navigation: auto; /* stylelint-disable-line property-no-unknown */
 	}
 }
 
 .has-global-padding :where(.has-global-padding.is-layout-constrained) {
-	padding-left: var(--wp--style--root--padding-left);
-	padding-right: var(--wp--style--root--padding-right);
+	padding-inline-end: var(--wp--style--root--padding-right);
+	padding-inline-start: var(--wp--style--root--padding-left);
 }
 
 .is-layout-constrained .wp-block-image.alignwide {
-	max-width: min(100%, var(--wp--style--global--wide-size)) !important;
+	max-inline-size: min(100%, var(--wp--style--global--wide-size)) !important;
 }
 
 .wp-block-post-template.is-layout-flex {
