@@ -11,7 +11,7 @@
 
 use TenUpPlugin\Taxonomies\Genre;
 
-$terms = get_the_terms( get_the_ID(), Genre::get_name() );
+$terms = get_the_terms( get_the_ID(), Genre::TAXONOMY_NAME );
 
 if ( false === $terms || is_wp_error( $terms ) ) {
 	return;
@@ -19,5 +19,5 @@ if ( false === $terms || is_wp_error( $terms ) ) {
 
 ?>
 
-<dt><?php echo esc_html( Genre::get_plural_label() ); ?></dt>
-<dd><?php echo do_blocks( '<!-- wp:post-terms {"term":"' . Genre::get_name() . '"} /-->' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></dd>
+<dt><?php echo esc_html( Genre::PLURAL_LABEL ); ?></dt>
+<dd><?php echo do_blocks( '<!-- wp:post-terms {"term":"' . Genre::TAXONOMY_NAME . '"} /-->' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></dd>
