@@ -19,5 +19,5 @@ if ( false === $terms || is_wp_error( $terms ) ) {
 
 ?>
 
-<dt><?php esc_html_e( Genre::get_plural_label(), 'tenup' ); ?></dt>
-<dd><?php echo do_blocks( '<!-- wp:post-terms {"term":"'. Genre::get_name() .'"} /-->'); ?></dd>
+<dt><?php echo esc_html( Genre::get_plural_label() ); ?></dt>
+<dd><?php echo do_blocks( '<!-- wp:post-terms {"term":"' . Genre::get_name() . '"} /-->' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></dd>

@@ -26,7 +26,7 @@ if ( ! is_array( $writers ) || empty( $writers ) ) {
 	return;
 }
 
-$label     = _n( 'Writer', 'Writers', $writers, 'tenup' );
+$label   = _n( 'Writer', 'Writers', $writers, 'tenup' );
 $writers = array_map(
 	function ( $writer ) {
 		return sprintf(
@@ -41,5 +41,5 @@ $writers = implode( ', ', $writers );
 
 ?>
 
-<dt><?php esc_html_e( $label, 'tenup' ); ?></dt>
+<dt><?php echo esc_html( $label ); ?></dt>
 <dd><?php echo wp_kses_post( $writers ); ?></dd>

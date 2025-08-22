@@ -18,4 +18,4 @@ if ( '' === $deathplace ) {
 ?>
 
 <dt><?php esc_html_e( 'Deathplace', 'tenup' ); ?></dt>
-<dd><?php esc_html_e( $deathplace, 'tenup' ); ?></dd>
+<dd><?php echo esc_html( $deathplace ); ?></dd>

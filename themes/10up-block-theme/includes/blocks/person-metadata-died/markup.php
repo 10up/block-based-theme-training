@@ -15,9 +15,9 @@ if ( '' === $died ) {
 	return;
 }
 
-$died = date( 'F j, Y', strtotime( $died ) );
+$died = gmdate( 'F j, Y', strtotime( $died ) );
 
 ?>
 
 <dt><?php esc_html_e( 'Died', 'tenup' ); ?></dt>
-<dd><?php esc_html_e( $died, 'tenup' ); ?></dd>
+<dd><?php echo esc_html( $died ); ?></dd>

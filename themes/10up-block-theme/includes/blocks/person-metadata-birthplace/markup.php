@@ -18,4 +18,4 @@ if ( '' === $birthplace ) {
 ?>
 
 <dt><?php esc_html_e( 'Birthplace', 'tenup' ); ?></dt>
-<dd><?php esc_html_e( $birthplace, 'tenup' ); ?></dd>
+<dd><?php echo esc_html( $birthplace ); ?></dd>

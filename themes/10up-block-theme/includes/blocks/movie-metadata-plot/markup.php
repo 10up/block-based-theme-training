@@ -18,4 +18,4 @@ if ( '' === $plot ) {
 ?>
 
 <dt><?php esc_html_e( 'Plot', 'tenup' ); ?></dt>
-<dd><?php esc_html_e( $plot, 'tenup' ); ?></dd>
+<dd><?php echo esc_html( $plot ); ?></dd>

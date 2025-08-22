@@ -37,5 +37,5 @@ $directors = implode( ', ', $directors );
 
 ?>
 
-<dt><?php esc_html_e( $label, 'tenup' ); ?></dt>
+<dt><?php echo esc_html( $label ); ?></dt>
 <dd><?php echo wp_kses_post( $directors ); ?></dd>

@@ -15,9 +15,9 @@ if ( '' === $born ) {
 	return;
 }
 
-$born = date( 'F j, Y', strtotime( $born ) );
+$born = gmdate( 'F j, Y', strtotime( $born ) );
 
 ?>
 
 <dt><?php esc_html_e( 'Born', 'tenup' ); ?></dt>
-<dd><?php esc_html_e( $born, 'tenup' ); ?></dd>
+<dd><?php echo esc_html( $born ); ?></dd>
