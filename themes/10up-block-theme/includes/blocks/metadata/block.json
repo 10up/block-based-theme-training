@@ -1,17 +1,16 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tenup/movie-metadata-plot",
-	"title": "Movie Metadata: Plot",
+	"name": "tenup/metadata",
+	"title": "Metadata",
 	"category": "text",
-	"icon": "video-alt",
-	"description": "A read only block to display the plot post meta for a Movie.",
-	"parent": ["tenup/metadata"],
+	"description": "A wrapper block to display individual metadata blocks.",
 	"attributes": {},
 	"supports": {
 		"html": false
 	},
 	"textdomain": "tenup",
 	"editorScript": "file:./index.js",
+	"style": "file:./style.css",
 	"render": "file:./markup.php"
 }

@@ -1,4 +1,4 @@
-.wp-block-tenup-movie-metadata {
+.wp-block-tenup-metadata {
 	display: grid;
 	gap: var(--wp--preset--spacing--16);
 	grid-template-columns: 5.25rem 1fr;
