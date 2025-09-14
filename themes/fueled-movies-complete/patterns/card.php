@@ -5,7 +5,7 @@
  * Description: A card pattern with a featured image, title, date, and category.
  * Inserter: false
  *
- * @package TenupBlockTheme
+ * @package FueledMoviesTheme
  */
 
 ?>
