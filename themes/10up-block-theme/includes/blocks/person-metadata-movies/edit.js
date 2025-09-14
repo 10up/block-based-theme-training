@@ -9,32 +9,32 @@ import { usePost } from '@10up/block-components';
 
 export const BlockEdit = () => {
 	const { postType } = usePost();
-	const [meta] = useEntityProp('postType', 'tenup-movie', 'meta');
+	const [meta] = useEntityProp('postType', 'tenup-person', 'meta');
 
-	const { tenup_movie_plot = '' } = meta || {};
+	const { tenup_person_movies = '' } = meta || {};
 
 	// Fallback for template preview.
 	if (postType === 'wp_template') {
 		return (
 			<>
-				<dt>{__('Writers', 'tenup')}</dt>
+				<dt>{__('Movies', 'tenup')}</dt>
 				<dd>
-					<a href="#">{__('Jane Doe', 'tenup')}</a>
+					<a href="#">{__('The Godfather', 'tenup')}</a>
 				</dd>
 			</>
 		);
 	}
 
-	if (tenup_movie_plot !== '') {
+	if (tenup_person_movies !== '') {
 		return (
 			<>
-				<dt>{__('Writers', 'tenup')}</dt>
-				<dd>{tenup_movie_plot}</dd>
+				<dt>{__('Movies', 'tenup')}</dt>
+				<dd>{tenup_person_movies}</dd>
 			</>
 		);
 	}
 
 	return (
-		<div className="components-notice is-error">{__('Movie writers not found.', 'tenup')}</div>
+		<div className="components-notice is-error">{__('Person movies not found.', 'tenup')}</div>
 	);
 };

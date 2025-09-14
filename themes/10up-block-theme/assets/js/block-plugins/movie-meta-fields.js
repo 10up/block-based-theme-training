@@ -14,15 +14,14 @@ import { usePost } from '@10up/block-components';
 /**
  * Internal dependencies.
  */
+import MovieIMDBID from '../block-components/PostMeta/MovieIMDBID';
 import MoviePlot from '../block-components/PostMeta/MoviePlot';
 import MovieMPARating from '../block-components/PostMeta/MovieMPARating';
 import MovieReleaseYear from '../block-components/PostMeta/MovieReleaseYear';
 import MovieRuntime from '../block-components/PostMeta/MovieRuntime';
-import MovieSummary from '../block-components/PostMeta/MovieSummary';
-import MovieSynopsis from '../block-components/PostMeta/MovieSynopsis';
-import MovieTagline from '../block-components/PostMeta/MovieTagline';
 import MovieViewerRating from '../block-components/PostMeta/MovieViewerRating';
 import MovieViewerRatingCount from '../block-components/PostMeta/MovieViewerRatingCount';
+import MovieYouTubeID from '../block-components/PostMeta/MovieYouTubeID';
 
 /**
  * Adds a Movie meta field panel to the editor.
@@ -42,15 +41,14 @@ const MovieFields = () => {
 			title={__('Movie Information', 'tenup')}
 		>
 			<Flex direction="column">
+				<MovieIMDBID />
+				<MovieYouTubeID />
 				<MovieReleaseYear />
 				<MovieMPARating />
 				<MovieRuntime />
 				<MovieViewerRating />
 				<MovieViewerRatingCount />
 				<MoviePlot />
-				<MovieSummary />
-				<MovieSynopsis />
-				<MovieTagline />
 			</Flex>
 		</PluginDocumentSettingPanel>
 	);

@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Spinner } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { usePost, useAllTerms } from '@10up/block-components';
+import { usePost, useSelectedTerms } from '@10up/block-components';
 
 export const BlockEdit = () => {
 	const { postType } = usePost();
-	const [genre, hasResolvedCategories] = useAllTerms('tenup-genre');
+	const [genre, hasResolvedCategories] = useSelectedTerms('tenup-genre');
 
 	if (!hasResolvedCategories) {
 		return <Spinner />;

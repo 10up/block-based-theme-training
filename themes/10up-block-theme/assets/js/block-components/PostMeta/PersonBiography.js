@@ -10,19 +10,19 @@ import { TextareaControl } from '@wordpress/components';
 import { PostMeta } from '@10up/block-components';
 
 /**
- * MovieSummary component.
+ * PersonBiography component.
  *
  * @param {object} props               Component props.
  * @param {object} props.postMetaProps Props to use on the 10up PostMeta component.
  * @param {object} props.restProps     Rest of the props to pass to the control component.
  * @returns {Function}                 The rendered component.
  */
-const MovieSummary = ({ postMetaProps, ...restProps }) => {
+const PersonBiography = ({ postMetaProps, ...restProps }) => {
 	return (
-		<PostMeta metaKey="tenup_movie_summary" {...postMetaProps}>
+		<PostMeta metaKey="tenup_person_biography" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<TextareaControl
-					label={__('Summary', 'tenup')}
+					label={__('Biography', 'tenup')}
 					onChange={(value) => setMeta(value)}
 					value={meta}
 					{...restProps}
@@ -32,4 +32,4 @@ const MovieSummary = ({ postMetaProps, ...restProps }) => {
 	);
 };
 
-export default MovieSummary;
+export default PersonBiography;

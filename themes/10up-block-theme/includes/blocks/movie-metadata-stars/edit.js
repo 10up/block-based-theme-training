@@ -19,7 +19,7 @@ export const BlockEdit = () => {
 			<>
 				<dt>{__('Stars', 'tenup')}</dt>
 				<dd>
-					<a href="#">{__('Steven Spielberg', 'tenup')}</a>
+					<a href="#">{__('Tom Hanks', 'tenup')}</a>
 				</dd>
 			</>
 		);

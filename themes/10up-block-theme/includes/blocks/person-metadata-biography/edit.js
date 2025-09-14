@@ -6,30 +6,30 @@ export const BlockEdit = () => {
 	const { postType } = usePost();
 	const [meta] = useEntityProp('postType', 'tenup-person', 'meta');
 
-	const { tenup_person_deathplace = '' } = meta || {};
+	const { tenup_person_biography = '' } = meta || {};
 
 	// Fallback for template preview.
 	if (postType === 'wp_template') {
 		return (
 			<>
-				<dt>{__('Deathplace', 'tenup')}</dt>
-				<dd>{__('Hollywood, California, USA', 'tenup')}</dd>
+				<dt>{__('Born', 'tenup')}</dt>
+				<dd>{__('January 1, 1950', 'tenup')}</dd>
 			</>
 		);
 	}
 
-	if (tenup_person_deathplace !== '') {
+	if (tenup_person_biography !== '') {
 		return (
 			<>
-				<dt>{__('Deathplace', 'tenup')}</dt>
-				<dd>{tenup_person_deathplace}</dd>
+				<dt>{__('Biography', 'tenup')}</dt>
+				<dd>{tenup_person_biography}</dd>
 			</>
 		);
 	}
 
 	return (
 		<div className="components-notice is-error">
-			{__('Person deathplace post meta not found.', 'tenup')}
+			{__('Person biography post meta not found.', 'tenup')}
 		</div>
 	);
 };

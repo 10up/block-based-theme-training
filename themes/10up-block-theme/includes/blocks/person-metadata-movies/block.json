@@ -1,11 +1,11 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tenup/movie-metadata-writers",
-	"title": "Movie Metadata: Writers",
+	"name": "tenup/person-metadata-movies",
+	"title": "Person Metadata: Movies",
 	"category": "text",
-	"icon": "video-alt",
-	"description": "A read only block to display the writers for a Movie.",
+	"icon": "admin-users",
+	"description": "A read only block to display the movies for a Person.",
 	"parent": ["tenup/metadata"],
 	"attributes": {},
 	"supports": {
