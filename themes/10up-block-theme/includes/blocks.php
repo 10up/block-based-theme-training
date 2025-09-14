@@ -157,16 +157,21 @@ function block_binding_archive_link( $source_args ) {
 		return null;
 	}
 
-	$text = __( '← Back', 'tenup' );
-	$url  = get_post_type_archive_link( get_post_type() );
+	// Set home as the fallback URL, but check for a referer or archive URL first.
+	$url         = home_url();
+	$referer     = wp_get_referer();
+	$archive_url = get_post_type_archive_link( get_post_type() );
 
-	if ( ! $url ) {
-		return null;
+	// Use referer only if it's a paged version of the archive URL
+	if ( $referer && $archive_url && strpos( $referer, $archive_url ) === 0 ) {
+		$url = $referer;
+	} elseif ( $archive_url ) {
+		$url = $archive_url;
 	}
 
 	switch ( $source_args['key'] ) {
 		case 'text':
-			return $text;
+			return __( '← Back', 'tenup' );
 		case 'url':
 			return $url;
 		default:
