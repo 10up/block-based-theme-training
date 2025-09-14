@@ -117,7 +117,7 @@
 				},
 				"text": {
 					"primary": "#C3C3C3",
-					"secondary": "#717171"
+					"secondary": "#a3a3a3"
 				},
 				"action": {
 					"primary": "var(--wp--custom--color--yellow--primary)",
@@ -211,7 +211,8 @@
 					"size": "clamp(56px, 36.5217px + 6.087vi, 112px)",
 					"slug": "56-112"
 				}
-			]
+			],
+			"units": ["px", "em", "rem", "vh", "vw", "%"]
 		},
 		"typography": {
 			"fluid": {
