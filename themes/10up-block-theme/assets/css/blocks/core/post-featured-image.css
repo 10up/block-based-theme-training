@@ -1,18 +1,19 @@
 .wp-block-post-featured-image {
+	flex-shrink: 0;
 
 	&.is-style-single-movie-backdrop {
+		block-size: 100%;
 		border-radius: 3px;
 		display: flex;
-		height: 100%;
+		inline-size: 100%;
+		inset-block-start: -20%;
+		inset-inline-start: 50%;
 		isolation: isolate;
-		left: 50%;
-		max-width: 80vw;
+		max-inline-size: 80vw;
 		object-fit: contain;
 		opacity: 0.4;
 		position: absolute;
-		top: -20%;
 		transform: translateX(-50%);
-		width: 100%;
 		z-index: -1;
 
 		& img,
