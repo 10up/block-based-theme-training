@@ -70,6 +70,10 @@ class PluginCore {
 		}
 
 		ModuleInitialization::instance()->init_classes( TENUP_PLUGIN_INC );
+
+		// Register CLI commands.
+		\TenUpPlugin\CLI\CLIRegistration::register_commands();
+
 		do_action( 'tenup_plugin_init' );
 	}
 
