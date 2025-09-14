@@ -45,20 +45,6 @@ class MovieMPARating extends AbstractPostMeta {
 	protected $has_key_value_options = true;
 
 	/**
-	 * Get allowed values for field schema.
-	 */
-	public function allowed_values(): array {
-		return [
-			'Unrated' => 'Unrated',
-			'G'       => 'G',
-			'PG'      => 'PG',
-			'PG-13'   => 'PG-13',
-			'R'       => 'R',
-			'NC-17'   => 'NC-17',
-		];
-	}
-
-	/**
 	 * Get the post types.
 	 *
 	 * @return array
@@ -89,7 +75,15 @@ class MovieMPARating extends AbstractPostMeta {
 			'tenup_plugin_admin',
 			'TenupMovieMPARating',
 			array(
-				'options' => $this->allowed_values(),
+				'options' => [
+					'Not Rated' => 'Not Rated',
+					'Approved'  => 'Approved',
+					'G'         => 'G',
+					'PG'        => 'PG',
+					'PG-13'     => 'PG-13',
+					'R'         => 'R',
+					'NC-17'     => 'NC-17',
+				],
 			)
 		);
 	}

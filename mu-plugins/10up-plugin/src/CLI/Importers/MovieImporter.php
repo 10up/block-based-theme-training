@@ -189,6 +189,9 @@ class MovieImporter {
 		// Set meta fields.
 		$this->set_movie_meta( $post_id, $data );
 
+		// Fetch and set MPA rating from certificates API.
+		$this->set_mpa_rating( $post_id, $data['id'] );
+
 		// Set featured image.
 		$this->set_featured_image( $post_id, $data );
 
@@ -231,6 +234,9 @@ class MovieImporter {
 
 		// Update meta fields.
 		$this->set_movie_meta( $post_id, $data );
+
+		// Fetch and update MPA rating from certificates API.
+		$this->set_mpa_rating( $post_id, $data['id'] );
 
 		// Update featured image.
 		$this->set_featured_image( $post_id, $data );
@@ -286,6 +292,33 @@ class MovieImporter {
 		// Set all meta fields.
 		foreach ( $meta_fields as $key => $value ) {
 			update_post_meta( $post_id, $key, $value );
+		}
+	}
+
+	/**
+	 * Set MPA rating from certificates API.
+	 *
+	 * @param int    $post_id Post ID.
+	 * @param string $imdb_id IMDB movie ID.
+	 */
+	private function set_mpa_rating( $post_id, $imdb_id ) {
+		// Fetch certificates data.
+		$certificates_data = $this->api_client->get_movie_certificates( $imdb_id );
+
+		if ( is_wp_error( $certificates_data ) ) {
+			WP_CLI::warning( sprintf( 'Failed to fetch certificates for %s: %s', $imdb_id, $certificates_data->get_error_message() ) );
+			return;
+		}
+
+		// Extract US MPA rating.
+		$mpa_rating = $this->api_client->extract_us_mpa_rating( $certificates_data );
+
+		if ( $mpa_rating ) {
+			update_post_meta( $post_id, 'tenup_movie_mpa_rating', $mpa_rating );
+			WP_CLI::log( sprintf( 'Set MPA rating for %s: %s', $imdb_id, $mpa_rating ) );
+		} else {
+			update_post_meta( $post_id, 'tenup_movie_mpa_rating', 'Not Rated' );
+			WP_CLI::log( sprintf( 'No US MPA rating found for %s, set to: Not Rated', $imdb_id ) );
 		}
 	}
 

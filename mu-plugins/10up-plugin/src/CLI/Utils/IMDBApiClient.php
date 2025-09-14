@@ -29,6 +29,13 @@ class IMDBApiClient {
 	private const PERSON_API_URL = 'https://api.imdbapi.dev/names/';
 
 	/**
+	 * Base API URL for movie certificates.
+	 *
+	 * @var string
+	 */
+	private const CERTIFICATES_API_URL = 'https://api.imdbapi.dev/titles/';
+
+	/**
 	 * Rate limiting delay between requests (in seconds).
 	 *
 	 * @var float
@@ -113,6 +120,66 @@ class IMDBApiClient {
 		set_transient( $cache_key, $data, self::CACHE_DURATION );
 
 		return $data;
+	}
+
+	/**
+	 * Get movie certificates data from IMDB API.
+	 *
+	 * @param string $imdb_id IMDB movie ID.
+	 * @return array|WP_Error Certificates data or error.
+	 */
+	public function get_movie_certificates( $imdb_id ) {
+		$cache_key   = 'imdb_certificates_' . $imdb_id;
+		$cached_data = get_transient( $cache_key );
+
+		if ( false !== $cached_data ) {
+			return $cached_data;
+		}
+
+		$url      = self::CERTIFICATES_API_URL . $imdb_id . '/certificates';
+		$response = $this->make_request( $url );
+
+		if ( is_wp_error( $response ) ) {
+			return $response;
+		}
+
+		$data = json_decode( $response, true );
+
+		if ( ! $data || isset( $data['error'] ) ) {
+			return new WP_Error( 'api_error', 'Failed to fetch certificates data: ' . ( $data['error'] ?? 'Unknown error' ) );
+		}
+
+		// Cache the successful response.
+		set_transient( $cache_key, $data, self::CACHE_DURATION );
+
+		return $data;
+	}
+
+	/**
+	 * Extract US MPA rating from certificates data.
+	 *
+	 * @param array $certificates_data Certificates API response data.
+	 * @return string|null MPA rating or null if not found.
+	 */
+	public function extract_us_mpa_rating( $certificates_data ) {
+		if ( ! isset( $certificates_data['certificates'] ) || ! is_array( $certificates_data['certificates'] ) ) {
+			return null;
+		}
+
+		foreach ( $certificates_data['certificates'] as $certificate ) {
+			// Check if this is a US certificate with "certificate #" or "certificate#" attribute.
+			if ( isset( $certificate['country']['code'] ) && 'US' === $certificate['country']['code'] ) {
+				if ( isset( $certificate['attributes'] ) && is_array( $certificate['attributes'] ) ) {
+					foreach ( $certificate['attributes'] as $attribute ) {
+						if ( is_string( $attribute ) && ( strpos( $attribute, 'certificate #' ) !== false || strpos( $attribute, 'certificate#' ) !== false ) ) {
+							return $certificate['rating'] ?? null;
+						}
+					}
+				}
+			}
+		}
+
+		return null;
 	}
 
 	/**

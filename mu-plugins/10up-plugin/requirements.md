@@ -39,6 +39,7 @@ Create a WP CLI script that can take a list of IMDB IDs and import movie and per
 ## API Endpoints
 - **Movies**: `https://api.imdbapi.dev/titles/{imdb_id}`
 - **People**: `https://api.imdbapi.dev/names/{imdb_id}`
+- **Movie Certificates**: `https://api.imdbapi.dev/titles/{imdb_id}/certificates`
 
 ## Movie Import Requirements
 
@@ -59,6 +60,7 @@ Based on existing post meta fields in the 10up-plugin, map the following API res
 | `plot` | `tenup_movie_plot` | Movie plot | string |
 | `rating.aggregateRating` | `tenup_movie_viewer_rating` | Viewer rating | string |
 | `rating.voteCount` | `tenup_movie_viewer_rating_count` | Number of votes | string |
+| US Certificate Rating | `tenup_movie_mpa_rating` | MPA rating from US certificate | string |
 
 ### Runtime Conversion
 Convert `runtimeSeconds` to the expected object format:
@@ -68,6 +70,41 @@ Convert `runtimeSeconds` to the expected object format:
     'minutes' => 'Y'
 ]
 ```
+
+### MPA Rating Retrieval
+For each movie import, make an additional API call to retrieve MPA rating from certificates:
+
+**API Endpoint**: `https://api.imdbapi.dev/titles/{imdb_id}/certificates`
+
+**Process**:
+1. Make API call to certificates endpoint using the movie's IMDB ID
+2. Parse the `certificates` array in the response
+3. Find the certificate where:
+   - `country.code` equals `"US"`
+   - `attributes` array contains a string that includes `"certificate #"` or `"certificate#"`
+4. Extract the `rating` value from the matching certificate
+5. Store the rating in the `tenup_movie_mpa_rating` meta field
+
+**Example**:
+Based on the API response from [https://api.imdbapi.dev/titles/tt2380307/certificates](https://api.imdbapi.dev/titles/tt2380307/certificates), the script should find:
+```json
+{
+  "rating": "PG",
+  "country": {
+    "code": "US",
+    "name": "United States"
+  },
+  "attributes": [
+    "certificate #51192"
+  ]
+}
+```
+And store `"PG"` as the MPA rating.
+
+**Error Handling**:
+- If no US certificate with "certificate #" or "certificate#" attribute is found, set `tenup_movie_mpa_rating` to "Not Rated"
+- If the certificates API call fails, log the error but continue with the movie import
+- Handle cases where the certificates array is empty or malformed
 
 ### Genre Taxonomy
 - **Taxonomy**: `tenup-genre`
@@ -228,8 +265,9 @@ wp imdb-import both --file=imdb_ids.txt
 When importing a movie, the script should:
 
 1. **Fetch Movie Data**: Get movie data from IMDB API
-2. **Create Movie Post**: Create the movie post with all meta fields
-3. **Process Stars Array**: For each star in the `stars` array:
+2. **Fetch MPA Rating**: Get MPA rating from certificates API
+3. **Create Movie Post**: Create the movie post with all meta fields including MPA rating
+4. **Process Stars Array**: For each star in the `stars` array:
    - Check if person already exists (by `tenup_person_imdb_id`)
    - If exists:
      - Update person post with latest data from People API
@@ -251,15 +289,16 @@ When importing a movie, the script should:
 - Handle duplicate filenames by appending numbers
 
 ### API Rate Limiting
-- Respect rate limits between movie and people API calls
+- Respect rate limits between movie, certificates, and people API calls
 - Cache people API responses to avoid duplicate calls
+- Cache certificates API responses to avoid duplicate calls
 - Batch process stars to minimize API requests
+- Implement delays between API calls to respect rate limits
 
 ## Additional Notes
 
 ### Fields Not Available in API
 The following existing post meta fields do not have equivalents in the IMDB API responses and will not be populated:
-- `tenup_movie_mpa_rating` (MPA rating not available)
 - `tenup_movie_summary` (summary not available)
 - `tenup_movie_synopsis` (synopsis not available)
 - `tenup_movie_tagline` (tagline not available)
