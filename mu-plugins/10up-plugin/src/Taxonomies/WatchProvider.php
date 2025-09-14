@@ -8,6 +8,7 @@
 namespace TenUpPlugin\Taxonomies;
 
 use TenupFramework\Taxonomies\AbstractTaxonomy;
+use TenUpPlugin\PostTypes\Movie;
 
 /**
  * Watch Provider Taxonomy.
@@ -63,6 +64,17 @@ class WatchProvider extends AbstractTaxonomy {
 	 */
 	public function get_plural_label() {
 		return self::PLURAL_LABEL;
+	}
+
+	/**
+	 * Get the post types this taxonomy is associated with.
+	 *
+	 * @return array<string>
+	 */
+	public function get_post_types() {
+		return [
+			Movie::POST_TYPE,
+		];
 	}
 
 	/**
