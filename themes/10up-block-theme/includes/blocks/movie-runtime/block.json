@@ -6,6 +6,7 @@
 	"category": "text",
 	"icon": "backup",
 	"description": "A read only block to display the runtime post meta for a Movie.",
+	"usesContext": ["postId", "postType"],
 	"attributes": {},
 	"supports": {
 		"html": false

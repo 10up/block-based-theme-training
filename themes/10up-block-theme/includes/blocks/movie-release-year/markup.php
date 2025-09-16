@@ -9,7 +9,14 @@
  * @var WP_Block $block              Block instance.
  */
 
-$year = get_post_meta( get_the_ID(), 'tenup_movie_release_year', true ) ?? '';
+$context = $block->context;
+$post_id = $context['postId'] ?? null;
+
+if ( ! $post_id ) {
+	return;
+}
+
+$year = get_post_meta( $post_id, 'tenup_movie_release_year', true ) ?? '';
 
 if ( '' === $year ) {
 	return;
