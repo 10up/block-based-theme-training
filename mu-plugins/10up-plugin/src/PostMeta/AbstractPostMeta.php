@@ -7,12 +7,15 @@
 
 namespace TenUpPlugin\PostMeta;
 
+use TenupFramework\Module;
 use TenupFramework\ModuleInterface;
 
 /**
  * Abstract post meta class.
  */
 class AbstractPostMeta implements ModuleInterface {
+
+	use Module;
 
 	/**
 	 * The meta_key name.

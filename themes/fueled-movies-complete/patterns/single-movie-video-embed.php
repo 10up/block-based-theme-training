@@ -5,7 +5,7 @@
  * Description: A video embed with a fallback image.
  * Inserter: false
  *
- * @package TenupBlockTheme
+ * @package FueledMoviesTheme
  */
 
 $youtube_id = get_post_meta( get_the_ID(), 'tenup_movie_youtube_id', true );

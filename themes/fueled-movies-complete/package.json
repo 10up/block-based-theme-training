@@ -1,5 +1,5 @@
 {
-	"name": "tenup-block-theme",
+	"name": "fueled-movies-complete",
 	"version": "1.0.0",
 	"scripts": {
 		"start": "npm run watch",
@@ -11,16 +11,11 @@
 		"lint-style": "10up-toolkit lint-style",
 		"test": "10up-toolkit test-unit-jest --passWithNoTests",
 		"clean-dist": "rm -rf ./dist",
-		"scaffold:block": "cd includes/blocks/ && wp-create-block --no-plugin --template ../../../../bin/create-block-template"
-	},
-	"engines": {
-		"node": ">=18.0.0"
-	},
-	"devDependencies": {
-		"10up-toolkit": "^6.3.0"
+		"scaffold:block": "cd blocks/ && wp-create-block --no-plugin --template ../../../../bin/create-block-template"
 	},
 	"dependencies": {
 		"@10up/block-components": "^1.19.4",
+		"10up-toolkit": "^6.5.0",
 		"clsx": "^2.1.1"
 	},
 	"10up-toolkit": {
@@ -28,9 +23,13 @@
 		"useScriptModules": true,
 		"loadBlockSpecificStyles": true,
 		"entry": {
-			"editor-style-overrides": "./assets/css/editor-style-overrides.css",
+			"editor-frame-style-overrides": "./assets/css/editor-frame-style-overrides.css",
+			"editor-canvas-style-overrides": "./assets/css/editor-canvas-style-overrides.css",
 			"frontend": "./assets/js/frontend.js",
 			"block-extensions": "./assets/js/block-extensions.js"
+		},
+		"paths": {
+			"blocksDir": "./blocks"
 		}
 	}
 }
