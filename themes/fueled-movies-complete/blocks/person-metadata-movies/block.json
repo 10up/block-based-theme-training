@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tenup/person-metadata-movies",
+	"title": "Person Metadata: Movies",
+	"category": "text",
+	"icon": "admin-users",
+	"description": "A read only block to display the movies for a Person.",
+	"parent": ["tenup/metadata"],
+	"usesContext": ["postId", "postType"],
+	"attributes": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "tenup",
+	"editorScript": "file:./index.js",
+	"render": "file:./markup.php"
+}

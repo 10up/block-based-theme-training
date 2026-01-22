@@ -23,8 +23,8 @@
       "admin": "./assets/js/admin/admin.js"
     },
     "paths": {
-      "globalStylesDir": "../../themes/10up-theme/assets/css/globals/",
-      "globalMixinsDir": "../../themes/10up-theme/assets/css/globals/mixins/"
+      "globalStylesDir": "../../themes/fueled-movies-complete/assets/css/globals/",
+      "globalMixinsDir": "../../themes/fueled-movies-complete/assets/css/globals/mixins/"
     }
   }
 }

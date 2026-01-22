@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tenup/movie-release-year",
+	"title": "Movie Release Year",
+	"category": "text",
+	"icon": "calendar",
+	"description": "A read only block to display the release year post meta for a Movie.",
+	"usesContext": ["postId", "postType"],
+	"attributes": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "tenup",
+	"editorScript": "file:./index.js",
+	"render": "file:./markup.php"
+}

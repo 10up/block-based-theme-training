@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tenup/person-metadata-biography",
+	"title": "Person Metadata: Biography",
+	"category": "text",
+	"icon": "admin-users",
+	"description": "A read only block to display the biography post meta for a Person.",
+	"usesContext": ["postId", "postType"],
+	"parent": ["tenup/metadata"],
+	"attributes": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "tenup",
+	"editorScript": "file:./index.js",
+	"render": "file:./markup.php"
+}

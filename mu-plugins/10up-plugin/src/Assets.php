@@ -8,6 +8,7 @@
 namespace TenUpPlugin;
 
 use TenupFramework\Assets\GetAssetInfo;
+use TenupFramework\Module;
 use TenupFramework\ModuleInterface;
 
 /**
@@ -17,6 +18,7 @@ use TenupFramework\ModuleInterface;
  */
 class Assets implements ModuleInterface {
 
+	use Module;
 	use GetAssetInfo;
 
 	/**
