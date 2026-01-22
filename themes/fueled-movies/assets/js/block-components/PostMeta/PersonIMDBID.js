@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Button, TextControl } from '@wordpress/components';
-import { externalLink } from '@wordpress/icons';
+import { external } from '@wordpress/icons';
 
 /**
  * External dependencies.
@@ -32,7 +32,7 @@ const PersonIMDBID = ({ postMetaProps, ...restProps }) => {
 									<br />
 									<Button
 										href={`https://www.imdb.com/name/${meta}`}
-										icon={externalLink}
+										icon={external}
 										target="_blank"
 										variant="link"
 									>
@@ -41,7 +41,7 @@ const PersonIMDBID = ({ postMetaProps, ...restProps }) => {
 									{' | '}
 									<Button
 										href={`https://api.imdbapi.dev/names/${meta}`}
-										icon={externalLink}
+										icon={external}
 										target="_blank"
 										variant="link"
 									>

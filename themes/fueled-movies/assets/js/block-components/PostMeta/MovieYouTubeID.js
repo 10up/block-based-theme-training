@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Button, TextControl } from '@wordpress/components';
-import { externalLink } from '@wordpress/icons';
+import { external } from '@wordpress/icons';
 
 /**
  * External dependencies.
@@ -32,7 +32,7 @@ const MovieYouTubeID = ({ postMetaProps, ...restProps }) => {
 									<br />
 									<Button
 										href={`https://www.youtube.com/watch?v=${meta}`}
-										icon={externalLink}
+										icon={external}
 										target="_blank"
 										variant="link"
 									>
