@@ -37,3 +37,6 @@ Desktop.ini
 /debug.log
 /db.php
 /object-cache.php
+
+# Cursor
+.cursor
