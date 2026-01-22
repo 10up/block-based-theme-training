@@ -9,7 +9,14 @@
  * @var WP_Block $block              Block instance.
  */
 
-$deathplace = get_post_meta( get_the_ID(), 'tenup_person_deathplace', true ) ?? '';
+$context = $block->context;
+$post_id = $context['postId'] ?? null;
+
+if ( ! $post_id ) {
+	return;
+}
+
+$deathplace = get_post_meta( $post_id, 'tenup_person_deathplace', true ) ?? '';
 
 if ( '' === $deathplace ) {
 	return;

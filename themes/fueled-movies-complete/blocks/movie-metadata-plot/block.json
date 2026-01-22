@@ -7,6 +7,7 @@
 	"icon": "video-alt",
 	"description": "A read only block to display the plot post meta for a Movie.",
 	"parent": ["tenup/metadata"],
+	"usesContext": ["postId", "postType"],
 	"attributes": {},
 	"supports": {
 		"html": false

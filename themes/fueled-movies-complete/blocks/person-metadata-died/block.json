@@ -6,6 +6,7 @@
 	"category": "text",
 	"icon": "admin-users",
 	"description": "A read only block to display the died post meta for a Person.",
+	"usesContext": ["postId", "postType"],
 	"parent": ["tenup/metadata"],
 	"attributes": {},
 	"supports": {

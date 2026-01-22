@@ -9,7 +9,14 @@
  * @var WP_Block $block              Block instance.
  */
 
-$rating = get_post_meta( get_the_ID(), 'tenup_movie_mpa_rating', true ) ?? '';
+$context = $block->context;
+$post_id = $context['postId'] ?? null;
+
+if ( ! $post_id ) {
+	return;
+}
+
+$rating = get_post_meta( $post_id, 'tenup_movie_mpa_rating', true ) ?? '';
 
 if ( '' === $rating ) {
 	return;

@@ -7,6 +7,7 @@
 	"icon": "admin-users",
 	"description": "A read only block to display the deathplace post meta for a Person.",
 	"parent": ["tenup/metadata"],
+	"usesContext": ["postId", "postType"],
 	"attributes": {},
 	"supports": {
 		"html": false

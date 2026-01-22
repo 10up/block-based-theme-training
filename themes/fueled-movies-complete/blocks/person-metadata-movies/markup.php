@@ -9,8 +9,8 @@
  * @var WP_Block $block              Block instance.
  */
 
-// Get the current post ID (person post).
-$post_id = get_the_ID();
+$context = $block->context;
+$post_id = $context['postId'] ?? null;
 
 if ( ! $post_id ) {
 	return;

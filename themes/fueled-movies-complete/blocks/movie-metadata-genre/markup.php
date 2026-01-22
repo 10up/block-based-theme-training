@@ -11,7 +11,14 @@
 
 use TenUpPlugin\Taxonomies\Genre;
 
-$terms = get_the_terms( get_the_ID(), Genre::TAXONOMY_NAME );
+$context = $block->context;
+$post_id = $context['postId'] ?? null;
+
+if ( ! $post_id ) {
+	return;
+}
+
+$terms = get_the_terms( $post_id, Genre::TAXONOMY_NAME );
 
 if ( false === $terms || is_wp_error( $terms ) ) {
 	return;

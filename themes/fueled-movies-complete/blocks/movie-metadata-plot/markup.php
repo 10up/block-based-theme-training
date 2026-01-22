@@ -9,7 +9,14 @@
  * @var WP_Block $block              Block instance.
  */
 
-$plot = get_post_meta( get_the_ID(), 'tenup_movie_plot', true ) ?? '';
+$context = $block->context;
+$post_id = $context['postId'] ?? null;
+
+if ( ! $post_id ) {
+	return;
+}
+
+$plot = get_post_meta( $post_id, 'tenup_movie_plot', true ) ?? '';
 
 if ( '' === $plot ) {
 	return;
