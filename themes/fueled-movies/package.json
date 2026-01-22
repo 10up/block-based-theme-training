@@ -1,5 +1,5 @@
 {
-	"name": "fueled-movies-complete",
+	"name": "fueled-movies",
 	"version": "1.0.0",
 	"scripts": {
 		"start": "npm run watch",
