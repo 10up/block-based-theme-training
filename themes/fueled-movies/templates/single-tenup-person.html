@@ -9,32 +9,11 @@
 	<article class="wp-block-group">
 
 		<!-- wp:buttons {"align":"wide"} -->
-		<div class="wp-block-buttons alignwide">
-			<!-- wp:button {
-				"className": "is-style-secondary",
-				"metadata": {
-					"bindings": {
-						"url": {
-							"source": "tenup/archive-link",
-							"args": {
-								"key": "url"
-							}
-						},
-						"text": {
-							"source": "tenup/archive-link",
-							"args": {
-								"key": "text"
-							}
-						}
-					}
-				}
-			} -->
-			<div class="wp-block-button is-style-secondary">
-				<a class="wp-block-button__link wp-element-button" href="/people/">
+		<div class="wp-block-buttons alignwide"><!-- wp:button {"metadata":{"bindings":{"url":{"source":"tenup/block-bindings","args":{"key":"archiveLinkUrl"}},"text":{"source":"tenup/block-bindings","args":{"key":"archiveLinkText"}}}},"className":"is-style-secondary"} -->
+<div class="wp-block-button is-style-secondary"><a class="wp-block-button__link wp-element-button" href="/people/">
 					← Back
-				</a>
-			</div>
-			<!-- /wp:button -->
+				</a></div>
+<!-- /wp:button -->
 
 		</div>
 		<!-- /wp:buttons -->
@@ -62,16 +41,71 @@
 		<!-- /wp:group -->
 
 		<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|24"}},"layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"top","justifyContent":"space-between"}} -->
-		<div class="wp-block-group alignwide">
+		<div class="wp-block-group alignwide"><!-- wp:tenup/dl {"style":{"layout":{"selfStretch":"fill","flexSize":null}},"layout":{"type":"default"}} -->
+<!-- wp:tenup/dl-item {"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<!-- wp:tenup/dt {"content":"Biography","style":{"layout":{"selfStretch":"fixed","flexSize":"5.5rem"}},"textColor":"text-secondary"} /-->
 
-			<!-- wp:tenup/metadata -->
-				<!-- wp:tenup/person-metadata-biography /-->
-				<!-- wp:tenup/person-metadata-born /-->
-				<!-- wp:tenup/person-metadata-birthplace /-->
-				<!-- wp:tenup/person-metadata-died /-->
-				<!-- wp:tenup/person-metadata-deathplace /-->
-				<!-- wp:tenup/person-metadata-movies /-->
-			<!-- /wp:tenup/metadata -->
+<!-- wp:tenup/dd {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"tenup_person_biography"}}}}} -->
+<p></p>
+<!-- /wp:paragraph -->
+<!-- /wp:tenup/dd -->
+<!-- /wp:tenup/dl-item -->
+
+<!-- wp:tenup/dl-item {"layout":{"type":"flex","orientation":"horizontal","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<!-- wp:tenup/dt {"content":"Born","style":{"layout":{"selfStretch":"fixed","flexSize":"5.5rem"}},"textColor":"text-secondary"} /-->
+
+<!-- wp:tenup/dd {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"tenup/block-bindings","args":{"key":"personBorn"}}}}} -->
+<p></p>
+<!-- /wp:paragraph -->
+<!-- /wp:tenup/dd -->
+<!-- /wp:tenup/dl-item -->
+
+<!-- wp:tenup/dl-item {"layout":{"type":"flex","orientation":"horizontal","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<!-- wp:tenup/dt {"content":"Birthplace","style":{"layout":{"selfStretch":"fixed","flexSize":"5.5rem"}},"textColor":"text-secondary"} /-->
+
+<!-- wp:tenup/dd {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"tenup_person_birthplace"}}}}} -->
+<p></p>
+<!-- /wp:paragraph -->
+<!-- /wp:tenup/dd -->
+<!-- /wp:tenup/dl-item -->
+
+<!-- wp:tenup/dl-item {"layout":{"type":"flex","orientation":"horizontal","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<!-- wp:tenup/dt {"content":"Died","style":{"layout":{"selfStretch":"fixed","flexSize":"5.5rem"}},"textColor":"text-secondary"} /-->
+
+<!-- wp:tenup/dd {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"tenup/block-bindings","args":{"key":"personDied"}}}}} -->
+<p></p>
+<!-- /wp:paragraph -->
+<!-- /wp:tenup/dd -->
+<!-- /wp:tenup/dl-item -->
+
+<!-- wp:tenup/dl-item {"layout":{"type":"flex","orientation":"horizontal","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<!-- wp:tenup/dt {"content":"Deathplace","style":{"layout":{"selfStretch":"fixed","flexSize":"5.5rem"}},"textColor":"text-secondary"} /-->
+
+<!-- wp:tenup/dd {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"tenup_person_deathplace"}}}}} -->
+<p></p>
+<!-- /wp:paragraph -->
+<!-- /wp:tenup/dd -->
+<!-- /wp:tenup/dl-item -->
+
+<!-- wp:tenup/dl-item {"layout":{"type":"flex","orientation":"horizontal","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<!-- wp:tenup/dt {"content":"Movies","style":{"layout":{"selfStretch":"fixed","flexSize":"5.5rem"}},"textColor":"text-secondary"} /-->
+
+<!-- wp:tenup/dd {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"tenup/block-bindings","args":{"key":"personMovies"}}}}} -->
+<p></p>
+<!-- /wp:paragraph -->
+<!-- /wp:tenup/dd -->
+<!-- /wp:tenup/dl-item -->
+<!-- /wp:tenup/dl --></div>
+<!-- /wp:group -->
+
+		<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|24"}},"layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"top","justifyContent":"space-between"}} -->
+		<div class="wp-block-group alignwide">
 
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">

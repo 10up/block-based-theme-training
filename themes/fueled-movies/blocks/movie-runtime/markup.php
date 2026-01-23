@@ -30,7 +30,7 @@ if ( '0' === $hours && '0' === $minutes ) {
 }
 
 $hours_tag = sprintf(
-	'<span aria-label="%s">%s</span>',
+	'<span aria-label="%s">%s</span> ',
 	esc_html( $hours ) . __( ' hours', 'tenup' ),
 	esc_html( $hours ) . 'h'
 );
@@ -41,17 +41,21 @@ $minutes_tag = sprintf(
 	esc_html( $minutes ) . 'm'
 );
 
+$output_parts = [];
+
+if ( '0' !== $hours ) {
+	$output_parts[] = $hours_tag;
+}
+
+$output_parts[] = $minutes_tag;
+$output         = implode( '&nbsp;', $output_parts );
+
+$wrapper_attributes = get_block_wrapper_attributes(
+	[
+		'datetime' => esc_attr( 'PT' . $hours . 'H' . $minutes . 'M' ),
+	]
+);
+
 ?>
 
-<p <?php echo get_block_wrapper_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-
-	<?php
-	printf(
-		'<time datetime="%s">%s%s</time>',
-		esc_attr( 'PT' . $hours . 'H' . $minutes . 'M' ),
-		'0' === $hours ? '' : wp_kses_post( $hours_tag ) . ' ',
-		wp_kses_post( $minutes_tag )
-	);
-	?>
-
-</p>
+<time <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></time>

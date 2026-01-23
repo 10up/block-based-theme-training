@@ -7,10 +7,12 @@
 
 namespace FueledMoviesTheme;
 
-use WP_HTML_Tag_Processor;
 use TenupFramework\Assets\GetAssetInfo;
 use TenupFramework\Module;
 use TenupFramework\ModuleInterface;
+use TenUpPlugin\PostTypes\Movie;
+use TenUpPlugin\PostTypes\Person;
+use WP_HTML_Tag_Processor;
 
 /**
  * Blocks module.
@@ -43,36 +45,14 @@ class Blocks implements ModuleInterface {
 		);
 		add_action( 'init', [ $this, 'register_theme_blocks' ], 10, 0 );
 		add_action( 'init', [ $this, 'enqueue_theme_block_styles' ], 10, 0 );
+		add_filter( 'block_type_metadata', [ $this, 'inject_shared_component_dependency' ], 10, 1 );
 		add_action( 'init', [ $this, 'register_block_bindings' ], 11, 0 );
 		add_filter( 'render_block_core/post-featured-image', [ $this, 'filter_featured_image_block' ], 10, 3 );
-		add_filter( 'block_type_metadata', [ $this, 'inject_shared_component_dependency' ], 10, 1 );
+		add_filter( 'render_block', [ $this, 'maybe_add_flex_shrink' ], 10, 3 );
 
 		// Prevents third-party blocks from being suggested in the block inserter.
 		remove_action( 'enqueue_block_editor_assets', 'wp_enqueue_editor_block_directory_assets' );
 	}
-
-	/**
-	 * Inject shared-components script as a dependency for theme blocks.
-	 *
-	 * This ensures @10up/block-components is loaded before blocks that use it.
-	 * The shared-components script provides window.tenupSharedComponents which
-	 * blocks reference via webpack externals.
-	 *
-	 * @param array $metadata Block metadata.
-	 * @return array Modified metadata.
-	 */
-	public function inject_shared_component_dependency( array $metadata ): array {
-		// Only modify our theme blocks.
-		if ( empty( $metadata['name'] ) || ! str_starts_with( $metadata['name'], 'tenup/' ) ) {
-			return $metadata;
-		}
-
-		// Store marker for post-registration processing.
-		$metadata['_requires_shared_components'] = true;
-
-		return $metadata;
-	}
-
 
 	/**
 	 * Automatically registers all blocks that are located within the includes/blocks directory
@@ -167,216 +147,128 @@ class Blocks implements ModuleInterface {
 	}
 
 	/**
+	 * Inject shared-components script as a dependency for theme blocks.
+	 *
+	 * This ensures @10up/block-components is loaded before blocks that use it.
+	 * The shared-components script provides window.tenupSharedComponents which
+	 * blocks reference via webpack externals.
+	 *
+	 * @param array $metadata Block metadata.
+	 * @return array Modified metadata.
+	 */
+	public function inject_shared_component_dependency( array $metadata ): array {
+		// Only modify our theme blocks.
+		if ( empty( $metadata['name'] ) || ! str_starts_with( $metadata['name'], 'tenup/' ) ) {
+			return $metadata;
+		}
+
+		// Store marker for post-registration processing.
+		$metadata['_requires_shared_components'] = true;
+
+		return $metadata;
+	}
+
+	/**
 	 * Register the block bindings for the theme.
 	 *
 	 * @return void
 	 */
 	public function register_block_bindings() {
-
 		register_block_bindings_source(
-			'tenup/archive-link',
+			'tenup/block-bindings',
 			array(
-				'label'              => __( 'Archive Link', 'tenup' ),
-				'get_value_callback' => [ $this, 'block_binding_archive_link' ],
-			)
-		);
-
-		register_block_bindings_source(
-			'tenup/movie-viewer-rating-label',
-			array(
-				'label'              => __( 'Movie Viewer Rating Label', 'tenup' ),
-				'get_value_callback' => [ $this, 'block_binding_movie_viewer_rating_label' ],
-			)
-		);
-
-		register_block_bindings_source(
-			'tenup/movie-genre',
-			array(
-				'label'              => __( 'Movie Genre', 'tenup' ),
-				'get_value_callback' => [ $this, 'block_binding_movie_genre' ],
-			)
-		);
-
-		register_block_bindings_source(
-			'tenup/movie-stars',
-			array(
-				'label'              => __( 'Movie Stars', 'tenup' ),
-				'get_value_callback' => [ $this, 'block_binding_movie_stars' ],
+				'label'              => __( 'Fueled Movies Theme', 'tenup' ),
+				'get_value_callback' => [ $this, 'block_bindings_callback' ],
 			)
 		);
 	}
 
 	/**
-	 * Callback function for the 'tenup/archive-link' block binding.
-	 * Displays the archive link for the post type.
+	 * Main callback for the 'tenup/block-bindings' source.
+	 * Routes to appropriate helper functions based on the key.
 	 *
 	 * @param array $source_args The args found in the block metadata to create the binding.
-	 * @return string|null The text or URL based on the key argument set in the block attributes.
+	 * @return string|null The binding value or null.
 	 */
-	public function block_binding_archive_link( $source_args ) {
-
+	public function block_bindings_callback( $source_args ) {
 		if ( ! isset( $source_args['key'] ) ) {
 			return null;
 		}
 
-		// Set home as the fallback URL, but check for a referer or archive URL first.
+		switch ( $source_args['key'] ) {
+			case 'archiveLinkText':
+				return $this->get_archive_link( 'text' );
+			case 'archiveLinkUrl':
+				return $this->get_archive_link( 'url' );
+			case 'movieStars':
+				return $this->get_movie_stars();
+			case 'personBorn':
+				return $this->get_person_born();
+			case 'personDied':
+				return $this->get_person_died();
+			case 'personMovies':
+				return $this->get_person_movies();
+			case 'viewerRatingLabelText':
+				return $this->get_viewer_rating_label( 'text' );
+			case 'viewerRatingLabelUrl':
+				return $this->get_viewer_rating_label( 'url' );
+			default:
+				return null;
+		}
+	}
+
+	/**
+	 * Get the archive link text or URL.
+	 *
+	 * @param string $type The type of value to return ('text' or 'url').
+	 * @return string|null The text or URL.
+	 */
+	private function get_archive_link( $type ) {
 		$url         = home_url();
 		$referer     = wp_get_referer();
 		$archive_url = get_post_type_archive_link( get_post_type() );
 
-		// Use referer only if it's a paged version of the archive URL
 		if ( $referer && $archive_url && strpos( $referer, $archive_url ) === 0 ) {
 			$url = $referer;
 		} elseif ( $archive_url ) {
 			$url = $archive_url;
 		}
 
-		switch ( $source_args['key'] ) {
-			case 'text':
-				return __( '← Back', 'tenup' );
-			case 'url':
-				return $url;
-			default:
-				return null;
+		$value = $url;
+
+		if ( 'text' === $type ) {
+			$value = __( '← Back', 'tenup' );
 		}
+
+		return $value;
 	}
 
 	/**
-	 * Callback function for the 'tenup/movie-viewer-rating-label' block binding.
-	 * Displays the movie viewer rating label with a star rating and count. e.g. ★7.5/10 (175K)
+	 * Get the movie stars as comma-separated linked names.
 	 *
-	 * @param array $source_args The args found in the block metadata to create the binding.
-	 * @return string|null The text or URL based on the key argument set in the block attributes.
-	 */
-	public function block_binding_movie_viewer_rating_label( $source_args ) {
-
-		if ( ! isset( $source_args['key'] ) ) {
-			return null;
-		}
-
-		// Set default binding values.
-		$text = '0/10 (0)';
-		$url  = '#';
-
-		// Get post meta.
-		$rating = get_post_meta( get_the_ID(), 'tenup_movie_viewer_rating', true ) ?? false;
-		$count  = get_post_meta( get_the_ID(), 'tenup_movie_viewer_rating_count', true ) ?? false;
-
-		if ( false !== $rating && false !== $count ) {
-
-			$count_display = $count;
-
-			switch ( true ) {
-
-				// 1000 - 9999, round to the nearest hundred and format. e.g. 1156 = 1.2K
-				case ( $count >= 1000 && $count < 10000 ):
-					$count_display = number_format( round( $count, -2 ) / 1000, 1, '.', '' ) . 'K';
-					break;
-
-				// 10000+, round to the nearest thousand and format. e.g. 11560 = 12K
-				case ( $count >= 10000 ):
-					$count_display = number_format( round( $count, -3 ) / 1000, 0, '.', '' ) . 'K';
-					break;
-
-				default:
-			}
-
-			$text = $rating . '/10 (' . $count_display . ')';
-		}
-
-		$star         = '<mark style="background-color: transparent;color:#f5c518" class="has-inline-color">★</mark>';
-		$allowed_tags = [
-			'mark' => [
-				'style' => [],
-				'class' => [],
-			],
-		];
-		$text         = wp_kses( $star . $text, $allowed_tags );
-
-		switch ( $source_args['key'] ) {
-			case 'text':
-				return $text;
-			case 'url':
-				return $url;
-			default:
-				return null;
-		}
-	}
-
-	/**
-	 * Callback function for the 'tenup/movie-genre' block binding.
-	 * Displays the movie genre for the post as comma-separated linked terms.
-	 *
-	 * @param array $source_args The args found in the block metadata to create the binding.
-	 * @return string|null The linked terms HTML or null.
-	 */
-	public function block_binding_movie_genre( $source_args ) {
-		if ( ! isset( $source_args['key'] ) ) {
-			return null;
-		}
-
-		$post_id = get_the_ID();
-
-		if ( ! $post_id ) {
-			return null;
-		}
-
-		$terms = get_the_terms( $post_id, 'tenup-genre' );
-
-		if ( false === $terms || is_wp_error( $terms ) ) {
-			return null;
-		}
-
-		$term_links = array_map(
-			function ( $term ) {
-				return sprintf(
-					'<a href="%s" rel="tag">%s</a>',
-					esc_url( get_term_link( $term ) ),
-					esc_html( $term->name )
-				);
-			},
-			$terms
-		);
-
-		switch ( $source_args['key'] ) {
-			case 'content':
-				return implode( ', ', $term_links );
-			default:
-				return null;
-		}
-	}
-
-	/**
-	 * Callback function for the 'tenup/movie-stars' block binding.
-	 * Displays the movie stars for the post as comma-separated linked names.
-	 *
-	 * @param array $source_args The args found in the block metadata to create the binding.
 	 * @return string|null The linked names HTML or null.
 	 */
-	public function block_binding_movie_stars( $source_args ) {
-		if ( ! isset( $source_args['key'] ) ) {
-			return null;
-		}
-
+	private function get_movie_stars() {
+		$value   = null;
 		$post_id = get_the_ID();
 
 		if ( ! $post_id ) {
-			return null;
+			return $value;
 		}
 
 		if ( ! function_exists( '\TenUp\ContentConnect\Helpers\get_related_ids_by_name' ) ) {
-			return null;
+			return $value;
 		}
 
 		$star_ids = \TenUp\ContentConnect\Helpers\get_related_ids_by_name( $post_id, 'movie_person' );
 
 		if ( empty( $star_ids ) ) {
-			return null;
+			return $value;
 		}
 
 		$stars_query = new \WP_Query(
 			[
-				'post_type'      => 'tenup-person',
+				'post_type'      => Person::POST_TYPE,
 				'post__in'       => $star_ids,
 				'orderby'        => 'post__in',
 				'posts_per_page' => 99,
@@ -384,7 +276,7 @@ class Blocks implements ModuleInterface {
 		);
 
 		if ( ! $stars_query->have_posts() ) {
-			return null;
+			return $value;
 		}
 
 		$star_links = array_map(
@@ -398,12 +290,149 @@ class Blocks implements ModuleInterface {
 			$stars_query->posts
 		);
 
-		switch ( $source_args['key'] ) {
-			case 'content':
-				return implode( ', ', $star_links );
-			default:
-				return null;
+		$value = implode( ', ', $star_links );
+
+		return $value;
+	}
+
+	/**
+	 * Get the person's birth date formatted.
+	 *
+	 * @return string|null The formatted date or null.
+	 */
+	private function get_person_born() {
+		$value   = null;
+		$post_id = get_the_ID();
+
+		if ( ! $post_id ) {
+			return $value;
 		}
+
+		$born = get_post_meta( $post_id, 'tenup_person_born', true ) ?? '';
+
+		if ( '' === $born ) {
+			return $value;
+		}
+
+		$value = gmdate( 'F j, Y', strtotime( $born ) );
+
+		return $value;
+	}
+
+	/**
+	 * Get the person's death date formatted.
+	 *
+	 * @return string|null The formatted date or null.
+	 */
+	private function get_person_died() {
+		$value   = null;
+		$post_id = get_the_ID();
+
+		if ( ! $post_id ) {
+			return $value;
+		}
+
+		$died = get_post_meta( $post_id, 'tenup_person_died', true ) ?? '';
+
+		if ( '' === $died ) {
+			return $value;
+		}
+
+		$value = gmdate( 'F j, Y', strtotime( $died ) );
+
+		return $value;
+	}
+
+	/**
+	 * Get the person's movies as comma-separated linked titles.
+	 *
+	 * @return string|null The linked titles HTML or null.
+	 */
+	private function get_person_movies() {
+		$value   = null;
+		$post_id = get_the_ID();
+
+		if ( ! $post_id ) {
+			return $value;
+		}
+
+		if ( ! function_exists( '\TenUp\ContentConnect\Helpers\get_related_ids_by_name' ) ) {
+			return $value;
+		}
+
+		$movie_ids = \TenUp\ContentConnect\Helpers\get_related_ids_by_name( $post_id, 'movie_person' );
+
+		if ( empty( $movie_ids ) ) {
+			return $value;
+		}
+
+		$movies_query = new \WP_Query(
+			[
+				'post_type'      => Movie::POST_TYPE,
+				'post__in'       => $movie_ids,
+				'orderby'        => 'post__in',
+				'posts_per_page' => 99,
+			]
+		);
+
+		if ( ! $movies_query->have_posts() ) {
+			return $value;
+		}
+
+		$movie_links = array_map(
+			function ( $movie ) {
+				return sprintf(
+					'<a href="%s">%s</a>',
+					esc_url( get_permalink( $movie->ID ) ),
+					esc_html( $movie->post_title )
+				);
+			},
+			$movies_query->posts
+		);
+
+		$value = implode( ', ', $movie_links );
+
+		return $value;
+	}
+
+	/**
+	 * Get the viewer rating label text or URL.
+	 *
+	 * @param string $type The type of value to return ('text' or 'url').
+	 * @return string The text or URL.
+	 */
+	private function get_viewer_rating_label( $type ) {
+		$value = '#';
+
+		if ( 'text' === $type ) {
+			$text   = '0/10 (0)';
+			$rating = get_post_meta( get_the_ID(), 'tenup_movie_viewer_rating', true ) ?? false;
+			$count  = get_post_meta( get_the_ID(), 'tenup_movie_viewer_rating_count', true ) ?? false;
+
+			if ( false !== $rating && false !== $count ) {
+				$count_display = $count;
+
+				if ( $count >= 1000 && $count < 10000 ) {
+					$count_display = number_format( round( $count, -2 ) / 1000, 1, '.', '' ) . 'K';
+				} elseif ( $count >= 10000 ) {
+					$count_display = number_format( round( $count, -3 ) / 1000, 0, '.', '' ) . 'K';
+				}
+
+				$text = $rating . '/10 (' . $count_display . ')';
+			}
+
+			$star         = '<mark style="background-color: transparent;color:#f5c518" class="has-inline-color">★</mark>';
+			$allowed_tags = [
+				'mark' => [
+					'style' => [],
+					'class' => [],
+				],
+			];
+
+			$value = wp_kses( $star . $text, $allowed_tags );
+		}
+
+		return $value;
 	}
 
 	/**
@@ -435,5 +464,29 @@ class Blocks implements ModuleInterface {
 		$p->set_attribute( 'style', $style_attribute );
 
 		return $p->get_updated_html();
+	}
+
+	/**
+	 * Maybe add flex-shrink-0 class.
+	 *
+	 * Opinionated solution for Fit option in layout controls not behaving as expected.
+	 *
+	 * @see https://github.com/WordPress/gutenberg/issues/53766
+	 *
+	 * @param string   $block_content The block content.
+	 * @param array    $block The block.
+	 * @param WP_Block $parsed_block The parsed block.
+	 * @return string
+	 */
+	public function maybe_add_flex_shrink( $block_content, $block, $parsed_block ) {
+
+		if ( isset( $block['attrs']['style']['layout']['selfStretch'] ) && 'fixed' === $block['attrs']['style']['layout']['selfStretch'] ) {
+			$tags = new WP_HTML_Tag_Processor( $block_content );
+			$tags->next_tag();
+			$tags->add_class( 'flex-shrink-0' );
+			$block_content = $tags->get_updated_html();
+		}
+
+		return $block_content;
 	}
 }
