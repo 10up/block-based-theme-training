@@ -188,6 +188,22 @@ class Blocks implements ModuleInterface {
 				'get_value_callback' => [ $this, 'block_binding_movie_viewer_rating_label' ],
 			)
 		);
+
+		register_block_bindings_source(
+			'tenup/movie-genre',
+			array(
+				'label'              => __( 'Movie Genre', 'tenup' ),
+				'get_value_callback' => [ $this, 'block_binding_movie_genre' ],
+			)
+		);
+
+		register_block_bindings_source(
+			'tenup/movie-stars',
+			array(
+				'label'              => __( 'Movie Stars', 'tenup' ),
+				'get_value_callback' => [ $this, 'block_binding_movie_stars' ],
+			)
+		);
 	}
 
 	/**
@@ -282,6 +298,109 @@ class Blocks implements ModuleInterface {
 				return $text;
 			case 'url':
 				return $url;
+			default:
+				return null;
+		}
+	}
+
+	/**
+	 * Callback function for the 'tenup/movie-genre' block binding.
+	 * Displays the movie genre for the post as comma-separated linked terms.
+	 *
+	 * @param array $source_args The args found in the block metadata to create the binding.
+	 * @return string|null The linked terms HTML or null.
+	 */
+	public function block_binding_movie_genre( $source_args ) {
+		if ( ! isset( $source_args['key'] ) ) {
+			return null;
+		}
+
+		$post_id = get_the_ID();
+
+		if ( ! $post_id ) {
+			return null;
+		}
+
+		$terms = get_the_terms( $post_id, 'tenup-genre' );
+
+		if ( false === $terms || is_wp_error( $terms ) ) {
+			return null;
+		}
+
+		$term_links = array_map(
+			function ( $term ) {
+				return sprintf(
+					'<a href="%s" rel="tag">%s</a>',
+					esc_url( get_term_link( $term ) ),
+					esc_html( $term->name )
+				);
+			},
+			$terms
+		);
+
+		switch ( $source_args['key'] ) {
+			case 'content':
+				return implode( ', ', $term_links );
+			default:
+				return null;
+		}
+	}
+
+	/**
+	 * Callback function for the 'tenup/movie-stars' block binding.
+	 * Displays the movie stars for the post as comma-separated linked names.
+	 *
+	 * @param array $source_args The args found in the block metadata to create the binding.
+	 * @return string|null The linked names HTML or null.
+	 */
+	public function block_binding_movie_stars( $source_args ) {
+		if ( ! isset( $source_args['key'] ) ) {
+			return null;
+		}
+
+		$post_id = get_the_ID();
+
+		if ( ! $post_id ) {
+			return null;
+		}
+
+		if ( ! function_exists( '\TenUp\ContentConnect\Helpers\get_related_ids_by_name' ) ) {
+			return null;
+		}
+
+		$star_ids = \TenUp\ContentConnect\Helpers\get_related_ids_by_name( $post_id, 'movie_person' );
+
+		if ( empty( $star_ids ) ) {
+			return null;
+		}
+
+		$stars_query = new \WP_Query(
+			[
+				'post_type'      => 'tenup-person',
+				'post__in'       => $star_ids,
+				'orderby'        => 'post__in',
+				'posts_per_page' => 99,
+			]
+		);
+
+		if ( ! $stars_query->have_posts() ) {
+			return null;
+		}
+
+		$star_links = array_map(
+			function ( $star ) {
+				return sprintf(
+					'<a href="%s">%s</a>',
+					esc_url( get_permalink( $star->ID ) ),
+					esc_html( $star->post_title )
+				);
+			},
+			$stars_query->posts
+		);
+
+		switch ( $source_args['key'] ) {
+			case 'content':
+				return implode( ', ', $star_links );
 			default:
 				return null;
 		}
