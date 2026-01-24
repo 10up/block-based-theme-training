@@ -29,22 +29,12 @@
 					"reference": "1.6.0"
 				}
 			}
-		},
-		{
-			"type": "vcs",
-			"url": "https://github.com/10up/ignite-wp-core.git"
-		},
-		{
-			"type": "vcs",
-			"url": "https://github.com/10up/ignite-wp-description-list.git"
 		}
 	],
 	"require": {
 		"php": ">=8.3",
 		"10up/wp-content-connect": "^1.5",
-		"wpackagist-plugin/create-block-theme": "^2.6",
-		"10up/ignite-wp-core": "^3.0",
-		"10up/ignite-wp-description-list": "^1.0"
+		"wpackagist-plugin/create-block-theme": "^2.6"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,

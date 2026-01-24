@@ -1,0 +1,12 @@
+.wp-block-tenup-dd {
+	margin: 0;
+	padding: 0;
+}
+
+.wp-block-tenup-dd > :where(*:first-child) {
+	margin-block-start: 0;
+}
+
+.wp-block-tenup-dd > :where(*:last-child) {
+	margin-block-end: 0;
+}
