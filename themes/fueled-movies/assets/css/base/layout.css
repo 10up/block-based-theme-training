@@ -1,8 +1,9 @@
 html {
+	accent-color: var(--wp--custom--color--yellow--primary);
 	scroll-behavior: smooth;
 
-	@view-transition {
-		navigation: auto;
+	@view-transition { /* stylelint-disable-line at-rule-no-unknown */
+		navigation: auto; /* stylelint-disable-line property-no-unknown */
 	}
 }
 

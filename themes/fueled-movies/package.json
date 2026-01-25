@@ -15,6 +15,8 @@
 	},
 	"dependencies": {
 		"@10up/block-components": "^1.19.4",
+		"@wordpress/dependency-extraction-webpack-plugin": "^5.9.0",
+		"@wordpress/interactivity": "^6.38.0",
 		"10up-toolkit": "^6.5.0",
 		"clsx": "^2.1.1"
 	},
