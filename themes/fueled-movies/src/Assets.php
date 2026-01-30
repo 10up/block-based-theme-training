@@ -85,25 +85,12 @@ class Assets implements ModuleInterface {
 			FUELED_MOVIES_THEME_VERSION
 		);
 
-		// Enqueue shared components first (contains @10up/block-components).
-		// Must load in header (false) to ensure it's available before block scripts.
-		wp_enqueue_script(
-			'tenup-shared-components',
-			FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/js/shared-components.js',
-			$this->get_asset_info( 'shared-components', 'dependencies' ),
-			$this->get_asset_info( 'shared-components', 'version' ),
-			false
-		);
-
 		$block_extensions_deps = $this->get_asset_info( 'block-extensions', 'dependencies' );
 
 		wp_enqueue_script(
 			'tenup-theme-block-extensions',
 			FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/js/block-extensions.js',
-			array_merge(
-				[ 'tenup-shared-components' ],
-				is_array( $block_extensions_deps ) ? $block_extensions_deps : []
-			),
+			is_array( $block_extensions_deps ) ? $block_extensions_deps : [],
 			$this->get_asset_info( 'block-extensions', 'version' ),
 			true
 		);

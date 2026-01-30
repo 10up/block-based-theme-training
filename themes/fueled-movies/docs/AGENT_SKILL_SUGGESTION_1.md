@@ -2,6 +2,35 @@
 
 Optimize bundle sizes by creating a shared entry point for common dependencies used across multiple blocks or scripts.
 
+## Status: Reverted (training repo simplification)
+
+This optimization was **implemented experimentally** (shared bundle + webpack externals + PHP dependency injection) and then **reverted**.
+
+### Why we reverted it
+
+- **Build/runtime coupling**: once externals are enabled, the editor and block scripts must load in a very specific order, and stale `dist/` artifacts can easily break the site (e.g. `tenupSharedComponents is not defined`).
+- **Higher complexity for training**: it introduces webpack “issuer” logic and global dependency patterns that are *not necessary* to teach Full Site Editing fundamentals.
+- **Harder debugging**: failures show up as runtime globals missing rather than straightforward import/bundle behavior.
+
+### What was undone
+
+The following pieces were removed so the theme returns to the default 10up-toolkit behavior (each bundle includes its non-WordPress dependencies):
+
+- **Source entry**: `assets/js/shared-components.js`
+- **Toolkit entry config**: `package.json` `"10up-toolkit.entry.shared-components"`
+- **Custom externals config**: `webpack.config.js`
+- **PHP wiring**:
+  - removed `tenup-shared-components` enqueue in `src/Assets.php`
+  - removed dependency injection into block editor scripts in `src/Blocks.php`
+- **Dist artifacts**: `dist/js/shared-components.*` removed after rebuild
+
+### If we ever want this back
+
+This pattern can be reintroduced later as an advanced/performance module once the training covers:
+- webpack overrides in the 10up-toolkit ecosystem
+- script load order in the editor vs frontend
+- debugging externals/global variables
+
 ## The Problem
 
 When multiple blocks import the same libraries (like `@10up/block-components`), each block bundles its own copy:

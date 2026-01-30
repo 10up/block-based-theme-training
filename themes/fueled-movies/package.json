@@ -28,8 +28,7 @@
 			"editor-frame-style-overrides": "./assets/css/editor-frame-style-overrides.css",
 			"editor-canvas-style-overrides": "./assets/css/editor-canvas-style-overrides.css",
 			"frontend": "./assets/js/frontend.js",
-			"block-extensions": "./assets/js/block-extensions.js",
-			"shared-components": "./assets/js/shared-components.js"
+			"block-extensions": "./assets/js/block-extensions.js"
 		},
 		"paths": {
 			"blocksDir": "./blocks"

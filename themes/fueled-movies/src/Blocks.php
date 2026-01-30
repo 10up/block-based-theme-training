@@ -43,7 +43,6 @@ class Blocks implements ModuleInterface {
 		);
 		add_action( 'init', [ $this, 'register_theme_blocks' ], 10, 0 );
 		add_action( 'init', [ $this, 'enqueue_theme_block_styles' ], 10, 0 );
-		add_filter( 'block_type_metadata', [ $this, 'inject_shared_component_dependency' ], 10, 1 );
 		add_filter( 'render_block_core/post-featured-image', [ $this, 'filter_featured_image_block' ], 10, 3 );
 		add_filter( 'render_block', [ $this, 'maybe_add_flex_shrink' ], 10, 3 );
 
@@ -75,17 +74,6 @@ class Blocks implements ModuleInterface {
 				}
 
 				$block_names[] = $block->name;
-
-				// Add shared-components as a dependency for this block's editor script.
-				// This ensures @10up/block-components (via webpack externals) is available.
-				if ( ! empty( $block->editor_script_handles ) ) {
-					foreach ( $block->editor_script_handles as $handle ) {
-						$script = wp_scripts()->query( $handle );
-						if ( $script && ! in_array( 'tenup-shared-components', $script->deps, true ) ) {
-							$script->deps[] = 'tenup-shared-components';
-						}
-					}
-				}
 			}
 
 			add_filter(
@@ -141,28 +129,6 @@ class Blocks implements ModuleInterface {
 				);
 			}
 		}
-	}
-
-	/**
-	 * Inject shared-components script as a dependency for theme blocks.
-	 *
-	 * This ensures @10up/block-components is loaded before blocks that use it.
-	 * The shared-components script provides window.tenupSharedComponents which
-	 * blocks reference via webpack externals.
-	 *
-	 * @param array $metadata Block metadata.
-	 * @return array Modified metadata.
-	 */
-	public function inject_shared_component_dependency( array $metadata ): array {
-		// Only modify our theme blocks.
-		if ( empty( $metadata['name'] ) || ! str_starts_with( $metadata['name'], 'tenup/' ) ) {
-			return $metadata;
-		}
-
-		// Store marker for post-registration processing.
-		$metadata['_requires_shared_components'] = true;
-
-		return $metadata;
 	}
 
 	/**
