@@ -1,4 +1,4 @@
-import { unregisterBlockStyle, registerBlockStyle } from '@wordpress/blocks';
+import { unregisterBlockStyle } from '@wordpress/blocks';
 import domReady from '@wordpress/dom-ready';
 
 /**
@@ -32,23 +32,6 @@ function removeCoreBlockStyleVariations() {
 	unregisterBlockStyle('core/site-logo', 'rounded');
 }
 
-/**
- * Register TenUp Block Styles
- */
-function registerTenUpBlockStyles() {
-	/* ---- Core Button Block ---- */
-	registerBlockStyle('core/button', {
-		name: 'primary',
-		label: 'Primary',
-		isDefault: true,
-	});
-	registerBlockStyle('core/button', {
-		name: 'secondary',
-		label: 'Secondary',
-	});
-}
-
 domReady(() => {
 	removeCoreBlockStyleVariations();
-	registerTenUpBlockStyles();
 });

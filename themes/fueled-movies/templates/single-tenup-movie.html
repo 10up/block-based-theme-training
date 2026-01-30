@@ -1,6 +1,6 @@
 <!-- wp:template-part {"slug":"header","theme":"fueled-movies","tagName":"header"} /-->
 
-<!-- wp:group {"tagName":"main","metadata":{"name":"Site Main"},"className":"is-style-default","style":{"spacing":{"margin":{"top":"0"},"padding":{"top":"var:preset|spacing|16","bottom":"var:preset|spacing|16"}}}} -->
+<!-- wp:group {"tagName":"main","metadata":{"name":"Site Main"},"className":"is-style-default","style":{"spacing":{"margin":{"top":"0"},"padding":{"top":"var:preset|spacing|16","bottom":"var:preset|spacing|16"}}},"layout":{"type":"default"}} -->
 <main class="wp-block-group is-style-default" style="margin-top:0;padding-top:var(--wp--preset--spacing--16);padding-bottom:var(--wp--preset--spacing--16)"><!-- wp:post-featured-image {"aspectRatio":"2:3","metadata":{"name":"Blurry Poster Backdrop"},"className":"is-style-single-movie-backdrop"} /-->
 
 <!-- wp:group {"tagName":"article","metadata":{"name":"Movie Header"},"layout":{"type":"constrained"}} -->
@@ -86,20 +86,16 @@
 <!-- /wp:tenup/dl --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|24"}},"layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"top","justifyContent":"space-between"}} -->
-<div class="wp-block-group alignwide"><!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-primary"} -->
-<div class="wp-block-button is-style-primary"><a class="wp-block-button__link wp-element-button">Add to Watchlist</a></div>
-<!-- /wp:button --></div>
-<!-- /wp:buttons --></div>
-<!-- /wp:group -->
-
 <!-- wp:separator {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|32-48","bottom":"var:preset|spacing|32-48"}}}} -->
 <hr class="wp-block-separator alignwide has-alpha-channel-opacity" style="margin-top:var(--wp--preset--spacing--32-48);margin-bottom:var(--wp--preset--spacing--32-48)"/>
 <!-- /wp:separator --></article>
 <!-- /wp:group -->
 
-<!-- wp:post-content {"layout":{"type":"constrained"}} /--></main>
+<!-- wp:group {"className":"is-style-default","layout":{"type":"constrained"}} -->
+<div class="wp-block-group is-style-default"><!-- wp:group {"className":"is-style-secondary","layout":{"type":"constrained"}} -->
+<div class="wp-block-group is-style-secondary"><!-- wp:post-content {"layout":{"type":"constrained"}} /--></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></main>
 <!-- /wp:group -->
 
 <!-- wp:template-part {"slug":"footer","theme":"fueled-movies","tagName":"footer"} /-->

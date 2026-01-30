@@ -1,31 +1,14 @@
+.wp-block-buttons .wp-block-button__link {
+	inline-size: auto;
+}
+
 .wp-element-button {
 	align-items: center;
-	background: var(--wp--custom--color--action--primary, #f5c518);
-	border-radius: 10px;
-	box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.25) inset;
-	color: #121212; /* stylelint-disable-line */
 	display: flex;
 	gap: 10px;
-	height: 42px;
-	padding: 8px 18px;
-	transition: all 0.2s ease-in-out;
 
 	&:hover,
 	&:focus {
-		background-color: #ffe99a; /* stylelint-disable-line */
-		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
 		cursor: pointer;
-	}
-
-	.is-style-secondary & {
-		background: var(--wp--custom--color--background--light-transparent-10, rgba(163, 163, 163, 0.15));
-		box-shadow: 0 1px 2px 0 rgba(255, 255, 255, 0.08) inset;
-		color: var(--wp--custom--color--text--primary);
-
-		&:hover,
-		&:focus {
-			background: var(--wp--custom--color--background--light-transparent-20, rgba(163, 163, 163, 0.3));
-			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
-		}
 	}
 }

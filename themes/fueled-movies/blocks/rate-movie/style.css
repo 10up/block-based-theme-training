@@ -2,14 +2,14 @@
 @todo: Anchor positioning not working correctly in Firefox.
 Refactor or add note in training to use Chrome/Safari for this lesson.
 */
-.wp-block-tenup-rate-movie .wp-element-button {
+.wp-block-tenup-rate-movie > .wp-block-button {
 	anchor-name: --anchor-rate-movie;
 	justify-content: center;
 	min-inline-size: 4.75rem;
 }
 
 .wp-block-tenup-rate-movie__popover {
-	background-color: var(--wp--custom--color--background--primary);
+	background-color: var(--wp--custom--color--background--secondary);
 	border: 0;
 	border-radius: 10px;
 	box-shadow: inset 0 1px 2px 0 var(--wp--custom--color--background--light-transparent-20);
@@ -26,9 +26,15 @@ Refactor or add note in training to use Chrome/Safari for this lesson.
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	gap: var(--wp--custom--spacing--8);
 }
 
-.wp-block-tenup-rate-movie__slider {
+.wp-block-tenup-rate-movie__slider,
+.wp-block-tenup-rate-movie__slider input {
 	inline-size: 100%;
+	line-height: 1;
+}
+
+.wp-block-tenup-rate-movie__popup-text:not(:empty) {
+	font-weight: 600;
+	margin-block: var(--wp--custom--spacing--8);
 }

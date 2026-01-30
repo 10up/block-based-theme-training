@@ -3,7 +3,14 @@ import { store, getContext, getElement } from '@wordpress/interactivity';
 const { state } = store('tenup/rate-movie', {
 	state: {
 		isPopoverOpen: false,
+		get hasRating() {
+			const context = getContext();
+			return context.rating !== null && context.rating > 0;
+		},
 		get buttonText() {
+			if (state.isPopoverOpen) {
+				return 'Rate';
+			}
 			const context = getContext();
 			return context.rating !== null && context.rating > 0 ? `${context.rating}/10` : 'Rate';
 		},
@@ -33,8 +40,11 @@ const { state } = store('tenup/rate-movie', {
 			if (!ref) {
 				return;
 			}
-			const popover = ref.querySelector('#rate-movie-popover');
-			const button = ref.querySelector('.wp-block-tenup-rate-movie__trigger');
+			// `data-wp-init` is on the popover element, so we need to locate the trigger button
+			// from the block wrapper (the trigger is a sibling of the popover, not a child).
+			const root = ref.closest('.wp-block-tenup-rate-movie') ?? ref.parentElement;
+			const popover = ref;
+			const button = root?.querySelector('.wp-block-tenup-rate-movie__trigger');
 			if (!popover || !button) {
 				return;
 			}

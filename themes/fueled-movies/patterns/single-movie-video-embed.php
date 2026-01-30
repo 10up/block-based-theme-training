@@ -5,6 +5,9 @@
  * Description: A video embed with a fallback image.
  * Inserter: false
  *
+ * @todo: This gets overridden everytime we make template edits and paste back that into the html file.
+ * Ensure this gets added to the template before final launch.
+ *
  * @package FueledMoviesTheme
  */
 
