@@ -1,0 +1,14 @@
+.wp-block-buttons .wp-block-button__link {
+	inline-size: auto;
+}
+
+.wp-element-button {
+	align-items: center;
+	display: flex;
+	gap: 10px;
+
+	&:hover,
+	&:focus {
+		cursor: pointer;
+	}
+}

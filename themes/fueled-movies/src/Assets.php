@@ -1,0 +1,174 @@
+<?php
+/**
+ * Assets module.
+ *
+ * @package FueledMoviesTheme
+ */
+
+namespace FueledMoviesTheme;
+
+use TenupFramework\Assets\GetAssetInfo;
+use TenupFramework\Module;
+use TenupFramework\ModuleInterface;
+
+/**
+ * Assets module.
+ *
+ * @package FueledMoviesTheme
+ */
+class Assets implements ModuleInterface {
+
+	use Module;
+	use GetAssetInfo;
+
+	/**
+	 * Can this module be registered?
+	 *
+	 * @return bool
+	 */
+	public function can_register() {
+		return true;
+	}
+
+	/**
+	 * Register any hooks and filters.
+	 *
+	 * @return void
+	 */
+	public function register() {
+		$this->setup_asset_vars(
+			dist_path: FUELED_MOVIES_THEME_DIST_PATH,
+			fallback_version: FUELED_MOVIES_THEME_VERSION
+		);
+		add_action( 'init', [ $this, 'register_all_icons' ], 10 );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_frontend_assets' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_assets' ] );
+		add_action( 'enqueue_block_assets', [ $this, 'enqueue_block_editor_iframe_assets' ] );
+	}
+
+	/**
+	 * Enqueue assets for the front-end.
+	 *
+	 * @return void
+	 */
+	public function enqueue_frontend_assets() {
+		wp_enqueue_style(
+			'tenup-theme-styles',
+			FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/css/frontend.css',
+			[],
+			$this->get_asset_info( 'frontend', 'version' )
+		);
+
+		wp_enqueue_script(
+			'tenup-theme-frontend',
+			FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/js/frontend.js',
+			$this->get_asset_info( 'frontend', 'dependencies' ),
+			$this->get_asset_info( 'frontend', 'version' ),
+			[
+				'strategy' => 'defer',
+			]
+		);
+	}
+
+	/**
+	 * Enqueue assets for the block editor.
+	 *
+	 * These assets are enqueued in the editor outside of the editor canvas iframe.
+	 *
+	 * @return void
+	 */
+	public function enqueue_block_editor_assets() {
+		wp_enqueue_style(
+			'tenup-theme-editor-frame-style-overrides',
+			FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/css/editor-frame-style-overrides.css',
+			[],
+			FUELED_MOVIES_THEME_VERSION
+		);
+
+		// Enqueue shared components first (contains @10up/block-components).
+		// Must load in header (false) to ensure it's available before block scripts.
+		wp_enqueue_script(
+			'tenup-shared-components',
+			FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/js/shared-components.js',
+			$this->get_asset_info( 'shared-components', 'dependencies' ),
+			$this->get_asset_info( 'shared-components', 'version' ),
+			false
+		);
+
+		$block_extensions_deps = $this->get_asset_info( 'block-extensions', 'dependencies' );
+
+		wp_enqueue_script(
+			'tenup-theme-block-extensions',
+			FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/js/block-extensions.js',
+			array_merge(
+				[ 'tenup-shared-components' ],
+				is_array( $block_extensions_deps ) ? $block_extensions_deps : []
+			),
+			$this->get_asset_info( 'block-extensions', 'version' ),
+			true
+		);
+	}
+
+	/**
+	 * Enqueue styles inside the editor canvas iFrame only.
+	 *
+	 * @return void
+	 */
+	public function enqueue_block_editor_iframe_assets() {
+
+		// The `enqueue_block_assets` action is triggered both on the front-end and in the editor iframe.
+		// We only want to enqueue these styles inside the editor iframe.
+		if ( ! is_admin() ) {
+			return;
+		}
+
+		wp_enqueue_style(
+			'tenup-theme-editor-canvas-style-overrides',
+			FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/css/editor-canvas-style-overrides.css',
+			[],
+			FUELED_MOVIES_THEME_VERSION
+		);
+	}
+
+	/**
+	 * register all icons located in the dist/svg folder
+	 *
+	 * @return void
+	 */
+	public function register_all_icons() {
+		if ( ! function_exists( '\UIKitCore\Helpers\register_icons' ) ) {
+			return;
+		}
+
+		$icon_paths = glob( FUELED_MOVIES_THEME_DIST_PATH . 'svg/*.svg' );
+
+		if ( ! $icon_paths ) {
+			return;
+		}
+
+		$icons = array_map(
+			function ( $icon_path ) {
+				$icon_name = preg_replace( '#\..*$#', '', basename( $icon_path ) );
+
+				if ( ! $icon_name || ! class_exists( '\UIKitCore\Icon' ) ) {
+					return false;
+				}
+
+				return new \UIKitCore\Icon(
+					$icon_name,
+					ucwords( str_replace( '-', ' ', $icon_name ) ),
+					$icon_path
+				);
+			},
+			$icon_paths
+		);
+
+		\UIKitCore\Helpers\register_icons(
+			[
+				'name'  => 'tenup',
+				'label' => 'Theme Icons',
+				'icons' => $icons,
+			]
+		);
+	}
+}
