@@ -1,6 +1,6 @@
 <?php
 /**
- * MovieYouTubeID post meta
+ * MovieTrailerID post meta
  *
  * @package TenUpPlugin
  */
@@ -10,16 +10,16 @@ namespace TenUpPlugin\PostMeta;
 use TenUpPlugin\PostTypes\Movie;
 
 /**
- * MovieYouTubeID meta field.
+ * MovieTrailerID meta field.
  */
-class MovieYouTubeID extends AbstractPostMeta {
+class MovieTrailerID extends AbstractPostMeta {
 
 	/**
 	 * The meta_key name.
 	 *
 	 * @var string
 	 */
-	const META_KEY = 'tenup_movie_youtube_id';
+	const META_KEY = 'tenup_movie_trailer_id';
 
 	/**
 	 * Get the field description.
@@ -27,7 +27,7 @@ class MovieYouTubeID extends AbstractPostMeta {
 	 * @return string
 	 */
 	public function get_description(): string {
-		return __( 'Movie YouTube ID', 'tenup' );
+		return __( 'Movie Trailer ID', 'tenup' );
 	}
 
 	/**

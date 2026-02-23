@@ -21,7 +21,7 @@ import MovieReleaseYear from '../block-components/PostMeta/MovieReleaseYear';
 import MovieRuntime from '../block-components/PostMeta/MovieRuntime';
 import MovieViewerRating from '../block-components/PostMeta/MovieViewerRating';
 import MovieViewerRatingCount from '../block-components/PostMeta/MovieViewerRatingCount';
-import MovieYouTubeID from '../block-components/PostMeta/MovieYouTubeID';
+import MovieTrailerID from '../block-components/PostMeta/MovieTrailerID';
 
 /**
  * Adds a Movie meta field panel to the editor.
@@ -42,7 +42,7 @@ const MovieFields = () => {
 		>
 			<Flex direction="column">
 				<MovieIMDBID />
-				<MovieYouTubeID />
+				<MovieTrailerID />
 				<MovieReleaseYear />
 				<MovieMPARating />
 				<MovieRuntime />

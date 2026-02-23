@@ -153,6 +153,32 @@ class Person extends AbstractPostType {
 	}
 
 	/**
+	 * Set default archive ordering to title A-Z.
+	 *
+	 * @return void
+	 */
+	public function after_register() {
+		add_action( 'pre_get_posts', [ $this, 'order_archive_by_title' ] );
+	}
+
+	/**
+	 * Order person archive queries by title ascending.
+	 *
+	 * @param \WP_Query $query The query object.
+	 * @return void
+	 */
+	public function order_archive_by_title( $query ) {
+		if ( is_admin() || ! $query->is_main_query() ) {
+			return;
+		}
+
+		if ( $query->is_post_type_archive( self::POST_TYPE ) ) {
+			$query->set( 'orderby', 'title' );
+			$query->set( 'order', 'ASC' );
+		}
+	}
+
+	/**
 	 * Default post type supported feature names.
 	 *
 	 * @return array

@@ -11,32 +11,32 @@ import { external } from '@wordpress/icons';
 import { PostMeta } from '@10up/block-components';
 
 /**
- * MovieYouTubeID component.
+ * MovieTrailerID component.
  *
  * @param {object} props               Component props.
  * @param {object} props.postMetaProps Props to use on the 10up PostMeta component.
  * @param {object} props.restProps     Rest of the props to pass to the control component.
  * @returns {Function}                 The rendered component.
  */
-const MovieYouTubeID = ({ postMetaProps, ...restProps }) => {
+const MovieTrailerID = ({ postMetaProps, ...restProps }) => {
 	return (
-		<PostMeta metaKey="tenup_movie_youtube_id" {...postMetaProps}>
+		<PostMeta metaKey="tenup_movie_trailer_id" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<TextControl
-					label={__('YouTube ID', 'tenup')}
+					label={__('IMDB Trailer ID', 'tenup')}
 					help={
 						<>
-							{__('Enter the YouTube ID of the trailer.', 'tenup')}
+							{__('Enter the IMDB video ID of the trailer.', 'tenup')}
 							{meta && (
 								<>
 									<br />
 									<Button
-										href={`https://www.youtube.com/watch?v=${meta}`}
+										href={`https://www.imdb.com/video/${meta}`}
 										icon={external}
 										target="_blank"
 										variant="link"
 									>
-										{__('YouTube', 'tenup')}
+										{__('IMDB', 'tenup')}
 									</Button>
 								</>
 							)}
@@ -52,4 +52,4 @@ const MovieYouTubeID = ({ postMetaProps, ...restProps }) => {
 	);
 };
 
-export default MovieYouTubeID;
+export default MovieTrailerID;

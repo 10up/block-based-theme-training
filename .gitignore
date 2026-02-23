@@ -38,5 +38,10 @@ Desktop.ini
 /db.php
 /object-cache.php
 
-# Cursor
+# Agents
 .cursor
+.claude
+.github
+
+# 10up Block Theme
+themes/10up-block-theme

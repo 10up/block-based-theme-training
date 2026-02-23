@@ -21,7 +21,7 @@
 			"type": "package",
 			"package": {
 				"name": "10up/wp-content-connect",
-				"type": "wordpress-plugin",
+				"type": "wordpress-muplugin",
 				"version": "1.6.0",
 				"source": {
 					"url": "https://github.com/10up/wp-content-connect.git",
@@ -60,6 +60,9 @@
 		"installer-paths": {
 			"plugins/{$name}/": [
 				"type:wordpress-plugin"
+			],
+			"mu-plugins/{$name}/": [
+				"type:wordpress-muplugin"
 			]
 		}
 	},

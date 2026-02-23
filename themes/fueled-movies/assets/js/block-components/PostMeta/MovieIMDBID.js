@@ -1,14 +1,14 @@
 /**
  * WordPress dependencies.
  */
-import { __ } from '@wordpress/i18n';
-import { Button, TextControl } from '@wordpress/components';
-import { external } from '@wordpress/icons';
 
 /**
  * External dependencies.
  */
 import { PostMeta } from '@10up/block-components';
+import { Button, TextControl } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
+import { external } from '@wordpress/icons';
 
 /**
  * MovieIMDBID component.

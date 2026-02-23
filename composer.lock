@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d4cba54c53f708e6b3084a9e118860e",
+    "content-hash": "cb3a838a9642ef0a36d35cbb9d04afb3",
     "packages": [
         {
             "name": "10up/wp-content-connect",
@@ -14,7 +14,7 @@
                 "url": "https://github.com/10up/wp-content-connect.git",
                 "reference": "1.6.0"
             },
-            "type": "wordpress-plugin"
+            "type": "wordpress-muplugin"
         },
         {
             "name": "composer/installers",

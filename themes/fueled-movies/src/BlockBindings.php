@@ -81,6 +81,8 @@ class BlockBindings implements ModuleInterface {
 				return $this->get_person_movies();
 			case 'viewerRatingLabelText':
 				return $this->get_viewer_rating_label( 'text' );
+			case 'viewerRatingLabelTextNumberOnly':
+				return $this->get_viewer_rating_label( 'number' );
 			case 'viewerRatingLabelUrl':
 				return $this->get_viewer_rating_label( 'url' );
 			default:
@@ -120,7 +122,7 @@ class BlockBindings implements ModuleInterface {
 	 * @return string|null The linked names HTML or null.
 	 */
 	private function get_movie_stars() {
-		$value   = null;
+		$value   = '';
 		$post_id = get_the_ID();
 
 		if ( ! $post_id ) {
@@ -172,7 +174,7 @@ class BlockBindings implements ModuleInterface {
 	 * @return string|null The formatted date or null.
 	 */
 	private function get_person_born() {
-		$value   = null;
+		$value   = '';
 		$post_id = get_the_ID();
 
 		if ( ! $post_id ) {
@@ -196,7 +198,7 @@ class BlockBindings implements ModuleInterface {
 	 * @return string|null The formatted date or null.
 	 */
 	private function get_person_died() {
-		$value   = null;
+		$value   = '';
 		$post_id = get_the_ID();
 
 		if ( ! $post_id ) {
@@ -220,7 +222,7 @@ class BlockBindings implements ModuleInterface {
 	 * @return string|null The linked titles HTML or null.
 	 */
 	private function get_person_movies() {
-		$value   = null;
+		$value   = '';
 		$post_id = get_the_ID();
 
 		if ( ! $post_id ) {
@@ -275,22 +277,8 @@ class BlockBindings implements ModuleInterface {
 	private function get_viewer_rating_label( $type ) {
 		$value = '#';
 
-		if ( 'text' === $type ) {
-			$text   = '0/10 (0)';
+		if ( 'text' === $type || 'number' === $type ) {
 			$rating = get_post_meta( get_the_ID(), 'tenup_movie_viewer_rating', true ) ?? false;
-			$count  = get_post_meta( get_the_ID(), 'tenup_movie_viewer_rating_count', true ) ?? false;
-
-			if ( false !== $rating && false !== $count ) {
-				$count_display = $count;
-
-				if ( $count >= 1000 && $count < 10000 ) {
-					$count_display = number_format( round( $count, -2 ) / 1000, 1, '.', '' ) . 'K';
-				} elseif ( $count >= 10000 ) {
-					$count_display = number_format( round( $count, -3 ) / 1000, 0, '.', '' ) . 'K';
-				}
-
-				$text = $rating . '/10 (' . $count_display . ')';
-			}
 
 			$star         = '<mark style="background-color: transparent;color:#f5c518" class="has-inline-color">★</mark>';
 			$allowed_tags = [
@@ -300,7 +288,27 @@ class BlockBindings implements ModuleInterface {
 				],
 			];
 
-			$value = wp_kses( $star . $text, $allowed_tags );
+			if ( 'number' === $type ) {
+				$text  = false !== $rating ? $rating : '0.0';
+				$value = wp_kses( $star . ' ' . $text, $allowed_tags );
+			} else {
+				$text  = '0/10 (0)';
+				$count = get_post_meta( get_the_ID(), 'tenup_movie_viewer_rating_count', true ) ?? false;
+
+				if ( false !== $rating && false !== $count ) {
+					$count_display = $count;
+
+					if ( $count >= 1000 && $count < 10000 ) {
+						$count_display = number_format( round( $count, -2 ) / 1000, 1, '.', '' ) . 'K';
+					} elseif ( $count >= 10000 ) {
+						$count_display = number_format( round( $count, -3 ) / 1000, 0, '.', '' ) . 'K';
+					}
+
+					$text = $rating . '/10 (' . $count_display . ')';
+				}
+
+				$value = wp_kses( $star . $text, $allowed_tags );
+			}
 		}
 
 		return $value;
