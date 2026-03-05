@@ -1,0 +1,35 @@
+{
+	"name": "tenup-block-theme",
+	"version": "1.0.0",
+	"scripts": {
+		"start": "npm run watch",
+		"watch": "10up-toolkit watch --port=5020",
+		"build": "10up-toolkit build",
+		"build:analyze": "10up-toolkit build --analyze",
+		"format-js": "10up-toolkit format-js",
+		"lint-js": "10up-toolkit lint-js",
+		"lint-style": "10up-toolkit lint-style",
+		"test": "10up-toolkit test-unit-jest --passWithNoTests",
+		"clean-dist": "rm -rf ./dist",
+		"scaffold:block": "cd blocks/ && wp-create-block --no-plugin --template ../../../../bin/create-block-template"
+	},
+	"dependencies": {
+		"@10up/block-components": "^1.19.4",
+		"10up-toolkit": "^6.5.0",
+		"clsx": "^2.1.1"
+	},
+	"10up-toolkit": {
+		"useBlockAssets": true,
+		"useScriptModules": true,
+		"loadBlockSpecificStyles": true,
+		"entry": {
+			"editor-frame-style-overrides": "./assets/css/editor-frame-style-overrides.css",
+			"editor-canvas-style-overrides": "./assets/css/editor-canvas-style-overrides.css",
+			"frontend": "./assets/js/frontend.js",
+			"block-extensions": "./assets/js/block-extensions.js"
+		},
+		"paths": {
+			"blocksDir": "./blocks"
+		}
+	}
+}
