@@ -2,3 +2,10 @@ a,
 button {
 	transition: all 0.2s ease-in-out;
 }
+
+a {
+
+	&:hover {
+		text-decoration-color: transparent;
+	}
+}

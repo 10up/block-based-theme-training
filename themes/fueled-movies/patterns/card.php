@@ -15,8 +15,8 @@ $is_person = 'tenup-person' === $post_type;
 if ( $is_movie || $is_person ) :
 	?>
 
-<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|12","padding":{"top":"var:preset|spacing|12","bottom":"var:preset|spacing|12","left":"var:preset|spacing|12","right":"var:preset|spacing|12"}},"border":{"radius":"10px"}},"backgroundColor":"background-transparent-5","layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch","flexWrap":"nowrap","verticalAlignment":"space-between"}} -->
-<div class="wp-block-group alignwide has-background-transparent-5-background-color has-background" style="border-radius:10px;padding-top:var(--wp--preset--spacing--12);padding-right:var(--wp--preset--spacing--12);padding-bottom:var(--wp--preset--spacing--12);padding-left:var(--wp--preset--spacing--12)">
+<!-- wp:group {"align":"wide","className":"is-clickable-card","style":{"spacing":{"blockGap":"var:preset|spacing|12","padding":{"top":"var:preset|spacing|12","bottom":"var:preset|spacing|12","left":"var:preset|spacing|12","right":"var:preset|spacing|12"}},"border":{"radius":"10px"}},"backgroundColor":"background-transparent-5","layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch","flexWrap":"nowrap","verticalAlignment":"space-between"}} -->
+<div class="wp-block-group alignwide is-clickable-card has-background-transparent-5-background-color has-background" style="border-radius:10px;padding-top:var(--wp--preset--spacing--12);padding-right:var(--wp--preset--spacing--12);padding-bottom:var(--wp--preset--spacing--12);padding-left:var(--wp--preset--spacing--12)">
 
 	<!-- wp:post-featured-image {"aspectRatio":"2/3","width":"","height":"","style":{"border":{"radius":"5px"}}} /-->
 
@@ -49,19 +49,15 @@ if ( $is_movie || $is_person ) :
 		</div>
 		<!-- /wp:group -->
 
-		<?php if ( $is_movie ) : ?>
+		<!-- wp:buttons -->
+		<div class="wp-block-buttons">
 
-			<!-- wp:buttons -->
-			<div class="wp-block-buttons">
+			<!-- wp:button {"width":100,"className":"is-style-secondary"} -->
+			<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-secondary"><a class="wp-block-button__link wp-element-button"><?php echo $is_movie ? '▶ Trailer' : 'View More'; ?></a></div>
+			<!-- /wp:button -->
 
-				<!-- wp:button {"width":100,"className":"is-style-secondary"} -->
-				<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-secondary"><a class="wp-block-button__link wp-element-button">▶ Trailer</a></div>
-				<!-- /wp:button -->
-
-			</div>
-			<!-- /wp:buttons -->
-
-		<?php endif; ?>
+		</div>
+		<!-- /wp:buttons -->
 
 	</div>
 	<!-- /wp:group -->
@@ -71,8 +67,8 @@ if ( $is_movie || $is_person ) :
 
 <?php else : ?>
 
-<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"0"},"border":{"radius":"8px","width":"1px"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch","flexWrap":"nowrap"}} -->
-<div class="wp-block-group alignwide" style="border-width:1px;border-radius:8px">
+<!-- wp:group {"align":"wide","className":"is-clickable-card","style":{"spacing":{"blockGap":"0"},"border":{"radius":"8px","width":"1px"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch","flexWrap":"nowrap"}} -->
+<div class="wp-block-group alignwide is-clickable-card" style="border-width:1px;border-radius:8px">
 
 	<!-- wp:post-featured-image {"aspectRatio":"16/9","width":"100%","height":"","style":{"border":{"radius":{"topRight":"8px","bottomRight":"0px","topLeft":"8px","bottomLeft":"0px"}}},"displayFallback":true} /-->
 

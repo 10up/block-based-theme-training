@@ -268,11 +268,6 @@
 			"link": {
 				"color": {
 					"text": "var(--wp--custom--color--action--secondary)"
-				},
-				":hover": {
-					"typography": {
-						"textDecoration": "none"
-					}
 				}
 			}
 		},

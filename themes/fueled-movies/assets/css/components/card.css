@@ -1,21 +1,36 @@
 .wp-block-post {
-	position: relative;
 
 	& > .wp-block-group {
 		height: 100%;
 	}
+}
 
-	& .wp-block-post-title a {
+.is-clickable-card .wp-block-post-title {
+	text-decoration: underline;
+	text-decoration-color: transparent;
+	transition: text-decoration-color 0.2s ease;
+}
 
-		&::after {
-			bottom: 0;
-			content: "";
-			display: flex;
-			height: 100%;
-			left: 0;
-			position: absolute;
-			width: 100%;
-			z-index: 1;
+/* Clickable card cursor utilities — toggled by clickable-cards.js */
+.is-cursor-pointer {
+	cursor: pointer;
+}
+
+.is-cursor-text {
+	cursor: text;
+}
+
+.is-clickable-card {
+
+	@mixin is-clickable-card-hover {
+
+		[data-is-clickable-card-primary] {
+			text-decoration-color: currentcolor;
+		}
+
+		.wp-block-button [data-is-clickable-card-secondary] {
+			background-color: var(--wp--custom--color--background--light-transparent-20, rgba(163, 163, 163, 0.3));
+			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
 		}
 	}
 }
