@@ -2,10 +2,10 @@
 /**
  * Block Bindings setup
  *
- * @package FueledMoviesTheme
+ * @package TenupBlockTheme
  */
 
-namespace FueledMoviesTheme;
+namespace TenupBlockTheme;
 
 use TenupFramework\Module;
 use TenupFramework\ModuleInterface;
@@ -15,7 +15,7 @@ use TenUpPlugin\PostTypes\Person;
 /**
  * BlockBindings module.
  *
- * @package FueledMoviesTheme
+ * @package TenupBlockTheme
  */
 class BlockBindings implements ModuleInterface {
 

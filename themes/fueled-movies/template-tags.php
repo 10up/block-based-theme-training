@@ -2,7 +2,7 @@
 /**
  * Template Tags
  *
- * @package FueledMoviesTheme
+ * @package TenupBlockTheme
  *
  * This file contains **only** pure functions that relate to templating.
  *
@@ -35,4 +35,4 @@
  * Keeping this file limited to pure functions ensures maintainability and a clear separation of concerns.
  */
 
-namespace FueledMoviesTheme;
+namespace TenupBlockTheme;

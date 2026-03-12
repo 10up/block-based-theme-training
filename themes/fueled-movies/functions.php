@@ -2,17 +2,17 @@
 /**
  * Theme constants and setup functions
  *
- * @package FueledMoviesTheme
+ * @package TenupBlockTheme
  */
 
 // Useful global constants.
-define( 'FUELED_MOVIES_THEME_VERSION', '1.0.0' );
-define( 'FUELED_MOVIES_THEME_TEMPLATE_URL', get_template_directory_uri() );
-define( 'FUELED_MOVIES_THEME_PATH', get_template_directory() . '/' );
-define( 'FUELED_MOVIES_THEME_DIST_PATH', FUELED_MOVIES_THEME_PATH . 'dist/' );
-define( 'FUELED_MOVIES_THEME_DIST_URL', FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/' );
-define( 'FUELED_MOVIES_THEME_INC', FUELED_MOVIES_THEME_PATH . 'src/' );
-define( 'FUELED_MOVIES_THEME_BLOCK_DIST_DIR', FUELED_MOVIES_THEME_DIST_PATH . '/blocks/' );
+define( 'TENUP_BLOCK_THEME_VERSION', '1.0.0' );
+define( 'TENUP_BLOCK_THEME_TEMPLATE_URL', get_template_directory_uri() );
+define( 'TENUP_BLOCK_THEME_PATH', get_template_directory() . '/' );
+define( 'TENUP_BLOCK_THEME_DIST_PATH', TENUP_BLOCK_THEME_PATH . 'dist/' );
+define( 'TENUP_BLOCK_THEME_DIST_URL', TENUP_BLOCK_THEME_TEMPLATE_URL . '/dist/' );
+define( 'TENUP_BLOCK_THEME_INC', TENUP_BLOCK_THEME_PATH . 'src/' );
+define( 'TENUP_BLOCK_THEME_BLOCK_DIST_DIR', TENUP_BLOCK_THEME_DIST_PATH . '/blocks/' );
 
 // Require Composer autoloader if it exists.
 if ( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -27,7 +27,7 @@ if ( $is_local && file_exists( __DIR__ . '/dist/fast-refresh.php' ) ) {
 	require_once __DIR__ . '/dist/fast-refresh.php';
 
 	if ( function_exists( 'TenUpToolkit\set_dist_url_path' ) ) {
-		TenUpToolkit\set_dist_url_path( basename( __DIR__ ), FUELED_MOVIES_THEME_DIST_URL, FUELED_MOVIES_THEME_DIST_PATH );
+		TenUpToolkit\set_dist_url_path( basename( __DIR__ ), TENUP_BLOCK_THEME_DIST_URL, TENUP_BLOCK_THEME_DIST_PATH );
 	}
 }
 
@@ -35,5 +35,5 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 require_once __DIR__ . '/template-tags.php';
 
-$theme_core = new \FueledMoviesTheme\ThemeCore();
+$theme_core = new \TenupBlockTheme\ThemeCore();
 $theme_core->setup();

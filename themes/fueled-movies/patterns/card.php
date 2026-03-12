@@ -5,7 +5,7 @@
  * Description: A card pattern with a featured image, title, and contextual metadata. Adapts layout based on post type.
  * Inserter: false
  *
- * @package FueledMoviesTheme
+ * @package TenupBlockTheme
  */
 
 $post_type = get_post_type();

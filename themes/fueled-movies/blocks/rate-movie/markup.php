@@ -2,7 +2,7 @@
 /**
  * Rate Movie block markup
  *
- * @package FueledMoviesTheme
+ * @package TenupBlockTheme
  *
  * @var array    $attributes Block attributes.
  * @var string   $content    Block content.

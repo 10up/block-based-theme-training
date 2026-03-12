@@ -2,10 +2,10 @@
 /**
  * Assets module.
  *
- * @package FueledMoviesTheme
+ * @package TenupBlockTheme
  */
 
-namespace FueledMoviesTheme;
+namespace TenupBlockTheme;
 
 use TenupFramework\Assets\GetAssetInfo;
 use TenupFramework\Module;
@@ -14,7 +14,7 @@ use TenupFramework\ModuleInterface;
 /**
  * Assets module.
  *
- * @package FueledMoviesTheme
+ * @package TenupBlockTheme
  */
 class Assets implements ModuleInterface {
 
@@ -37,8 +37,8 @@ class Assets implements ModuleInterface {
 	 */
 	public function register() {
 		$this->setup_asset_vars(
-			dist_path: FUELED_MOVIES_THEME_DIST_PATH,
-			fallback_version: FUELED_MOVIES_THEME_VERSION
+			dist_path: TENUP_BLOCK_THEME_DIST_PATH,
+			fallback_version: TENUP_BLOCK_THEME_VERSION
 		);
 		add_action( 'init', [ $this, 'register_all_icons' ], 10 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_frontend_assets' ] );
@@ -54,14 +54,14 @@ class Assets implements ModuleInterface {
 	public function enqueue_frontend_assets() {
 		wp_enqueue_style(
 			'tenup-theme-styles',
-			FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/css/frontend.css',
+			TENUP_BLOCK_THEME_TEMPLATE_URL . '/dist/css/frontend.css',
 			[],
 			$this->get_asset_info( 'frontend', 'version' )
 		);
 
 		wp_enqueue_script(
 			'tenup-theme-frontend',
-			FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/js/frontend.js',
+			TENUP_BLOCK_THEME_TEMPLATE_URL . '/dist/js/frontend.js',
 			$this->get_asset_info( 'frontend', 'dependencies' ),
 			$this->get_asset_info( 'frontend', 'version' ),
 			[
@@ -80,16 +80,16 @@ class Assets implements ModuleInterface {
 	public function enqueue_block_editor_assets() {
 		wp_enqueue_style(
 			'tenup-theme-editor-frame-style-overrides',
-			FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/css/editor-frame-style-overrides.css',
+			TENUP_BLOCK_THEME_TEMPLATE_URL . '/dist/css/editor-frame-style-overrides.css',
 			[],
-			FUELED_MOVIES_THEME_VERSION
+			TENUP_BLOCK_THEME_VERSION
 		);
 
 		$block_extensions_deps = $this->get_asset_info( 'block-extensions', 'dependencies' );
 
 		wp_enqueue_script(
 			'tenup-theme-block-extensions',
-			FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/js/block-extensions.js',
+			TENUP_BLOCK_THEME_TEMPLATE_URL . '/dist/js/block-extensions.js',
 			is_array( $block_extensions_deps ) ? $block_extensions_deps : [],
 			$this->get_asset_info( 'block-extensions', 'version' ),
 			true
@@ -111,9 +111,9 @@ class Assets implements ModuleInterface {
 
 		wp_enqueue_style(
 			'tenup-theme-editor-canvas-style-overrides',
-			FUELED_MOVIES_THEME_TEMPLATE_URL . '/dist/css/editor-canvas-style-overrides.css',
+			TENUP_BLOCK_THEME_TEMPLATE_URL . '/dist/css/editor-canvas-style-overrides.css',
 			[],
-			FUELED_MOVIES_THEME_VERSION
+			TENUP_BLOCK_THEME_VERSION
 		);
 	}
 
@@ -127,7 +127,7 @@ class Assets implements ModuleInterface {
 			return;
 		}
 
-		$icon_paths = glob( FUELED_MOVIES_THEME_DIST_PATH . 'svg/*.svg' );
+		$icon_paths = glob( TENUP_BLOCK_THEME_DIST_PATH . 'svg/*.svg' );
 
 		if ( ! $icon_paths ) {
 			return;

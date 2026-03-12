@@ -2,10 +2,10 @@
 /**
  * TemplateTags module.
  *
- * @package FueledMoviesTheme
+ * @package TenupBlockTheme
  */
 
-namespace FueledMoviesTheme;
+namespace TenupBlockTheme;
 
 use TenupFramework\Module;
 use TenupFramework\ModuleInterface;
@@ -13,7 +13,7 @@ use TenupFramework\ModuleInterface;
 /**
  * TemplateTags module.
  *
- * @package FueledMoviesTheme
+ * @package TenupBlockTheme
  */
 class TemplateTags implements ModuleInterface {
 

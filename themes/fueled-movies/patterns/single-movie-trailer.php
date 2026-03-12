@@ -8,10 +8,10 @@
  * @todo: This gets overridden everytime we make template edits and paste back that into the html file.
  * Ensure this gets added to the template before final launch.
  *
- * @package FueledMoviesTheme
+ * @package TenupBlockTheme
  */
 
-$placeholder_image = FUELED_MOVIES_THEME_TEMPLATE_URL . '/patterns/images/placeholder.png';
+$placeholder_image = TENUP_BLOCK_THEME_TEMPLATE_URL . '/patterns/images/placeholder.png';
 $trailer_id        = get_post_meta( get_the_ID(), 'tenup_movie_trailer_id', true );
 $url               = 'https://www.imdb.com/video/embed/' . $trailer_id . '/';
 

@@ -2,17 +2,17 @@
 /**
  * ThemeCore module.
  *
- * @package FueledMoviesTheme
+ * @package TenupBlockTheme
  */
 
-namespace FueledMoviesTheme;
+namespace TenupBlockTheme;
 
 use TenupFramework\ModuleInitialization;
 
 /**
  * ThemeCore module.
  *
- * @package FueledMoviesTheme
+ * @package TenupBlockTheme
  */
 class ThemeCore {
 
@@ -22,14 +22,14 @@ class ThemeCore {
 	 * @return void
 	 */
 	public function setup() {
-		add_action( 'init', [ $this, 'init' ], apply_filters( 'fueled_movies_theme_init_priority', 8 ) );
+		add_action( 'init', [ $this, 'init' ], apply_filters( 'tenup_block_theme_init_priority', 8 ) );
 		add_action( 'after_setup_theme', [ $this, 'i18n' ] );
 		add_action( 'after_setup_theme', [ $this, 'theme_setup' ] );
 
 		add_action( 'wp_head', [ $this, 'js_detection' ], 0 );
 		add_action( 'wp_head', [ $this, 'scrollbar_detection' ], 0 );
 
-		do_action( 'fueled_movies_theme_loaded' );
+		do_action( 'tenup_block_theme_loaded' );
 	}
 
 	/**
@@ -38,7 +38,7 @@ class ThemeCore {
 	 * @return void
 	 */
 	public function i18n() {
-		load_theme_textdomain( 'tenup-theme', FUELED_MOVIES_THEME_PATH . '/languages' );
+		load_theme_textdomain( 'tenup-theme', TENUP_BLOCK_THEME_PATH . '/languages' );
 	}
 
 	/**
@@ -58,7 +58,7 @@ class ThemeCore {
 	 * @return void
 	 */
 	public function init() {
-		do_action( 'fueled_movies_theme_before_init' );
+		do_action( 'tenup_block_theme_before_init' );
 
 		if ( ! class_exists( '\TenupFramework\ModuleInitialization' ) ) {
 			add_action(
@@ -82,8 +82,8 @@ class ThemeCore {
 			return;
 		}
 
-		ModuleInitialization::instance()->init_classes( FUELED_MOVIES_THEME_INC );
-		do_action( 'fueled_movies_theme_init' );
+		ModuleInitialization::instance()->init_classes( TENUP_BLOCK_THEME_INC );
+		do_action( 'tenup_block_theme_init' );
 	}
 
 	/**
