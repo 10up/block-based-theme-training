@@ -34,7 +34,7 @@ if ( $is_movie || $is_person ) :
 				<div class="wp-block-group">
 
 					<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"tenup/block-bindings","args":{"key":"viewerRatingLabelTextNumberOnly"}}}}} -->
-					<p><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-yellow-color">★</mark> 0.0</p>
+					<p><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-yellow-primary-color">★</mark> 0.0</p>
 					<!-- /wp:paragraph -->
 
 					<!-- wp:paragraph -->

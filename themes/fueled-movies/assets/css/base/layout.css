@@ -1,5 +1,5 @@
 html {
-	accent-color: var(--wp--custom--color--yellow--primary);
+	accent-color: var(--wp--preset--color--yellow-primary);
 	scroll-behavior: smooth;
 
 	@view-transition { /* stylelint-disable-line at-rule-no-unknown */
