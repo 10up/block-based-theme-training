@@ -30,7 +30,7 @@ registerBlockExtension('core/group', {
 	classNameGenerator: (attributes) => {
 		const { hasSeparator, layout } = attributes;
 
-		if (hasSeparator && layout?.type === 'flex' && layout?.orientation === 'horizontal') {
+		if (hasSeparator && layout?.type === 'flex' && layout?.orientation !== 'vertical') {
 			return 'has-separator';
 		}
 
@@ -46,7 +46,7 @@ registerBlockExtension('core/group', {
 		const { attributes, setAttributes } = props;
 		const { hasSeparator, layout } = attributes;
 
-		if (layout?.type !== 'flex' || layout?.orientation !== 'horizontal') {
+		if (layout?.type !== 'flex' || layout?.orientation === 'vertical') {
 			return null;
 		}
 

@@ -43,7 +43,7 @@ registerBlockBindingsSource({
 
 		if (bindings.text?.args?.key === 'viewerRatingLabelText') {
 			return {
-				text: '★ 0/10 (0)',
+				text: '★ 10/10 (0)',
 			};
 		}
 

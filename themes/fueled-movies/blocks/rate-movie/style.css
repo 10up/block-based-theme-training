@@ -1,7 +1,3 @@
-/*
-@todo: Anchor positioning not working correctly in Firefox.
-Refactor or add note in training to use Chrome/Safari for this lesson.
-*/
 .wp-block-tenup-rate-movie > .wp-block-button {
 	anchor-name: --anchor-rate-movie;
 	justify-content: center;
