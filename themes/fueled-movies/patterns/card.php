@@ -19,13 +19,13 @@ $is_person = 'tenup-person' === $post_type;
 
 	<!-- wp:post-featured-image {"aspectRatio":"2/3","width":"","height":"","style":{"border":{"radius":"5px"}}} /-->
 
-	<!-- wp:group {"align":"wide","className":"is-style-default","style":{"spacing":{"blockGap":"var:preset|spacing|12"},"layout":{"selfStretch":"fill","flexSize":null},"border":{"width":"0px","style":"none","radius":{"topLeft":"0px","topRight":"0px","bottomLeft":"8px","bottomRight":"8px"}}},"fontSize":"small","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between","flexWrap":"nowrap","justifyContent":"stretch"}} -->
-	<div class="wp-block-group alignwide is-style-default has-small-font-size" style="border-style:none;border-width:0px;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-left-radius:8px;border-bottom-right-radius:8px">
+	<!-- wp:group {"align":"wide","className":"is-style-default","style":{"spacing":{"blockGap":"var:preset|spacing|12"},"layout":{"selfStretch":"fill","flexSize":null},"border":{"width":"0px","style":"none","radius":{"topLeft":"0px","topRight":"0px","bottomLeft":"8px","bottomRight":"8px"}}},"layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between","flexWrap":"nowrap","justifyContent":"stretch"}} -->
+	<div class="wp-block-group alignwide is-style-default" style="border-style:none;border-width:0px;border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-left-radius:8px;border-bottom-right-radius:8px">
 
 		<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
 		<div class="wp-block-group alignwide">
 
-			<!-- wp:post-title {"isLink":true,"align":"wide","style":{"spacing":{"margin":{"top":"0","right":"0","bottom":"0","left":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|text-primary"},":hover":{"color":{"text":"var:preset|color|text-primary"}}}}},"fontSize":"heading-4"} /-->
+			<!-- wp:post-title {"isLink":true,"align":"wide","style":{"spacing":{"margin":{"top":"0","right":"0","bottom":"0","left":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|text-primary"},":hover":{"color":{"text":"var:preset|color|text-primary"}}}}}} /-->
 
 			<?php if ( $is_movie ) : ?>
 
@@ -48,8 +48,8 @@ $is_person = 'tenup-person' === $post_type;
 				<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|8"}},"layout":{"type":"flex","orientation":"vertical"}} -->
 				<div class="wp-block-group">
 
-					<!-- wp:post-date {"fontSize":"minus-1"} /-->
-					<!-- wp:post-terms {"term":"category","fontSize":"minus-1"} /-->
+					<!-- wp:post-date /-->
+					<!-- wp:post-terms {"term":"category"} /-->
 
 				</div>
 				<!-- /wp:group -->
