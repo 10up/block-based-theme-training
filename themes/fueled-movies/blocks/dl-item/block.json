@@ -40,7 +40,7 @@
 			"padding": true
 		}
 	},
-	"render": "file:./markup.php",
+	"render": "file:./render.php",
 	"editorScript": "file:./index.js",
 	"style": "file:./style.css"
 }

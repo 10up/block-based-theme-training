@@ -1,6 +1,6 @@
 <?php
 /**
- * Rate Movie block markup
+ * Rate Movie block markup.
  *
  * @package TenupBlockTheme
  *

@@ -1,13 +1,12 @@
 <?php
 /**
- * Description List Term markup
+ * Description List Term markup.
  *
- * @package tenup\Blocks\DescriptionListTerm
+ * @package TenupBlockTheme
  *
  * @var array    $attributes Block attributes.
  * @var string   $content    Block content.
  * @var WP_Block $block      Block instance.
- * @var array    $context    Block context.
  */
 
 $term_content = $attributes['content'] ?? '';

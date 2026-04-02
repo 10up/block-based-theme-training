@@ -1,16 +1,15 @@
 <?php
 /**
- * Description List Description markup
+ * Description List markup.
  *
- * @package tenup\Blocks\DescriptionListDescription
+ * @package TenupBlockTheme
  *
  * @var array    $attributes Block attributes.
  * @var string   $content    Block content.
  * @var WP_Block $block      Block instance.
- * @var array    $context    Block context.
  */
 
-// Don't render empty description.
+// Don't render empty list.
 if ( empty( trim( $content ) ) ) {
 	return;
 }
@@ -19,6 +18,6 @@ $block_wrapper_attributes = get_block_wrapper_attributes();
 
 ?>
 
-<dd <?php echo $block_wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+<dl <?php echo $block_wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 	<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-</dd>
+</dl>

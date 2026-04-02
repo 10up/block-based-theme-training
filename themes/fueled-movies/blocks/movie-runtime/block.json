@@ -13,5 +13,5 @@
 	},
 	"textdomain": "tenup",
 	"editorScript": "file:./index.js",
-	"render": "file:./markup.php"
+	"render": "file:./render.php"
 }

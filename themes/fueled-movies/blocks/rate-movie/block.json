@@ -21,7 +21,7 @@
 			"clientNavigation": true
 		}
 	},
-	"render": "file:./markup.php",
+	"render": "file:./render.php",
 	"editorScript": "file:./index.js",
 	"viewScriptModule": "file:./view-module.js",
 	"style": "file:./style.css"

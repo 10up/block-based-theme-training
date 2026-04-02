@@ -1,12 +1,12 @@
 <?php
 /**
- * Movie Runtime markup
+ * Movie Runtime markup.
  *
- * @package tenup\Blocks\MovieRuntime
+ * @package TenupBlockTheme
  *
- * @var array    $attributes         Block attributes.
- * @var string   $content            Block content.
- * @var WP_Block $block              Block instance.
+ * @var array    $attributes Block attributes.
+ * @var string   $content    Block content.
+ * @var WP_Block $block      Block instance.
  */
 
 $context = $block->context;
