@@ -18,7 +18,7 @@ $clear_text   = esc_html__( 'Clear', 'tenup' );
  * using the theme/styles/*.json approach to styling.
  *
  * A maybe more practical option for buttons would be to
- * use a CSS file to add variations, but this is a good
+ * use a CSS file to style variations, but this is a good
  * example of how to work with the theme.json approach
  * if you need block markup from PHP.
  */
