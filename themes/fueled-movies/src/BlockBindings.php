@@ -94,7 +94,7 @@ class BlockBindings implements ModuleInterface {
 	 * Get the archive link text or URL.
 	 *
 	 * @param string $type The type of value to return ('text' or 'url').
-	 * @return string|null The text or URL.
+	 * @return string The text or URL.
 	 */
 	private function get_archive_link( $type ) {
 		$url         = home_url();
@@ -119,7 +119,7 @@ class BlockBindings implements ModuleInterface {
 	/**
 	 * Get the movie stars as comma-separated linked names.
 	 *
-	 * @return string|null The linked names HTML or null.
+	 * @return string The linked names HTML, or empty string if none.
 	 */
 	private function get_movie_stars() {
 		$value   = '';
@@ -171,7 +171,7 @@ class BlockBindings implements ModuleInterface {
 	/**
 	 * Get the person's birth date formatted.
 	 *
-	 * @return string|null The formatted date or null.
+	 * @return string The formatted date, or empty string if not set.
 	 */
 	private function get_person_born() {
 		$value   = '';
@@ -195,7 +195,7 @@ class BlockBindings implements ModuleInterface {
 	/**
 	 * Get the person's death date formatted.
 	 *
-	 * @return string|null The formatted date or null.
+	 * @return string The formatted date, or empty string if not set.
 	 */
 	private function get_person_died() {
 		$value   = '';
@@ -219,7 +219,7 @@ class BlockBindings implements ModuleInterface {
 	/**
 	 * Get the person's movies as comma-separated linked titles.
 	 *
-	 * @return string|null The linked titles HTML or null.
+	 * @return string The linked titles HTML, or empty string if none.
 	 */
 	private function get_person_movies() {
 		$value   = '';

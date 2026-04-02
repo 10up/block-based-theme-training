@@ -47,7 +47,9 @@ const DateTimePopover = ({ date, setDate, label }) => {
 			popoverProps={{ offset: 36, placement: 'left-end' }}
 			renderToggle={({ isOpen, onToggle }) => (
 				<HStack justify="flex-start" alignment="top">
-					<div className="editor-post-panel__row-label">{__(label, 'tenup-block-theme')}</div>
+					<div className="editor-post-panel__row-label">
+						{__(label, 'tenup-block-theme')}
+					</div>
 					<Button
 						aria-expanded={isOpen}
 						onClick={onToggle}

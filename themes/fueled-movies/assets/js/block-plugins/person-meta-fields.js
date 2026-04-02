@@ -1,15 +1,15 @@
 /**
  * WordPress dependencies.
  */
+import { Flex } from '@wordpress/components';
+import { PluginDocumentSettingPanel } from '@wordpress/editor';
+import { __ } from '@wordpress/i18n';
+import { registerPlugin } from '@wordpress/plugins';
 
 /**
  * External dependencies.
  */
 import { usePost } from '@10up/block-components';
-import { Flex } from '@wordpress/components';
-import { PluginDocumentSettingPanel } from '@wordpress/editor';
-import { __ } from '@wordpress/i18n';
-import { registerPlugin } from '@wordpress/plugins';
 
 /**
  * Internal dependencies.

@@ -141,6 +141,10 @@ class Blocks implements ModuleInterface {
 	 */
 	public function filter_featured_image_block( $block_content, $block, $instance ) {
 
+		if ( empty( $instance->context['postId'] ) ) {
+			return $block_content;
+		}
+
 		$featured_image_id = get_post_thumbnail_id( $instance->context['postId'] );
 
 		$p = new WP_HTML_Tag_Processor( $block_content );

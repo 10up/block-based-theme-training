@@ -53,7 +53,7 @@ class ThemeCore {
 	}
 
 	/**
-	 * Initializes the plugin and fires an action other plugins can hook into.
+	 * Initializes the theme and fires an action plugins can hook into.
 	 *
 	 * @return void
 	 */
@@ -72,7 +72,7 @@ class ThemeCore {
 						wp_kses_post(
 							__(
 								'Please ensure the <a href="https://github.com/10up/wp-framework"><code>10up/wp-framework</code></a> composer package is installed.',
-								'tenup-theme'
+								'tenup-block-theme'
 							)
 						)
 					);

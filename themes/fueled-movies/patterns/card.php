@@ -65,7 +65,7 @@ $is_person = 'tenup-person' === $post_type;
 			<div class="wp-block-buttons">
 
 				<!-- wp:button {"width":100,"className":"is-style-secondary"} -->
-				<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-secondary"><a class="wp-block-button__link wp-element-button"><?php echo $is_movie ? '▶ Trailer' : 'View More'; ?></a></div>
+				<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-secondary"><a class="wp-block-button__link wp-element-button"><?php echo esc_html( $is_movie ? __( '▶ Trailer', 'tenup-block-theme' ) : __( 'View More', 'tenup-block-theme' ) ); ?></a></div>
 				<!-- /wp:button -->
 
 			</div>
