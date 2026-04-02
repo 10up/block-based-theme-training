@@ -135,13 +135,13 @@ class Blocks implements ModuleInterface {
 	 * Filter the post-featured-image block to add a view transition class based on the featured image ID.
 	 *
 	 * @param string   $block_content The block content.
-	 * @param array    $block The block.
-	 * @param WP_Block $parsed_block The parsed block.
+	 * @param array    $block         The parsed block array.
+	 * @param WP_Block $instance      The block instance.
 	 * @return string
 	 */
-	public function filter_featured_image_block( $block_content, $block, $parsed_block ) {
+	public function filter_featured_image_block( $block_content, $block, $instance ) {
 
-		$featured_image_id = get_post_thumbnail_id( $parsed_block->context['postId'] );
+		$featured_image_id = get_post_thumbnail_id( $instance->context['postId'] );
 
 		$p = new WP_HTML_Tag_Processor( $block_content );
 		$p->next_tag();
@@ -170,11 +170,11 @@ class Blocks implements ModuleInterface {
 	 * @see https://github.com/WordPress/gutenberg/issues/53766
 	 *
 	 * @param string   $block_content The block content.
-	 * @param array    $block The block.
-	 * @param WP_Block $parsed_block The parsed block.
+	 * @param array    $block         The parsed block array.
+	 * @param WP_Block $instance      The block instance.
 	 * @return string
 	 */
-	public function maybe_add_flex_shrink( $block_content, $block, $parsed_block ) {
+	public function maybe_add_flex_shrink( $block_content, $block, $instance ) {
 
 		if ( isset( $block['attrs']['style']['layout']['selfStretch'] ) && 'fixed' === $block['attrs']['style']['layout']['selfStretch'] ) {
 			$tags = new WP_HTML_Tag_Processor( $block_content );
