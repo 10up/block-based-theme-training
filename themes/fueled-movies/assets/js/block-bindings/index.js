@@ -41,6 +41,12 @@ registerBlockBindingsSource({
 			};
 		}
 
+		if (bindings.content?.args?.key === 'viewerRatingLabelTextNumberOnly') {
+			return {
+				content: '★ 0.0',
+			};
+		}
+
 		if (bindings.text?.args?.key === 'viewerRatingLabelText') {
 			return {
 				text: '★ 10/10 (0)',
@@ -97,6 +103,13 @@ registerBlockBindingsSource({
 				type: 'string',
 				args: {
 					key: 'personMovies',
+				},
+			},
+			{
+				label: 'Viewer Rating Label Text (Number Only)',
+				type: 'string',
+				args: {
+					key: 'viewerRatingLabelTextNumberOnly',
 				},
 			},
 			{
