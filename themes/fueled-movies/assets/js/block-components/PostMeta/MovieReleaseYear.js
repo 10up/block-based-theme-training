@@ -23,7 +23,7 @@ const MovieReleaseYear = ({ postMetaProps, ...restProps }) => {
 		<PostMeta metaKey="tenup_movie_release_year" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<NumberControl
-					label={__('Release Year', 'tenup')}
+					label={__('Release Year', 'tenup-block-theme')}
 					min={1900}
 					max={2100}
 					onChange={(value) => setMeta(value)}

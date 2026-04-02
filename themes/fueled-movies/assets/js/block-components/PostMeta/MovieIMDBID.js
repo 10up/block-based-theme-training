@@ -23,10 +23,10 @@ const MovieIMDBID = ({ postMetaProps, ...restProps }) => {
 		<PostMeta metaKey="tenup_movie_imdb_id" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<TextControl
-					label={__('IMDB ID', 'tenup')}
+					label={__('IMDB ID', 'tenup-block-theme')}
 					help={
 						<>
-							{__('Enter the IMDB ID of the movie.', 'tenup')}
+							{__('Enter the IMDB ID of the movie.', 'tenup-block-theme')}
 							{meta && (
 								<>
 									<br />
@@ -36,7 +36,7 @@ const MovieIMDBID = ({ postMetaProps, ...restProps }) => {
 										target="_blank"
 										variant="link"
 									>
-										{__('IMDB', 'tenup')}
+										{__('IMDB', 'tenup-block-theme')}
 									</Button>
 									<Button
 										href={`https://api.imdbapi.dev/titles/${meta}`}
@@ -44,7 +44,7 @@ const MovieIMDBID = ({ postMetaProps, ...restProps }) => {
 										target="_blank"
 										variant="link"
 									>
-										{__('JSON', 'tenup')}
+										{__('JSON', 'tenup-block-theme')}
 									</Button>
 								</>
 							)}

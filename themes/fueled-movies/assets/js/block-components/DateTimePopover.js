@@ -47,14 +47,14 @@ const DateTimePopover = ({ date, setDate, label }) => {
 			popoverProps={{ offset: 36, placement: 'left-end' }}
 			renderToggle={({ isOpen, onToggle }) => (
 				<HStack justify="flex-start" alignment="top">
-					<div className="editor-post-panel__row-label">{__(label, 'tenup')}</div>
+					<div className="editor-post-panel__row-label">{__(label, 'tenup-block-theme')}</div>
 					<Button
 						aria-expanded={isOpen}
 						onClick={onToggle}
 						size="compact"
 						variant="tertiary"
 					>
-						{date ? formatDate(date) : __('Choose a date', 'tenup')}
+						{date ? formatDate(date) : __('Choose a date', 'tenup-block-theme')}
 					</Button>
 				</HStack>
 			)}
@@ -65,7 +65,7 @@ const DateTimePopover = ({ date, setDate, label }) => {
 						className="block-editor-inspector-popover-header"
 					>
 						<Heading level={2} size={13}>
-							{__(label, 'tenup')}
+							{__(label, 'tenup-block-theme')}
 						</Heading>
 						<HStack
 							justify="flex-end"
@@ -78,19 +78,19 @@ const DateTimePopover = ({ date, setDate, label }) => {
 								variant="link"
 								isDestructive
 							>
-								{__('Clear', 'tenup')}
+								{__('Clear', 'tenup-block-theme')}
 							</Button>
 							<Button
 								size="small"
 								className="block-editor-inspector-popover-header__action"
-								label={__('Close', 'tenup')}
+								label={__('Close', 'tenup-block-theme')}
 								icon={closeSmall}
 								onClick={onClose}
 							/>
 						</HStack>
 					</HStack>
 					<DateTimePicker
-						label={__(label, 'tenup')}
+						label={__(label, 'tenup-block-theme')}
 						onChange={setDate}
 						currentDate={date}
 						is12Hour

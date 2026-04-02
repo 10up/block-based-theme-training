@@ -38,7 +38,7 @@ class ThemeCore {
 	 * @return void
 	 */
 	public function i18n() {
-		load_theme_textdomain( 'tenup-theme', TENUP_BLOCK_THEME_PATH . '/languages' );
+		load_theme_textdomain( 'tenup-block-theme', TENUP_BLOCK_THEME_PATH . '/languages' );
 	}
 
 	/**
@@ -72,7 +72,7 @@ class ThemeCore {
 						wp_kses_post(
 							__(
 								'Please ensure the <a href="https://github.com/10up/wp-framework"><code>10up/wp-framework</code></a> composer package is installed.',
-								'tenup-plugin'
+								'tenup-theme'
 							)
 						)
 					);

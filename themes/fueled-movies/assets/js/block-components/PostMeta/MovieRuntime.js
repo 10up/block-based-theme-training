@@ -23,8 +23,8 @@ const MovieRuntime = ({ postMetaProps, ...restProps }) => {
 			{(meta, setMeta) => (
 				<BaseControl
 					id="tenup-movie-runtime"
-					label={__('Runtime', 'tenup')}
-					help={__('In hours & minutes', 'tenup')}
+					label={__('Runtime', 'tenup-block-theme')}
+					help={__('In hours & minutes', 'tenup-block-theme')}
 				>
 					<TimePicker.TimeInput
 						onChange={(value) => {

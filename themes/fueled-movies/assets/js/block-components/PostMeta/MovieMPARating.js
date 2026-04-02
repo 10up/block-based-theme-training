@@ -29,7 +29,7 @@ const MovieMPARating = ({ postMetaProps, ...restProps }) => {
 		<PostMeta metaKey="tenup_movie_mpa_rating" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<SelectControl
-					label={__('MPA Rating', 'tenup')}
+					label={__('MPA Rating', 'tenup-block-theme')}
 					value={meta}
 					options={options}
 					onChange={(value) => setMeta(value)}

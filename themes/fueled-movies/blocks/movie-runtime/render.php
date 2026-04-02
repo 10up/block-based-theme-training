@@ -31,13 +31,13 @@ if ( '0' === $hours && '0' === $minutes ) {
 
 $hours_tag = sprintf(
 	'<span aria-label="%s">%s</span> ',
-	esc_html( $hours ) . __( ' hours', 'tenup' ),
+	esc_html( $hours ) . __( ' hours', 'tenup-block-theme' ),
 	esc_html( $hours ) . 'h'
 );
 
 $minutes_tag = sprintf(
 	'<span aria-label="%s">%s</span>',
-	esc_html( $minutes ) . __( ' minutes', 'tenup' ),
+	esc_html( $minutes ) . __( ' minutes', 'tenup-block-theme' ),
 	esc_html( $minutes ) . 'm'
 );
 

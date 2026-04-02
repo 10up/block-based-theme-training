@@ -48,7 +48,7 @@ class BlockBindings implements ModuleInterface {
 		register_block_bindings_source(
 			'tenup/block-bindings',
 			array(
-				'label'              => __( 'Fueled Movies Theme', 'tenup' ),
+				'label'              => __( 'Fueled Movies Theme', 'tenup-block-theme' ),
 				'get_value_callback' => [ $this, 'block_bindings_callback' ],
 			)
 		);
@@ -110,7 +110,7 @@ class BlockBindings implements ModuleInterface {
 		$value = $url;
 
 		if ( 'text' === $type ) {
-			$value = __( '← Back', 'tenup' );
+			$value = __( '← Back', 'tenup-block-theme' );
 		}
 
 		return $value;

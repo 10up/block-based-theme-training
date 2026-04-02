@@ -9,8 +9,8 @@
  * @var WP_Block $block      Block instance.
  */
 
-$trigger_text = esc_html__( 'Rate', 'tenup' );
-$clear_text   = esc_html__( 'Clear', 'tenup' );
+$trigger_text = esc_html__( 'Rate', 'tenup-block-theme' );
+$clear_text   = esc_html__( 'Clear', 'tenup-block-theme' );
 
 /**
  * Note we are using do_blocks() so that we will get
@@ -83,7 +83,7 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 			<label
 				class="wp-block-tenup-rate-movie__slider"
 			>
-				<span class="visually-hidden"><?php echo esc_html__( 'Rate this movie from 1 to 10', 'tenup' ); ?></span>
+				<span class="visually-hidden"><?php echo esc_html__( 'Rate this movie from 1 to 10', 'tenup-block-theme' ); ?></span>
 				<input
 					data-wp-bind--value="state.sliderValue"
 					data-wp-on--input="actions.selectRating"

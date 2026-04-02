@@ -22,7 +22,7 @@ const PersonBiography = ({ postMetaProps, ...restProps }) => {
 		<PostMeta metaKey="tenup_person_biography" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<TextareaControl
-					label={__('Biography', 'tenup')}
+					label={__('Biography', 'tenup-block-theme')}
 					onChange={(value) => setMeta(value)}
 					value={meta}
 					{...restProps}

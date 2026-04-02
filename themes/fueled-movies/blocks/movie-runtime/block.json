@@ -11,7 +11,7 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "tenup",
+	"textdomain": "tenup-block-theme",
 	"editorScript": "file:./index.js",
 	"render": "file:./render.php"
 }

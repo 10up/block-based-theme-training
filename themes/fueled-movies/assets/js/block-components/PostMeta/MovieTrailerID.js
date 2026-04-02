@@ -23,10 +23,10 @@ const MovieTrailerID = ({ postMetaProps, ...restProps }) => {
 		<PostMeta metaKey="tenup_movie_trailer_id" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<TextControl
-					label={__('IMDB Trailer ID', 'tenup')}
+					label={__('IMDB Trailer ID', 'tenup-block-theme')}
 					help={
 						<>
-							{__('Enter the IMDB video ID of the trailer.', 'tenup')}
+							{__('Enter the IMDB video ID of the trailer.', 'tenup-block-theme')}
 							{meta && (
 								<>
 									<br />
@@ -36,7 +36,7 @@ const MovieTrailerID = ({ postMetaProps, ...restProps }) => {
 										target="_blank"
 										variant="link"
 									>
-										{__('IMDB', 'tenup')}
+										{__('IMDB', 'tenup-block-theme')}
 									</Button>
 								</>
 							)}

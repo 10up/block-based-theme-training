@@ -13,7 +13,7 @@ export const BlockEdit = (props) => {
 			tagName="dt"
 			value={content}
 			onChange={(value) => setAttributes({ content: value })}
-			placeholder={__('Enter term…', 'ignite-wp')}
+			placeholder={__('Enter term…', 'tenup-block-theme')}
 		/>
 	);
 };

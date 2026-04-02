@@ -12,7 +12,7 @@
 		"vote"
 	],
 	"icon": "star-filled",
-	"textdomain": "tenup",
+	"textdomain": "tenup-block-theme",
 	"attributes": {},
 	"supports": {
 		"html": false,

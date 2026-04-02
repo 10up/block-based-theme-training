@@ -36,7 +36,7 @@ const PersonFields = () => {
 	return (
 		<PluginDocumentSettingPanel
 			name="tenup-person-fields"
-			title={__('Person Information', 'tenup')}
+			title={__('Person Information', 'tenup-block-theme')}
 		>
 			<Flex direction="column">
 				<PersonIMDBID />

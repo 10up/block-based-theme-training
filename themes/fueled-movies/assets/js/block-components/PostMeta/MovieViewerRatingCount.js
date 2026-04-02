@@ -23,7 +23,7 @@ const MovieViewerRatingCount = ({ postMetaProps, ...restProps }) => {
 		<PostMeta metaKey="tenup_movie_viewer_rating_count" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<NumberControl
-					label={__('Viewer Rating Count', 'tenup')}
+					label={__('Viewer Rating Count', 'tenup-block-theme')}
 					onChange={(value) => setMeta(value)}
 					value={meta}
 					__next40pxDefaultSize

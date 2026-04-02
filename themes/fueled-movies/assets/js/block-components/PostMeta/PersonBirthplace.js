@@ -22,8 +22,8 @@ const PersonBirthplace = ({ postMetaProps, ...restProps }) => {
 		<PostMeta metaKey="tenup_person_birthplace" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<TextControl
-					label={__('Birthplace', 'tenup')}
-					help={__('City, State, Country', 'tenup')}
+					label={__('Birthplace', 'tenup-block-theme')}
+					help={__('City, State, Country', 'tenup-block-theme')}
 					onChange={(value) => setMeta(value)}
 					value={meta}
 					__next40pxDefaultSize

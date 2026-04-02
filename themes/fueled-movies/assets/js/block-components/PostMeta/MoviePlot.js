@@ -22,7 +22,7 @@ const MoviePlot = ({ postMetaProps, ...restProps }) => {
 		<PostMeta metaKey="tenup_movie_plot" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<TextareaControl
-					label={__('Plot', 'tenup')}
+					label={__('Plot', 'tenup-block-theme')}
 					onChange={(value) => setMeta(value)}
 					value={meta}
 					{...restProps}

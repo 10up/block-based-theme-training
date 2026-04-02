@@ -22,8 +22,8 @@ const PersonDeathplace = ({ postMetaProps, ...restProps }) => {
 		<PostMeta metaKey="tenup_person_deathplace" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<TextControl
-					label={__('Deathplace', 'tenup')}
-					help={__('City, State, Country', 'tenup')}
+					label={__('Deathplace', 'tenup-block-theme')}
+					help={__('City, State, Country', 'tenup-block-theme')}
 					onChange={(value) => setMeta(value)}
 					value={meta}
 					__next40pxDefaultSize

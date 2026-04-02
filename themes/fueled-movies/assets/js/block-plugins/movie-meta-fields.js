@@ -38,7 +38,7 @@ const MovieFields = () => {
 	return (
 		<PluginDocumentSettingPanel
 			name="tenup-movie-fields"
-			title={__('Movie Information', 'tenup')}
+			title={__('Movie Information', 'tenup-block-theme')}
 		>
 			<Flex direction="column">
 				<MovieIMDBID />

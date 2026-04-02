@@ -26,7 +26,7 @@ const PersonBorn = ({ postMetaProps, ...restProps }) => {
 		<PostMeta metaKey="tenup_person_born" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<DateTimePopover
-					label={__('Born', 'tenup')}
+					label={__('Born', 'tenup-block-theme')}
 					date={meta}
 					setDate={(value) => setMeta(value)}
 					{...restProps}

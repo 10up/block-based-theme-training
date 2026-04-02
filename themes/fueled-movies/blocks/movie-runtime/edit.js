@@ -47,7 +47,7 @@ export const BlockEdit = () => {
 
 	return (
 		<div className="components-notice is-error">
-			{__('Movie Runtime post meta not found.', 'tenup')}
+			{__('Movie Runtime post meta not found.', 'tenup-block-theme')}
 		</div>
 	);
 };

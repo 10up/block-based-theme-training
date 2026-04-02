@@ -23,10 +23,10 @@ const PersonIMDBID = ({ postMetaProps, ...restProps }) => {
 		<PostMeta metaKey="tenup_person_imdb_id" {...postMetaProps}>
 			{(meta, setMeta) => (
 				<TextControl
-					label={__('IMDB ID', 'tenup')}
+					label={__('IMDB ID', 'tenup-block-theme')}
 					help={
 						<>
-							{__('Enter the IMDB ID of the person.', 'tenup')}
+							{__('Enter the IMDB ID of the person.', 'tenup-block-theme')}
 							{meta && (
 								<>
 									<br />
@@ -36,7 +36,7 @@ const PersonIMDBID = ({ postMetaProps, ...restProps }) => {
 										target="_blank"
 										variant="link"
 									>
-										{__('IMDB', 'tenup')}
+										{__('IMDB', 'tenup-block-theme')}
 									</Button>
 									{' | '}
 									<Button
@@ -45,7 +45,7 @@ const PersonIMDBID = ({ postMetaProps, ...restProps }) => {
 										target="_blank"
 										variant="link"
 									>
-										{__('JSON', 'tenup')}
+										{__('JSON', 'tenup-block-theme')}
 									</Button>
 								</>
 							)}
