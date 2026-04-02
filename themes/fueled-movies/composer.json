@@ -1,5 +1,7 @@
 {
 	"name": "10up/tenup-theme",
+	"description": "A block-based WordPress theme for the Fueled Movies training project.",
+	"license": "GPL-2.0-or-later",
 	"type": "wordpress-theme",
 	"authors": [
 		{
