@@ -54,18 +54,15 @@ $clear_button = '
 
 $block_wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'data-wp-context'     => wp_json_encode(
-			[
-				'rating' => null,
-			],
-			JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
-		),
 		'data-wp-interactive' => 'tenup/rate-movie',
 	]
 );
 
 ?>
-<div <?php echo $block_wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+<div
+	<?php echo $block_wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<?php echo wp_interactivity_data_wp_context( [ 'rating' => null ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+>
 
 	<?php echo do_blocks( $trigger_button ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
