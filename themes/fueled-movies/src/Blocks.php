@@ -148,7 +148,10 @@ class Blocks implements ModuleInterface {
 		$featured_image_id = get_post_thumbnail_id( $instance->context['postId'] );
 
 		$p = new WP_HTML_Tag_Processor( $block_content );
-		$p->next_tag();
+
+		if ( ! $p->next_tag() ) {
+			return $block_content;
+		}
 
 		if ( $p->has_class( 'is-style-single-movie-backdrop' ) ) {
 			return $block_content;
@@ -182,7 +185,11 @@ class Blocks implements ModuleInterface {
 
 		if ( isset( $block['attrs']['style']['layout']['selfStretch'] ) && 'fixed' === $block['attrs']['style']['layout']['selfStretch'] ) {
 			$tags = new WP_HTML_Tag_Processor( $block_content );
-			$tags->next_tag();
+
+			if ( ! $tags->next_tag() ) {
+				return $block_content;
+			}
+
 			$tags->add_class( 'flex-shrink-0' );
 			$block_content = $tags->get_updated_html();
 		}
