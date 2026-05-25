@@ -43,7 +43,9 @@ class Blocks implements ModuleInterface {
 		);
 		add_action( 'init', [ $this, 'register_theme_blocks' ], 10, 0 );
 		add_action( 'init', [ $this, 'enqueue_theme_block_styles' ], 10, 0 );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'localize_block_editor_data' ] );
 		add_filter( 'render_block_core/post-featured-image', [ $this, 'filter_featured_image_block' ], 10, 3 );
+		add_filter( 'render_block_core/button', [ $this, 'neutralize_empty_button_link' ], 10, 1 );
 		add_filter( 'render_block', [ $this, 'maybe_add_flex_shrink' ], 10, 3 );
 
 		// Prevents third-party blocks from being suggested in the block inserter.
@@ -132,11 +134,35 @@ class Blocks implements ModuleInterface {
 	}
 
 	/**
+	 * Inject per-block data into the editor so JS previews can use server-derived URLs.
+	 *
+	 * Runs before each block's editorScript loads, giving `edit.js` access to
+	 * a small namespaced global for assets webpack can't emit (e.g. static
+	 * images kept next to the block source).
+	 *
+	 * @return void
+	 */
+	public function localize_block_editor_data() {
+		wp_add_inline_script(
+			'tenup-movie-trailer-editor-script',
+			sprintf(
+				'window.tenupMovieTrailer = %s;',
+				wp_json_encode(
+					[
+						'placeholderUrl' => get_theme_file_uri( 'blocks/movie-trailer/placeholder.png' ),
+					]
+				)
+			),
+			'before'
+		);
+	}
+
+	/**
 	 * Filter the post-featured-image block to add a view transition class based on the featured image ID.
 	 *
-	 * @param string   $block_content The block content.
-	 * @param array    $block         The parsed block array.
-	 * @param WP_Block $instance      The block instance.
+	 * @param string    $block_content The block content.
+	 * @param array     $block         The parsed block array.
+	 * @param \WP_Block $instance      The block instance.
 	 * @return string
 	 */
 	public function filter_featured_image_block( $block_content, $block, $instance ) {
@@ -170,15 +196,44 @@ class Blocks implements ModuleInterface {
 	}
 
 	/**
+	 * Replace href-less core/button anchors with spans so they don't intercept card-level clicks.
+	 *
+	 * Card patterns include decorative buttons (e.g. "Trailer", "View More") rendered without
+	 * an href because the surrounding card is wrapped in a primary link. Leaving the anchor
+	 * in place lets it swallow the click and prevents the card-level navigation from firing.
+	 *
+	 * @param string $block_content The block content.
+	 * @return string
+	 */
+	public function neutralize_empty_button_link( $block_content ) {
+		if ( ! str_contains( $block_content, '<a' ) ) {
+			return $block_content;
+		}
+
+		$block_content = preg_replace_callback(
+			'#<a\b([^>]*)>(.*?)</a>#is',
+			function ( $matches ) {
+				if ( preg_match( '/\bhref\s*=/i', $matches[1] ) ) {
+					return $matches[0];
+				}
+				return '<span' . $matches[1] . '>' . $matches[2] . '</span>';
+			},
+			$block_content
+		);
+
+		return $block_content;
+	}
+
+	/**
 	 * Maybe add flex-shrink-0 class.
 	 *
 	 * Opinionated solution for Fit option in layout controls not behaving as expected.
 	 *
 	 * @see https://github.com/WordPress/gutenberg/issues/53766
 	 *
-	 * @param string   $block_content The block content.
-	 * @param array    $block         The parsed block array.
-	 * @param WP_Block $instance      The block instance.
+	 * @param string    $block_content The block content.
+	 * @param array     $block         The parsed block array.
+	 * @param \WP_Block $instance      The block instance.
 	 * @return string
 	 */
 	public function maybe_add_flex_shrink( $block_content, $block, $instance ) {

@@ -1,14 +1,12 @@
 import { useBlockProps } from '@wordpress/block-editor';
-import { useEntityProp } from '@wordpress/core-data';
 import { __ } from '@wordpress/i18n';
-import { usePost } from '@10up/block-components';
+import { usePost, usePostMetaValue } from '@10up/block-components';
 
 export const BlockEdit = () => {
 	const blockProps = useBlockProps();
 	const { postType } = usePost();
-	const [meta] = useEntityProp('postType', 'tenup-movie', 'meta');
-
-	const { tenup_movie_runtime = { hours: '0', minutes: '0' } } = meta || {};
+	const [tenup_movie_runtime = { hours: '0', minutes: '0' }] =
+		usePostMetaValue('tenup_movie_runtime');
 
 	let HoursTag = null;
 	let MinutesTag = null;

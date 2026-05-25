@@ -1,0 +1,7 @@
+.wp-block-tenup-movie-trailer {
+	border-radius: 3px;
+	display: flex;
+	height: auto;
+	max-width: 100%;
+	overflow: clip;
+}
