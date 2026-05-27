@@ -1,0 +1,28 @@
+.wp-block-buttons .wp-block-button__link {
+	inline-size: auto;
+}
+
+.wp-element-button {
+	align-items: center;
+	display: flex;
+	gap: 10px;
+
+	&:hover,
+	&:focus {
+		cursor: pointer;
+	}
+}
+
+/* Secondary button hover/focus handled in CSS because style variation
+   pseudo-state styles are overridden by theme.json default button styles
+   due to equal specificity and load order.
+   See https://github.com/WordPress/gutenberg/issues/64856.
+*/
+.is-style-secondary .wp-element-button {
+
+	&:hover,
+	&:focus {
+		background-color: var(--wp--custom--color--background--light-transparent-20, rgba(163, 163, 163, 0.3));
+		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
+	}
+}

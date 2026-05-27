@@ -1,46 +1,46 @@
 {
-  "name": "tenup-wp-scaffold",
-  "version": "1.0.0",
-  "description": "Project Description",
-  "homepage": "https://project-domain.tld",
-  "repository": {
-    "type": "git",
-    "url": "https://project-git-repo.tld"
-  },
-  "workspaces": [
-    "themes/*",
-    "mu-plugins/10up-plugin"
-  ],
-  "scripts": {
-    "prepare": "TEN=\"$(pwd)\"; UP=\"$(git rev-parse --show-toplevel)\"; TENUP=\"${TEN#\"$UP\"}\"; cd \"$(git rev-parse --show-toplevel)\"; husky .\"${TENUP}\"/.husky",
-    "build": "npm run build --workspaces --if-present",
-    "start": "npm run watch",
-    "watch:theme": "npm run watch -w=tenup-block-theme",
-    "watch:plugin": "npm run watch -w=tenup-plugin",
-    "watch": "run-p watch:theme watch:plugin",
-    "lint-js": "npm run lint-js --workspaces --if-present",
-    "format-js": "npm run format-js --workspaces --if-present",
-    "lint-style": "npm run lint-style --workspaces --if-present",
-    "test": "npm run test --workspaces --if-present",
-    "clean-dist": "npm run clean-dist --workspaces --if-present"
-  },
-  "author": {
-    "name": "10up",
-    "email": "info@10up.com",
-    "url": "https://10up.com",
-    "role": "developer"
-  },
-  "engineStrict": true,
-  "engines": {
-    "node": ">=20.0.0",
-    "npm": ">=9.0.0"
-  },
-  "devDependencies": {
-    "@wordpress/create-block": "4.55.0",
-    "10up-toolkit": "^6.0.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.2.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "3.3.3"
-  }
+	"name": "tenup-wp-scaffold",
+	"version": "1.0.0",
+	"description": "Project Description",
+	"homepage": "https://project-domain.tld",
+	"repository": {
+		"type": "git",
+		"url": "https://project-git-repo.tld"
+	},
+	"workspaces": [
+		"themes/*",
+		"mu-plugins/10up-plugin"
+	],
+	"scripts": {
+		"prepare": "TEN=\"$(pwd)\"; UP=\"$(git rev-parse --show-toplevel)\"; TENUP=\"${TEN#\"$UP\"}\"; cd \"$(git rev-parse --show-toplevel)\"; husky .\"${TENUP}\"/.husky",
+		"build": "npm run build --workspaces --if-present",
+		"start": "npm run watch",
+		"watch:theme": "npm run watch -w=fueled-movies",
+		"watch:plugin": "npm run watch -w=tenup-plugin",
+		"watch": "run-p watch:theme watch:plugin",
+		"lint-js": "npm run lint-js --workspaces --if-present",
+		"format-js": "npm run format-js --workspaces --if-present",
+		"lint-style": "npm run lint-style --workspaces --if-present",
+		"test": "npm run test --workspaces --if-present",
+		"clean-dist": "npm run clean-dist --workspaces --if-present"
+	},
+	"author": {
+		"name": "10up",
+		"email": "info@10up.com",
+		"url": "https://10up.com",
+		"role": "developer"
+	},
+	"engineStrict": true,
+	"engines": {
+		"node": ">=20.0.0",
+		"npm": ">=9.0.0"
+	},
+	"devDependencies": {
+		"@wordpress/create-block": "4.55.0",
+		"10up-toolkit": "^6.0.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.2.0",
+		"npm-run-all": "^4.1.5",
+		"prettier": "3.3.3"
+	}
 }

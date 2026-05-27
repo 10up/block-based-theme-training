@@ -1,0 +1,13 @@
+/* Stretch the card and its pattern outer to fill query-loop grid cells. */
+.wp-block-tenup-card,
+.wp-block-tenup-card > .wp-block-group {
+	height: 100%;
+}
+
+/*
+ * Featured images are placed LAST in the DOM so screen readers read the
+ * post title first. Visually, flip the image back to the top via flex order.
+ */
+.wp-block-tenup-card .wp-block-post-featured-image {
+	order: -1;
+}

@@ -1,0 +1,28 @@
+.wp-block-group {
+
+	&.has-separator {
+		gap: 0;
+
+		& > * {
+			align-items: center;
+			display: flex;
+		}
+
+		& > *:not(:first-child) {
+
+			&::before {
+				align-items: center;
+				background-color: currentcolor;
+				block-size: 4px;
+				border-radius: 999px;
+				content: "";
+				display: inline-flex;
+				inline-size: 4px;
+				justify-content: center;
+				justify-self: center;
+				line-height: 1;
+				margin-inline: var(--wp--custom--spacing--8);
+			}
+		}
+	}
+}

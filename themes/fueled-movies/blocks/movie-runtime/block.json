@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tenup/movie-runtime",
+	"title": "Movie Runtime",
+	"category": "text",
+	"icon": "backup",
+	"description": "A read only block to display the runtime post meta for a Movie.",
+	"usesContext": ["postId", "postType"],
+	"attributes": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "tenup-block-theme",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

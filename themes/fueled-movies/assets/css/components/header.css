@@ -1,0 +1,16 @@
+header:where(.wp-block-template-part) {
+	backdrop-filter: saturate(180%) blur(20px);
+	background-color: var(--wp--custom--color--background--nav);
+	inset-block-start: var(--wp-admin--admin-bar--height, 0);
+	isolation: isolate;
+	position: sticky;
+	z-index: 1000;
+
+	& .wp-block-site-title {
+		font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 21px;
+		font-weight: 600;
+		letter-spacing: 0.011em;
+		line-height: 1.1428;
+	}
+}

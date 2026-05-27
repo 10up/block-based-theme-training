@@ -26,3 +26,20 @@ define( 'WP_DEVELOPMENT_MODE', 'all' );
 
 8. Visit the WordPress admin and activate the `10up Block Theme` theme
 
+## Content Import
+
+Once your site is set up, import the sample movie and person content:
+
+```bash
+# Import the 30 default movies + their star cast
+wp fueled-movies import
+
+# Import only specific movies + their cast
+wp fueled-movies import --ids=tt0910970,tt0068646
+
+# Preview without creating posts
+wp fueled-movies import --dry-run
+
+# Override default star limit (default: 3 per movie)
+wp fueled-movies import --star-limit=5
+```

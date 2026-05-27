@@ -1,0 +1,80 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tenup/card",
+	"title": "Card",
+	"description": "A post card rendered by the theme. Use variants for movie, person, or default post types.",
+	"category": "theme",
+	"keywords": [
+		"card",
+		"movie",
+		"person"
+	],
+	"textdomain": "tenup-block-theme",
+	"attributes": {
+		"variant": {
+			"type": "string",
+			"default": "default"
+		}
+	},
+	"parent": [
+		"core/post-template"
+	],
+	"supports": {
+		"interactivity": {
+			"clientNavigation": true
+		}
+	},
+	"usesContext": [
+		"postId",
+		"postType"
+	],
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"style": "file:./style.css",
+	"variations": [
+		{
+			"name": "default",
+			"title": "Card",
+			"description": "Default post card with date and category terms.",
+			"isDefault": true,
+			"attributes": {
+				"variant": "default"
+			},
+			"isActive": [
+				"variant"
+			],
+			"scope": [
+				"inserter"
+			]
+		},
+		{
+			"name": "movie",
+			"title": "Movie Card",
+			"description": "Card for movies with viewer rating and a trailer button.",
+			"attributes": {
+				"variant": "movie"
+			},
+			"isActive": [
+				"variant"
+			],
+			"scope": [
+				"inserter"
+			]
+		},
+		{
+			"name": "person",
+			"title": "Person Card",
+			"description": "Card for people with a View More button.",
+			"attributes": {
+				"variant": "person"
+			},
+			"isActive": [
+				"variant"
+			],
+			"scope": [
+				"inserter"
+			]
+		}
+	]
+}

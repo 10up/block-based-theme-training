@@ -1,0 +1,36 @@
+.wp-block-tenup-rate-movie > .wp-block-button {
+	anchor-name: --anchor-rate-movie;
+	justify-content: center;
+	min-inline-size: 4.75rem;
+}
+
+.wp-block-tenup-rate-movie__popover {
+	background-color: var(--wp--custom--color--background--secondary);
+	border: 0;
+	border-radius: 10px;
+	box-shadow: inset 0 1px 2px 0 var(--wp--custom--color--background--light-transparent-20);
+	color: var(--wp--custom--color--text--primary);
+	inline-size: 15rem;
+	margin: var(--wp--custom--spacing--4) 0 0;
+	padding: var(--wp--custom--spacing--12);
+	position-anchor: --anchor-rate-movie; /* stylelint-disable-line property-no-unknown */
+	position-area: bottom center; /* stylelint-disable-line property-no-unknown */
+	text-align: center;
+}
+
+.wp-block-tenup-rate-movie__popover-content {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.wp-block-tenup-rate-movie__slider,
+.wp-block-tenup-rate-movie__slider input {
+	inline-size: 100%;
+	line-height: 1;
+}
+
+.wp-block-tenup-rate-movie__popup-text:not(:empty) {
+	font-weight: 600;
+	margin-block: var(--wp--custom--spacing--8);
+}

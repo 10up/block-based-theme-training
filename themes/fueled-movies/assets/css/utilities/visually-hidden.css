@@ -1,0 +1,8 @@
+.visually-hidden {
+
+	@mixin visually-hidden;
+}
+
+.is-hidden {
+	display: none;
+}

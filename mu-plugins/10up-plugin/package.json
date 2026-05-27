@@ -11,25 +11,20 @@
     "test": "10up-toolkit test-unit-jest --passWithNoTests",
     "clean-dist": "rm -rf ./dist"
   },
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "devDependencies": {
-    "10up-toolkit": "^6.3.0",
     "jest-environment-jsdom": "^29.7.0"
   },
   "dependencies": {
+    "10up-toolkit": "^6.5.0",
     "prop-types": "^15.7.2"
   },
   "10up-toolkit": {
     "entry": {
-      "admin": "./assets/js/admin/admin.js",
-      "frontend": "./assets/js/frontend/frontend.js",
-      "shared": "./assets/js/shared/shared.js"
+      "admin": "./assets/js/admin/admin.js"
     },
     "paths": {
-      "globalStylesDir": "../../themes/10up-theme/assets/css/globals/",
-      "globalMixinsDir": "../../themes/10up-theme/assets/css/globals/mixins/"
+      "globalStylesDir": "../../themes/fueled-movies/assets/css/globals/",
+      "globalMixinsDir": "../../themes/fueled-movies/assets/css/globals/mixins/"
     }
   }
 }

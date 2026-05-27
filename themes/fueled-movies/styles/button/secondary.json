@@ -1,0 +1,14 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.9/theme.json",
+	"version": 3,
+	"title": "Secondary",
+	"slug": "secondary",
+	"blockTypes": ["core/button"],
+	"styles": {
+		"color": {
+			"background": "var(--wp--custom--color--background--light-transparent-10, rgba(163, 163, 163, 0.15))",
+			"text": "var(--wp--custom--color--text--primary)"
+		},
+		"shadow": "0 1px 2px 0 rgba(255, 255, 255, 0.08) inset"
+	}
+}

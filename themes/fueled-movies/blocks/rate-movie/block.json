@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tenup/rate-movie",
+	"title": "Rate Movie",
+	"description": "A button that allows users to rate movies with a star rating from 0-10.",
+	"category": "widgets",
+	"keywords": [
+		"rating",
+		"star",
+		"movie",
+		"vote"
+	],
+	"icon": "star-filled",
+	"textdomain": "tenup-block-theme",
+	"attributes": {},
+	"supports": {
+		"html": false,
+		"interactivity": {
+			"interactive": true,
+			"clientNavigation": true
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js",
+	"viewScriptModule": "file:./view-module.js",
+	"style": "file:./style.css"
+}

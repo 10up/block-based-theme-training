@@ -1,0 +1,99 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","metadata":{"name":"Site Main"},"className":"is-style-default","style":{"spacing":{"margin":{"top":"0"},"padding":{"top":"var:preset|spacing|16","bottom":"var:preset|spacing|16"}}},"layout":{"type":"default"}} -->
+<main class="wp-block-group is-style-default" style="margin-top:0;padding-top:var(--wp--preset--spacing--16);padding-bottom:var(--wp--preset--spacing--16)"><!-- wp:post-featured-image {"aspectRatio":"2:3","metadata":{"name":"Featured Image (Blurry Poster Backdrop)"},"className":"is-style-single-movie-backdrop"} /-->
+
+<!-- wp:group {"tagName":"article","metadata":{"name":"Movie Header"},"layout":{"type":"constrained"}} -->
+<article class="wp-block-group"><!-- wp:buttons {"align":"wide"} -->
+<div class="wp-block-buttons alignwide"><!-- wp:button {"metadata":{"bindings":{"url":{"source":"tenup/block-bindings","args":{"key":"archiveLinkUrl"}},"text":{"source":"tenup/block-bindings","args":{"key":"archiveLinkText"}}}},"className":"is-style-secondary"} -->
+<div class="wp-block-button is-style-secondary"><a class="wp-block-button__link wp-element-button" href="/movies/">
+					← Back
+				</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"bottom","justifyContent":"space-between"}} -->
+<div class="wp-block-group alignwide"><!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|8"}},"layout":{"type":"flex","orientation":"vertical","flexWrap":"nowrap","justifyContent":"stretch"}} -->
+<div class="wp-block-group alignwide"><!-- wp:post-title {"level":1} /-->
+
+<!-- wp:group {"style":{"elements":{"link":{"color":{"text":"var:preset|color|text-secondary"}}},"spacing":{"blockGap":"var:preset|spacing|24"}},"textColor":"text-secondary","layout":{"type":"flex","flexWrap":"nowrap","orientation":"horizontal"},"hasSeparator":true} -->
+<div class="wp-block-group has-text-secondary-color has-text-color has-link-color has-separator"><!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"tenup_movie_release_year"}}},"name":"Movie Release Year"}} -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"tenup_movie_mpa_rating"}}},"name":"Movie MPA Rating"}} -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:tenup/movie-runtime /--></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:tenup/rate-movie /-->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"metadata":{"bindings":{"url":{"source":"tenup/block-bindings","args":{"key":"viewerRatingLabelUrl"}},"text":{"source":"tenup/block-bindings","args":{"key":"viewerRatingLabelText"}}}},"className":"is-style-secondary"} -->
+<div class="wp-block-button is-style-secondary"><a class="wp-block-button__link wp-element-button" href="#">
+						<mark style="background-color:rgba(0, 0, 0, 0);color:#f5c518" class="has-inline-color">★</mark> 0.0/10 (0)
+					</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:columns {"align":"wide"} -->
+<div class="wp-block-columns alignwide"><!-- wp:column {"width":"27.5%"} -->
+<div class="wp-block-column" style="flex-basis:27.5%"><!-- wp:post-featured-image {"aspectRatio":"2:3","height":"","scale":"contain","style":{"layout":{"selfStretch":"fixed","flexSize":"330px"},"border":{"radius":"3px"}}} /--></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"72%"} -->
+<div class="wp-block-column" style="flex-basis:72%"><!-- wp:tenup/movie-trailer /--></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|24"}},"layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"top","justifyContent":"space-between"}} -->
+<div class="wp-block-group alignwide"><!-- wp:tenup/dl {"style":{"layout":{"selfStretch":"fill","flexSize":null}},"layout":{"type":"default"}} -->
+<!-- wp:tenup/dl-item {"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<!-- wp:tenup/dt {"content":"Genre","style":{"layout":{"selfStretch":"fixed","flexSize":"5.5rem"}},"textColor":"text-secondary"} /-->
+
+<!-- wp:tenup/dd {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<!-- wp:post-terms {"term":"tenup-genre"} /-->
+<!-- /wp:tenup/dd -->
+<!-- /wp:tenup/dl-item -->
+
+<!-- wp:tenup/dl-item {"layout":{"type":"flex","orientation":"horizontal","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<!-- wp:tenup/dt {"content":"Plot","style":{"layout":{"selfStretch":"fixed","flexSize":"5.5rem"}},"textColor":"text-secondary"} /-->
+
+<!-- wp:tenup/dd {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"tenup_movie_plot"}}}}} -->
+<p></p>
+<!-- /wp:paragraph -->
+<!-- /wp:tenup/dd -->
+<!-- /wp:tenup/dl-item -->
+
+<!-- wp:tenup/dl-item {"layout":{"type":"flex","orientation":"horizontal","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<!-- wp:tenup/dt {"content":"Stars","style":{"layout":{"selfStretch":"fixed","flexSize":"5.5rem"}},"textColor":"text-secondary"} /-->
+
+<!-- wp:tenup/dd {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"tenup/block-bindings","args":{"key":"movieStars"}}}}} -->
+<p></p>
+<!-- /wp:paragraph -->
+<!-- /wp:tenup/dd -->
+<!-- /wp:tenup/dl-item -->
+<!-- /wp:tenup/dl --></div>
+<!-- /wp:group -->
+
+<!-- wp:separator {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|32-48","bottom":"var:preset|spacing|32-48"}}}} -->
+<hr class="wp-block-separator alignwide has-alpha-channel-opacity" style="margin-top:var(--wp--preset--spacing--32-48);margin-bottom:var(--wp--preset--spacing--32-48)"/>
+<!-- /wp:separator --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"is-style-default","layout":{"type":"constrained"}} -->
+<div class="wp-block-group is-style-default"><!-- wp:group {"className":"is-style-secondary","layout":{"type":"constrained"}} -->
+<div class="wp-block-group is-style-secondary"><!-- wp:post-content {"layout":{"type":"constrained"}} /--></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

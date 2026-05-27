@@ -1,0 +1,6 @@
+@define-mixin is-clickable-card-hover {
+
+	&:where(:hover:not(:has([data-is-clickable-card-secondary]:hover, [data-is-clickable-card-secondary]:focus))) {
+		@mixin-content;
+	}
+}

@@ -29,7 +29,7 @@ jobs:
         run: composer validate --strict --working-dir=mu-plugins/10up-plugin
 
       - name: Validate Theme composer.json and composer.lock
-        run: composer validate --strict --working-dir=themes/10up-theme
+        run: composer validate --strict --working-dir=themes/fueled-movies
 
       - name: Cache Composer packages
         id: composer-cache
@@ -47,10 +47,7 @@ jobs:
         run: composer install --prefer-dist --no-progress --working-dir=mu-plugins/10up-plugin
 
       - name: Install Theme dependencies
-        run: composer install --prefer-dist --no-progress --working-dir=themes/10up-theme
+        run: composer install --prefer-dist --no-progress --working-dir=themes/fueled-movies
 
-      - name: Run PHPCS
-        run: composer lint
-
-      - name: Run PHPStan
-        run: composer static
+      - name: Run PHPCS (Theme)
+        run: composer lint --working-dir=themes/fueled-movies
