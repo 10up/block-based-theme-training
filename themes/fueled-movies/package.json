@@ -14,7 +14,7 @@
 		"scaffold:block": "cd blocks/ && wp-create-block --no-plugin --template ../../../../bin/create-block-template"
 	},
 	"dependencies": {
-		"@10up/block-components": "^1.19.4",
+		"@10up/block-components": "^1.22.2",
 		"@wordpress/dependency-extraction-webpack-plugin": "^5.9.0",
 		"@wordpress/interactivity": "^6.38.0",
 		"10up-toolkit": "^6.5.0",
